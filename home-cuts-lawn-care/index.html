@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Cuts Lawn Care | Columbus, OH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+  :root{
+    --green:#5c7a3a;
+    --green-dark:#3f5629;
+    --ink:#2a2c24;
+    --paper:#f8f4e9;
+    --paper-2:#efe7d2;
+    --accent:#c97a3d;
+    --muted:#6c6f5f;
+    --border:#ddd3ba;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:var(--paper); line-height:1.65; font-size:16px;}
+  h1,h2,h3,.brand{font-family:'Outfit',sans-serif; font-weight:600;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  .icon{width:1em; height:1em; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; vertical-align:-0.15em; flex-shrink:0;}
+
+  .preview-note{background:var(--green-dark); color:#e4e9d8; text-align:center; font-size:12.5px; padding:8px 16px;}
+
+  header.main{background:var(--paper); padding:20px 0;}
+  header.main .wrap{display:flex; align-items:center; justify-content:space-between; gap:20px;}
+  .brand{font-size:1.3rem; color:var(--green-dark);}
+  nav.mainnav{display:flex; gap:24px; font-weight:500; font-size:0.92rem;}
+  nav.mainnav a{text-decoration:none; color:var(--ink);}
+  nav.mainnav a:hover{color:var(--green);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; background:var(--green); color:#fff; padding:12px 22px;
+    border-radius:24px; text-decoration:none; font-weight:600; font-size:0.92rem; border:1px solid var(--green);
+    transition:background .15s ease;
+  }
+  .btn:hover{background:var(--green-dark);}
+  .btn.ghost{background:transparent; color:var(--green-dark); border:1.5px solid var(--green-dark);}
+  .btn.ghost:hover{background:var(--paper-2);}
+  .btn.small{padding:9px 16px; font-size:0.85rem;}
+
+  .hero{padding:56px 0 0;}
+  .hero .inner{max-width:620px;}
+  .hero .kicker{font-size:0.88rem; color:var(--green-dark); font-weight:600; margin-bottom:10px;}
+  .hero h1{font-size:2.6rem; line-height:1.14; color:var(--ink); margin-bottom:18px;}
+  .hero h1 span{color:var(--green);}
+  .hero p.lead{font-size:1.05rem; color:var(--muted); max-width:52ch; margin-bottom:28px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+  .mow-divider{width:100%; height:56px; margin:44px 0 0; color:var(--green); opacity:0.55;}
+
+  .included{background:var(--white); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:0;}
+  .included .wrap{display:flex;}
+  .inc-item{flex:1; padding:26px 24px; display:flex; gap:12px; align-items:flex-start;}
+  .inc-item + .inc-item{border-left:1px solid var(--border);}
+  .inc-item .icon{color:var(--green); font-size:1.3rem; margin-top:2px;}
+  .inc-item div b{display:block; font-size:0.94rem; color:var(--ink); margin-bottom:2px;}
+  .inc-item div span{font-size:0.84rem; color:var(--muted);}
+  @media (max-width:820px){
+    .included .wrap{flex-direction:column;}
+    .inc-item + .inc-item{border-left:none; border-top:1px solid var(--border);}
+  }
+
+  section{padding:68px 0;}
+  .intro{max-width:600px; margin-bottom:38px;}
+  .intro h2{font-size:1.85rem; color:var(--ink); margin-bottom:10px;}
+  .intro p{color:var(--muted); font-size:1rem;}
+
+  .services{background:var(--paper);}
+  .svc-row{display:flex; gap:18px; align-items:flex-start; padding:22px 0; border-top:1px solid var(--border);}
+  .svc-row:first-child{border-top:none;}
+  .svc-row .icon-wrap{width:42px; height:42px; border-radius:10px; background:var(--paper-2); color:var(--green-dark); display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;}
+  .svc-row h3{font-size:1.05rem; color:var(--ink); margin-bottom:4px;}
+  .svc-row p{font-size:0.92rem; color:var(--muted); max-width:56ch;}
+  .svc-row .freq{margin-left:auto; flex-shrink:0; font-size:0.78rem; font-weight:600; color:var(--green-dark); background:var(--paper-2); padding:5px 12px; border-radius:20px; white-space:nowrap; align-self:center;}
+  @media (max-width:700px){ .svc-row{flex-wrap:wrap;} .svc-row .freq{margin-left:56px;} }
+
+  .estimator{background:var(--white); border-top:1px solid var(--border);}
+  .est-wrap{display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start;}
+  .est-controls .field{margin-bottom:22px;}
+  .est-controls label{display:block; font-size:0.85rem; font-weight:600; color:var(--ink); margin-bottom:8px;}
+  .est-controls input[type=range]{width:100%; accent-color:var(--green);}
+  .toggle-group{display:flex; gap:0; border:1px solid var(--border); border-radius:24px; overflow:hidden; width:fit-content;}
+  .toggle-group button{background:var(--white); border:none; padding:9px 18px; font-family:inherit; font-size:0.88rem; font-weight:600; color:var(--muted); cursor:pointer;}
+  .toggle-group button.active{background:var(--green); color:#fff;}
+  .est-result{border:1px solid var(--border); border-left:4px solid var(--green); background:var(--paper); border-radius:10px; padding:26px 24px;}
+  .est-result .label{font-size:0.82rem; color:var(--muted); font-weight:600; margin-bottom:8px;}
+  .est-result .price{font-family:'Outfit',sans-serif; font-size:2rem; color:var(--ink); margin-bottom:4px;}
+  .est-result .suffix{font-size:0.85rem; color:var(--muted); margin-bottom:16px;}
+  .est-result .sample-note{font-size:0.8rem; color:var(--muted); font-style:italic; margin-bottom:18px;}
+  @media (max-width:820px){ .est-wrap{grid-template-columns:1fr;} }
+
+  .trust{background:var(--green-dark); color:#e9edda;}
+  .trust .wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:center;}
+  .trust h2{color:#fff; font-size:1.85rem; margin-bottom:14px;}
+  .trust p{color:#cdd6b7; font-size:0.98rem; margin-bottom:14px; max-width:52ch;}
+  .trust ul{list-style:none; margin-top:20px;}
+  .trust li{padding-left:24px; position:relative; margin-bottom:10px; font-size:0.92rem; color:#dde3cb;}
+  .trust li::before{content:'—'; position:absolute; left:0; color:var(--accent);}
+  .stripes{width:100%; height:auto; color:#7a9457;}
+  @media (max-width:820px){ .trust .wrap{grid-template-columns:1fr;} }
+
+  .financials{background:var(--paper);}
+  .fin-wrap{display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start;}
+  .invoice-card{background:var(--white); border:1px solid var(--border); border-radius:10px; padding:24px 22px;}
+  .invoice-head{display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:12px; margin-bottom:12px;}
+  .invoice-head .co{font-family:'Outfit',sans-serif; font-weight:600; color:var(--ink);}
+  .invoice-head .meta{text-align:right; font-size:0.82rem; color:var(--muted);}
+  .invoice-rows div{display:flex; justify-content:space-between; padding:8px 0; font-size:0.9rem; border-bottom:1px dashed var(--border);}
+  .invoice-total{display:flex; justify-content:space-between; padding-top:12px; font-weight:700; font-size:1.05rem; color:var(--green-dark);}
+  .pay-btn{margin-top:16px; width:100%; background:var(--paper-2); color:var(--muted); border:none; padding:12px; border-radius:20px; font-weight:600; font-size:0.88rem; cursor:not-allowed;}
+  .sample-note{font-size:0.8rem; color:var(--muted); font-style:italic; margin-bottom:14px;}
+  .fin-points{list-style:none;}
+  .fin-points li{margin-bottom:13px; color:var(--muted); padding-left:26px; position:relative; font-size:0.92rem;}
+  .fin-points li .icon{position:absolute; left:0; top:3px; color:var(--green);}
+  @media (max-width:820px){ .fin-wrap{grid-template-columns:1fr;} }
+
+  .testimonials{background:var(--white); border-top:1px solid var(--border);}
+  .quote-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;}
+  .quote-card{border:1px solid var(--border); border-left:3px solid var(--green); border-radius:8px; padding:22px 20px; background:var(--paper);}
+  .quote-card p{font-size:0.94rem; color:var(--ink); margin-bottom:12px;}
+  .quote-card .who{font-size:0.82rem; color:var(--muted); font-weight:600;}
+  .quote-card .tag{display:block; font-size:0.74rem; color:#9a9682; font-style:italic; margin-top:2px;}
+  @media (max-width:820px){ .quote-grid{grid-template-columns:1fr;} }
+
+  .review-strip{background:var(--paper-2); padding:40px 0;}
+  .review-strip .wrap{display:flex; align-items:center; justify-content:space-between; gap:36px; flex-wrap:wrap;}
+  .review-strip .copy{max-width:440px;}
+  .review-strip h3{font-size:1.25rem; color:var(--ink); margin-bottom:6px;}
+  .review-strip .copy > p{color:var(--muted); font-size:0.92rem;}
+  .review-strip .sample-note{margin-top:8px; margin-bottom:0;}
+  .review-strip .qr-box{background:var(--white); border:1px solid var(--border); border-radius:8px; padding:10px; flex-shrink:0; line-height:0;}
+  .review-strip .qr-box svg{display:block; width:108px; height:108px;}
+  @media (max-width:700px){ .review-strip .wrap{flex-direction:column; text-align:center;} }
+
+  .contact{background:var(--white);}
+  .contact-wrap{display:grid; grid-template-columns:1fr 1.1fr; gap:48px;}
+  .contact-info h3{color:var(--ink); margin-bottom:14px; font-size:1.3rem;}
+  .contact-info > p{color:var(--muted); margin-bottom:24px; font-size:0.95rem;}
+  .info-row{display:flex; gap:14px; margin-bottom:16px; align-items:flex-start;}
+  .info-row .icon{color:var(--green-dark); font-size:1.1rem; margin-top:2px;}
+  .info-row div strong{display:block; color:var(--ink); font-size:0.92rem;}
+  .info-row div span{color:var(--muted); font-size:0.9rem;}
+  form.quote{background:var(--paper); border:1px solid var(--border); border-radius:12px; padding:28px;}
+  form.quote label{display:block; font-size:0.85rem; font-weight:600; color:var(--ink); margin-bottom:6px;}
+  form.quote .field{margin-bottom:16px;}
+  form.quote input, form.quote select, form.quote textarea{
+    width:100%; padding:11px 12px; border:1px solid var(--border); border-radius:8px; font-family:inherit; font-size:0.95rem; background:#fff;
+  }
+  form.quote input:focus, form.quote select:focus, form.quote textarea:focus{outline:2px solid var(--green); outline-offset:1px;}
+  form.quote .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  form.quote button{
+    width:100%; background:var(--green); color:#fff; border:none; padding:13px; border-radius:24px;
+    font-weight:600; font-size:0.94rem; cursor:pointer;
+  }
+  form.quote button:hover{background:var(--green-dark);}
+  .form-success{display:none; text-align:center; padding:40px 10px;}
+  .form-success.show{display:block;}
+  .form-success .icon{width:2.3rem; height:2.3rem; color:var(--green-dark); margin:0 auto 12px; display:block;}
+  @media (max-width:820px){ .contact-wrap{grid-template-columns:1fr;} form.quote .row2{grid-template-columns:1fr;} }
+
+  footer{background:var(--green-dark); color:#c3ccae; padding:36px 0 22px; font-size:0.86rem;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; align-items:center;}
+  footer .fbrand{color:#fff; font-family:'Outfit',sans-serif; font-weight:600; font-size:1rem;}
+  footer a{color:#c3ccae; text-decoration:none;}
+  footer a:hover{color:#fff;}
+  footer .fbottom{border-top:1px solid rgba(255,255,255,0.14); margin-top:24px; padding-top:16px; text-align:center; font-size:0.78rem; color:#a3ac89;}
+  @media (max-width:700px){ footer .wrap{flex-direction:column; text-align:center;} }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 4h3l1 3-2 1.5c1 2.5 3 4.5 5.5 5.5L16 12l3 1v3c0 1-1 2-2 2C10 18 6 14 6 7c0-1 1-2 2-2z"/></symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><polyline points="5 13 9 17 19 7"/></symbol>
+  <symbol id="icon-mow" viewBox="0 0 24 24"><path d="M3 9c3 3 3 3 6 0s3-3 6 0 3 3 6 0"/><path d="M3 15c3 3 3 3 6 0s3-3 6 0 3 3 6 0"/></symbol>
+  <symbol id="icon-edge" viewBox="0 0 24 24"><line x1="3" y1="19" x2="21" y2="19"/><line x1="6" y1="19" x2="6" y2="14"/><line x1="10" y1="19" x2="10" y2="11"/><line x1="14" y1="19" x2="14" y2="14"/><line x1="18" y1="19" x2="18" y2="9"/></symbol>
+  <symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M4 20c9-1 13-8 14-16-9 1-13 8-14 16z"/><path d="M5 19c4-6 7-9 12-14"/></symbol>
+  <symbol id="icon-mulch" viewBox="0 0 24 24"><circle cx="6" cy="9" r="1.4"/><circle cx="12" cy="7" r="1.4"/><circle cx="18" cy="10" r="1.4"/><circle cx="8" cy="14" r="1.4"/><circle cx="15" cy="15" r="1.4"/><circle cx="5" cy="18" r="1.4"/><circle cx="19" cy="17" r="1.4"/></symbol>
+</svg>
+
+<div class="preview-note">Concept preview — a design proposal for Home Cuts Lawn Care. Not a live or published website.</div>
+
+<header class="main">
+  <div class="wrap">
+    <div class="brand">Home Cuts <span style="color:var(--green)">Lawn Care</span></div>
+    <nav class="mainnav">
+      <a href="#services">Services</a>
+      <a href="#estimator">Get a price</a>
+      <a href="#billing">Billing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="tel:+16142160811"><svg class="icon"><use href="#icon-phone"/></svg> (614) 216-0811</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="inner">
+      <div class="kicker">Columbus, OH &amp; nearby — booking now</div>
+      <h1>Weekly lawn mowing in Columbus, <span>done on schedule</span>.</h1>
+      <p class="lead">Home Cuts is one guy who answers his own phone and cuts your lawn on the day he says he will. No call center, no subcontractors, no surprise charges on the invoice.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#contact">Get a free price</a>
+        <a class="btn ghost" href="tel:+16142160811">Call (614) 216-0811</a>
+      </div>
+    </div>
+  </div>
+  <svg class="mow-divider wrap" viewBox="0 0 1080 56" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 28c30 14 60 14 90 0s60-14 90 0 60 14 90 0 60-14 90 0 60 14 90 0 60-14 90 0 60 14 90 0 60-14 90 0 60 14 90 0 60-14 90 0 60 14 90 0 60-14 90 0" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  </svg>
+</section>
+
+<div class="included">
+  <div class="wrap">
+    <div class="inc-item"><svg class="icon"><use href="#icon-check"/></svg><div><b>Mowed &amp; edged</b><span>Every visit, no exceptions</span></div></div>
+    <div class="inc-item"><svg class="icon"><use href="#icon-check"/></svg><div><b>Clippings cleared</b><span>Off walks &amp; driveways</span></div></div>
+    <div class="inc-item"><svg class="icon"><use href="#icon-check"/></svg><div><b>Text when done</b><span>You'll know it happened</span></div></div>
+    <div class="inc-item"><svg class="icon"><use href="#icon-check"/></svg><div><b>No contract</b><span>Cancel or pause anytime</span></div></div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="intro">
+      <h2>What's on the schedule</h2>
+      <p>Regular mowing plus the seasonal work that keeps a yard looking cared for year-round.</p>
+    </div>
+    <div class="svc-row">
+      <div class="icon-wrap"><svg class="icon"><use href="#icon-mow"/></svg></div>
+      <div><h3>Lawn mowing</h3><p>Clean, even cuts at the right height for the season — never scalped, never left shaggy.</p></div>
+      <div class="freq">Weekly / biweekly</div>
+    </div>
+    <div class="svc-row">
+      <div class="icon-wrap"><svg class="icon"><use href="#icon-edge"/></svg></div>
+      <div><h3>Edging &amp; trimming</h3><p>Crisp lines along walks and beds, plus trimming around fences, trees, and mailboxes.</p></div>
+      <div class="freq">Every visit</div>
+    </div>
+    <div class="svc-row">
+      <div class="icon-wrap"><svg class="icon"><use href="#icon-leaf"/></svg></div>
+      <div><h3>Fall leaf cleanup</h3><p>Leaves cleared from the lawn and beds before they mat down and smother the grass.</p></div>
+      <div class="freq">Seasonal</div>
+    </div>
+    <div class="svc-row">
+      <div class="icon-wrap"><svg class="icon"><use href="#icon-leaf"/></svg></div>
+      <div><h3>Spring cleanup</h3><p>Debris removal, first cut of the season, and bed edging to reset the yard after winter.</p></div>
+      <div class="freq">Seasonal</div>
+    </div>
+    <div class="svc-row">
+      <div class="icon-wrap"><svg class="icon"><use href="#icon-mulch"/></svg></div>
+      <div><h3>Mulching</h3><p>Fresh mulch laid in beds and borders — cleaner look, fewer weeds, better curb appeal.</p></div>
+      <div class="freq">One-time</div>
+    </div>
+  </div>
+</section>
+
+<section class="estimator" id="estimator">
+  <div class="wrap">
+    <div class="intro">
+      <h2>What would your yard run?</h2>
+      <p>Adjust the size and pick a schedule to see a per-visit price before you ever call.</p>
+    </div>
+    <div class="est-wrap">
+      <div class="est-controls">
+        <div class="field">
+          <label for="lawnSize">Lawn size (sq ft): <span id="lawnSizeVal">6,000</span></label>
+          <input type="range" id="lawnSize" min="2000" max="12000" step="500" value="6000">
+        </div>
+        <div class="field">
+          <label>Schedule</label>
+          <div class="toggle-group" id="freqToggle">
+            <button type="button" class="active" data-rate="0.0075,0.0105">Weekly</button>
+            <button type="button" data-rate="0.0055,0.0080">Biweekly</button>
+          </div>
+        </div>
+      </div>
+      <div class="est-result">
+        <div class="label">Estimated price</div>
+        <div class="price" id="estPrice">$45 – $63</div>
+        <div class="suffix">per visit</div>
+        <p class="sample-note">Ballpark only, based on typical Columbus-area mowing rates — your exact price depends on a quick look at the yard.</p>
+        <a class="btn small" href="#contact">Get my exact price</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div>
+      <h2>It's one person, not a company</h2>
+      <p>Home Cuts started with one yard, then the yard next door, then word got around the block. There's no office and no franchise behind it — just the person who shows up and mows.</p>
+      <ul>
+        <li>You talk to the person actually cutting your grass, not a dispatcher.</li>
+        <li>Same day, same time, week after week — you can set a clock by it.</li>
+        <li>Cash, card, or check, whatever's easiest for you.</li>
+      </ul>
+    </div>
+    <svg class="stripes" viewBox="0 0 320 220" aria-hidden="true">
+      <rect x="0" y="0" width="320" height="220" fill="none"/>
+      <path d="M0 30h320M0 62h320M0 94h320M0 126h320M0 158h320M0 190h320" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+      <path d="M20 30v-14M60 62v-14M100 94v-14M140 126v-14M180 158v-14M220 190v-14" stroke="currentColor" stroke-width="1.4" opacity="0.6"/>
+      <circle cx="250" cy="46" r="3" fill="currentColor" opacity="0.7"/>
+      <circle cx="80" cy="110" r="3" fill="currentColor" opacity="0.7"/>
+      <circle cx="200" cy="174" r="3" fill="currentColor" opacity="0.7"/>
+    </svg>
+  </div>
+</section>
+
+<section class="financials" id="billing">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Pay online, no paper needed</h2>
+      <p>A text with a link after each visit — see what's owed and pay from your phone.</p>
+    </div>
+    <div class="fin-wrap">
+      <div>
+        <p class="sample-note">Sample invoice, shown for demonstration purposes.</p>
+        <div class="invoice-card">
+          <div class="invoice-head">
+            <div class="co">Home Cuts Lawn Care<br><small style="font-weight:400;color:var(--muted)">Invoice #HC-0318</small></div>
+            <div class="meta">Issued: 06/05/2026<br>Due: 06/12/2026</div>
+          </div>
+          <div class="invoice-rows">
+            <div><span>Weekly mowing (2 visits)</span><span>$90.00</span></div>
+            <div><span>Edging &amp; trim</span><span>Included</span></div>
+            <div><span>Bed cleanup</span><span>$25.00</span></div>
+          </div>
+          <div class="invoice-total"><span>Total due</span><span>$115.00</span></div>
+          <button class="pay-btn" type="button" disabled>Pay invoice online (demo)</button>
+        </div>
+      </div>
+      <ul class="fin-points">
+        <li><svg class="icon"><use href="#icon-check"/></svg>A text after every visit, so you know it happened even if you weren't home.</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>Pay from your phone — no cash left under the mat, no chasing a check.</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>A running history of every cut and cleanup, always on hand.</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>Skip a week or pause for vacation with a single text.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="intro">
+      <h2>What neighbors are saying</h2>
+      <p>Sample reviews, shown to illustrate the kind of feedback this page can showcase.</p>
+    </div>
+    <div class="quote-grid">
+      <div class="quote-card">
+        <p>"Same guy every time, always on the day he says. Haven't had to think about my lawn in two summers."</p>
+        <div class="who">North Columbus homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+      <div class="quote-card">
+        <p>"Texted him about a bare patch and he had a fix within the week. Easiest yard decision I've made."</p>
+        <div class="who">Columbus homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+      <div class="quote-card">
+        <p>"Fair price, shows up, does good edging. That's really all I wanted."</p>
+        <div class="who">Columbus homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="review-strip">
+  <div class="wrap">
+    <div class="copy">
+      <h3>Scan to find us &amp; leave a review</h3>
+      <p>Most new customers come from a neighbor mentioning us. If we've done good work for you, a review helps.</p>
+      <p class="sample-note">Demo QR code — once you have a Google Business Profile, this links straight to your review page.</p>
+    </div>
+    <div class="qr-box" id="reviewQR"></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h3>Get your free price</h3>
+        <p>Text or call with your address and we'll get you a price the same day — usually within the hour.</p>
+        <div class="info-row"><svg class="icon"><use href="#icon-phone"/></svg><div><strong>Call or text</strong><span><a href="tel:+16142160811">(614) 216-0811</a></span></div></div>
+        <div class="info-row"><svg class="icon"><use href="#icon-pin"/></svg><div><strong>Service area</strong><span>Columbus, OH &amp; surrounding communities</span></div></div>
+        <div class="info-row"><svg class="icon"><use href="#icon-clock"/></svg><div><strong>Hours</strong><span>Mon–Sat, 8:00 AM – 6:00 PM</span></div></div>
+      </div>
+      <div>
+        <form class="quote" id="quoteForm">
+          <div class="field"><label for="name">Full name</label><input id="name" required placeholder="Jane Smith"></div>
+          <div class="row2">
+            <div class="field"><label for="phone">Phone</label><input id="phone" required placeholder="(614) 555-0100"></div>
+            <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="jane@email.com"></div>
+          </div>
+          <div class="field"><label for="service">Service needed</label>
+            <select id="service">
+              <option>Weekly mowing</option>
+              <option>Biweekly mowing</option>
+              <option>Fall cleanup</option>
+              <option>Spring cleanup</option>
+              <option>Mulching</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="msg">Anything we should know?</label><textarea id="msg" rows="4" placeholder="Lawn size, gate code, dog in the yard..."></textarea></div>
+          <button type="submit">Request free price</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><polyline points="7 12.5 10.5 16 17 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Thanks — we'll be in touch.</h3>
+          <p style="color:var(--muted); margin-top:8px;">Home Cuts will text or call shortly with a price.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="fbrand">Home Cuts Lawn Care</div>
+      <p>Mowing &amp; yard care serving Columbus, Ohio.</p>
+    </div>
+    <div>
+      <a href="tel:+16142160811">(614) 216-0811</a>
+    </div>
+  </div>
+  <div class="fbottom">Concept site prepared as a design proposal — not the business's official website. &copy; Home Cuts Lawn Care.</div>
+</footer>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  (function(){
+    var sizeEl = document.getElementById('lawnSize');
+    var sizeVal = document.getElementById('lawnSizeVal');
+    var priceEl = document.getElementById('estPrice');
+    var toggle = document.getElementById('freqToggle');
+    var rate = [0.0075, 0.0105];
+    function fmt(n){ return '$' + Math.round(n); }
+    function update(){
+      var sqft = parseInt(sizeEl.value, 10);
+      sizeVal.textContent = sqft.toLocaleString('en-US');
+      priceEl.textContent = fmt(sqft * rate[0]) + ' – ' + fmt(sqft * rate[1]);
+    }
+    sizeEl.addEventListener('input', update);
+    toggle.addEventListener('click', function(e){
+      var btn = e.target.closest('button');
+      if(!btn) return;
+      toggle.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      rate = btn.getAttribute('data-rate').split(',').map(Number);
+      update();
+    });
+    update();
+  })();
+
+  (function(){
+    var qr = qrcode(0, 'M');
+    qr.addData('https://www.google.com/search?q=Home+Cuts+Lawn+Care+Columbus+Ohio+reviews');
+    qr.make();
+    document.getElementById('reviewQR').innerHTML = qr.createSvgTag({cellSize:4, margin:2});
+  })();
+</script>
+
+</body>
+</html>

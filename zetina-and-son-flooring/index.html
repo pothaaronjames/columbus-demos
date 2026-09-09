@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zetina &amp; Son Flooring | Columbus, OH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6efe2;
+    --card: #fffaf1;
+    --ink: #2b2117;
+    --ink-soft: #766a5c;
+    --ink-faint: #ab9d8c;
+    --wood: #8a5a35;
+    --wood-deep: #6a4225;
+    --wood-wash: #8a5a3516;
+    --green: #4f6b46;
+    --line: #e6dac5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; font-size: 16px; }
+  h1, h2, h3, .logo, .pull-quote p { font-family: 'Lora', Georgia, serif; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  svg { display: block; }
+  .icon { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+  header.site { background: rgba(246,239,226,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+  .logo { font-size: 20px; font-weight: 600; }
+  .logo em { font-style: normal; color: var(--wood); }
+  nav { display: flex; gap: 30px; }
+  nav a { font-size: 14.5px; font-weight: 500; color: var(--ink-soft); }
+  nav a:hover { color: var(--ink); }
+  .btn { display: inline-block; padding: 12px 24px; border-radius: 4px; font-weight: 600; font-size: 14.5px; }
+  .btn-primary { background: var(--wood); color: #fff; }
+  .btn-primary:hover { background: var(--wood-deep); }
+  .btn-ghost { border: 1px solid var(--ink); color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: #fff; }
+
+  section { padding: 92px 0; }
+  .kicker { font-size: 13.5px; color: var(--wood); font-weight: 600; margin-bottom: 16px; }
+  h2 { font-size: 30px; font-weight: 500; margin-bottom: 12px; max-width: 24ch; }
+  .lede { color: var(--ink-soft); font-size: 16.5px; max-width: 46ch; }
+  .section-head { margin-bottom: 48px; }
+
+  /* Hero: illustration LEFT, text RIGHT */
+  .hero .wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; padding-top: 26px; padding-bottom: 16px; }
+  .hero h1 { font-size: 41px; font-weight: 500; line-height: 1.2; max-width: 16ch; margin-bottom: 18px; }
+  .hero .lede { margin-bottom: 32px; font-size: 17px; }
+  .hero-ctas { display: flex; gap: 14px; margin-bottom: 34px; flex-wrap: wrap; }
+  .stat-line { display: flex; gap: 20px; flex-wrap: wrap; color: var(--ink-soft); font-size: 14px; }
+  .stat-line span:not(:last-child) { padding-right: 20px; border-right: 1px solid var(--line); }
+  .hero-art-wrap { position: relative; }
+  .hero-art-wrap .wash { position: absolute; inset: -8%; background: radial-gradient(circle at 40% 60%, var(--wood-wash), transparent 65%); z-index: 0; }
+  .hero-art { position: relative; z-index: 1; width: 100%; height: auto; }
+
+  /* Services — bordered spec rows, no icons */
+  .service-table { border-top: 1px solid var(--line); }
+  .service-row { display: grid; grid-template-columns: 1fr 2fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .service-row h3 { font-size: 17px; font-weight: 600; }
+  .service-row p { color: var(--ink-soft); font-size: 14.5px; }
+
+  /* Materials — sample board, alternate structure */
+  .materials-section { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .swatch-row { display: flex; gap: 22px; flex-wrap: wrap; }
+  .swatch { text-align: left; }
+  .swatch .chip { width: 84px; height: 60px; border-radius: 5px; margin-bottom: 10px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06); }
+  .swatch .name { font-size: 13.5px; font-weight: 600; }
+
+  /* Testimonials */
+  .pull-quote { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: flex-start; }
+  .pull-quote .mark { font-family: 'Lora', serif; font-size: 64px; color: var(--wood); opacity: 0.35; line-height: 1; }
+  .pull-quote p { font-size: 25px; font-weight: 400; line-height: 1.45; color: var(--ink); margin-bottom: 18px; }
+  .pull-quote .attrib { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14.5px; }
+  .pull-quote .sample-note { font-family: 'Inter', sans-serif; font-size: 12.5px; color: var(--ink-faint); margin-top: 4px; }
+  .quote-minor-list { margin-top: 44px; max-width: 700px; margin-left: 88px; }
+  .quote-minor { padding: 16px 0; border-top: 1px solid var(--line); }
+  .quote-minor p { font-size: 15px; color: var(--ink-soft); font-style: italic; margin-bottom: 6px; }
+  .quote-minor .meta { font-size: 12.5px; color: var(--ink-faint); font-family: 'Inter', sans-serif; }
+  @media (max-width: 700px) { .quote-minor-list { margin-left: 0; } }
+
+  /* Financials — invoice LEFT, copy RIGHT (mirrored vs. hero) */
+  .fin-section { background: var(--card); }
+  .fin-section .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+  .fin-list { list-style: none; margin-top: 22px; }
+  .fin-list li { display: flex; gap: 12px; padding: 9px 0; color: var(--ink-soft); font-size: 15px; align-items: flex-start; }
+  .fin-list .icon { color: var(--green); margin-top: 2px; }
+  .invoice-card { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 34px; max-width: 480px; }
+  .invoice-head { display: flex; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+  .invoice-head h3 { font-size: 18px; font-weight: 500; }
+  .invoice-head .sub { color: var(--ink-faint); font-size: 12.5px; margin-top: 3px; font-family: 'Inter', sans-serif; }
+  .invoice-row { display: flex; justify-content: space-between; padding: 9px 0; font-size: 14.5px; color: var(--ink-soft); }
+  .invoice-row.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 15px; font-weight: 600; color: var(--ink); font-size: 16px; }
+  .invoice-pay-btn { width: 100%; margin-top: 20px; background: var(--ink); color: #fff; border: none; padding: 13px; border-radius: 5px; font-weight: 600; font-size: 14.5px; cursor: pointer; }
+  .invoice-pay-btn:hover { background: var(--wood-deep); }
+  .invoice-toast { display: none; font-size: 12.5px; color: var(--ink-faint); margin-top: 12px; text-align: center; }
+  .invoice-toast.show { display: block; }
+  .sample-caption { font-size: 12px; color: var(--ink-faint); font-style: italic; }
+
+  /* Contact — light, bordered form panel */
+  .contact-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; }
+  .contact-info-row { display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .contact-info-row .icon { color: var(--wood); margin-top: 2px; }
+  .contact-info-row .label { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); margin-bottom: 3px; }
+  .contact-info-row .value { font-size: 16px; }
+  .contact-info-row .value a { color: var(--wood); }
+  form.quote { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  form.quote label { display: block; font-size: 13px; color: var(--ink-soft); margin-bottom: 6px; }
+  form.quote input, form.quote select, form.quote textarea { width: 100%; padding: 12px 14px; border-radius: 5px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 14.5px; font-family: inherit; }
+  form.quote textarea { min-height: 90px; resize: vertical; }
+  form.quote button { background: var(--wood); color: #fff; border: none; padding: 14px; border-radius: 5px; font-weight: 600; font-size: 15px; cursor: pointer; margin-top: 4px; }
+  form.quote button:hover { background: var(--wood-deep); }
+  .form-success { display: none; padding: 16px; border: 1px solid var(--line); border-radius: 5px; font-size: 14px; color: var(--ink-soft); background: var(--paper); }
+  .form-success.show { display: block; }
+
+  footer { border-top: 1px solid var(--line); background: var(--ink); color: #a99d8d; padding: 26px 0; font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  /* Estimator & financing — shared calculator panel */
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .calc-controls { display: flex; flex-direction: column; gap: 22px; }
+  .calc-field label { display: block; font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; font-weight: 600; }
+  .calc-field select { width: 100%; padding: 12px 14px; border-radius: 5px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 14.5px; font-family: inherit; }
+  .calc-field input[type="range"] { width: 100%; accent-color: var(--wood); }
+  .result-panel { border: 1px solid var(--line); border-left: 4px solid var(--wood); border-radius: 6px; padding: 30px; background: var(--card); }
+  .result-panel .result-label { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); margin-bottom: 10px; }
+  .result-panel .result-value { font-size: 32px; font-weight: 500; color: var(--ink); margin-bottom: 16px; }
+  .result-panel .sample-note { margin-bottom: 18px; display: block; }
+
+  /* Before/after transformation slider */
+  .ba-frame { position: relative; width: 100%; max-width: 700px; margin: 0 auto; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+  .ba-layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .ba-label { position: absolute; top: 14px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); background: rgba(255,255,255,0.88); padding: 4px 10px; border-radius: 3px; }
+  .ba-label.before { left: 14px; }
+  .ba-label.after { right: 14px; }
+  .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; -webkit-appearance: none; appearance: none; background: transparent; cursor: ew-resize; }
+  .ba-range::-webkit-slider-runnable-track { background: transparent; height: 100%; }
+  .ba-range::-webkit-slider-thumb { -webkit-appearance: none; width: 4px; height: 100%; background: var(--wood); border-radius: 2px; box-shadow: 0 0 0 2px rgba(255,255,255,0.7); cursor: ew-resize; }
+  .ba-range::-moz-range-track { background: transparent; height: 100%; }
+  .ba-range::-moz-range-thumb { width: 4px; height: 220px; background: var(--wood); border: none; border-radius: 2px; box-shadow: 0 0 0 2px rgba(255,255,255,0.7); cursor: ew-resize; }
+  .ba-caption { text-align: center; font-size: 13px; color: var(--ink-faint); margin-top: 14px; }
+
+  @media (max-width: 880px) {
+    nav { display: none; }
+    .calc-grid { grid-template-columns: 1fr; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero-art-wrap { max-width: 320px; margin: 0 auto; }
+    .service-row { grid-template-columns: 1fr; gap: 6px; }
+    .fin-section .wrap { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 31px; }
+    section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="ic-check" viewBox="0 0 24 24"><path d="M4 12 L9 17 L20 6"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21 C12 21 5 14 5 9.5 A7 7 0 0 1 19 9.5 C19 14 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.4"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24"><path d="M6 4 L10 4 L11.5 8 L9 10 C10 13 11 14 14 15 L16 12.5 L20 14 L20 18 C20 19.1 19.1 20 18 20 C10.3 20 4 13.7 4 6 C4 4.9 4.9 4 6 4 Z"/></symbol>
+</svg>
+
+<header class="site">
+  <div class="wrap header-inner">
+    <div class="logo">Zetina <em>&amp; Son</em> Flooring</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#estimator">Estimate</a>
+      <a href="#materials">Materials</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#billing">Billing</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-art-wrap">
+      <div class="wash"></div>
+      <svg class="hero-art" viewBox="0 0 300 260">
+        <g stroke="#8a5a35" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M20 40 L80 90 L20 140" opacity="0.9"/>
+          <path d="M80 40 L140 90 L80 140" opacity="0.75"/>
+          <path d="M140 40 L200 90 L140 140" opacity="0.55"/>
+          <path d="M20 130 L80 180 L20 230" opacity="0.9"/>
+          <path d="M80 130 L140 180 L80 230" opacity="0.75"/>
+          <path d="M140 130 L200 180 L140 230" opacity="0.55"/>
+        </g>
+        <rect x="10" y="20" width="260" height="230" rx="6" stroke="#2b2117" stroke-width="2" fill="none" opacity="0.15"/>
+      </svg>
+    </div>
+    <div>
+      <div class="kicker">Columbus, Ohio · Family-Owned</div>
+      <h1>Flooring installation and refinishing in Columbus, Ohio</h1>
+      <p class="lede">Zetina &amp; Son Flooring installs and refinishes hardwood, laminate, vinyl, tile, and carpet for homes across the Columbus area.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
+        <a href="#services" class="btn btn-ghost">View Services</a>
+      </div>
+      <div class="stat-line">
+        <span>Hardwood &amp; refinishing specialists</span>
+        <span>(614) 749-6096</span>
+        <span>Columbus, OH 43228</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="transformation">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Before and after a refinish</h2>
+      <p class="lede">Drag the slider to compare a worn, scratched floor against the same room refinished.</p>
+    </div>
+    <div class="ba-frame">
+      <svg class="ba-layer" viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="225" fill="#e6dac5"/>
+        <g stroke="#ab9d8c" stroke-width="1.2" fill="none">
+          <line x1="0" y1="45" x2="400" y2="45"/>
+          <line x1="0" y1="90" x2="400" y2="90"/>
+          <line x1="0" y1="135" x2="400" y2="135"/>
+          <line x1="0" y1="180" x2="400" y2="180"/>
+        </g>
+        <g stroke="#ab9d8c" stroke-width="1" fill="none" opacity="0.7">
+          <line x1="90" y1="0" x2="90" y2="45"/><line x1="260" y1="0" x2="260" y2="45"/>
+          <line x1="40" y1="45" x2="40" y2="90"/><line x1="210" y1="45" x2="210" y2="90"/><line x1="330" y1="45" x2="330" y2="90"/>
+          <line x1="130" y1="90" x2="130" y2="135"/><line x1="300" y1="90" x2="300" y2="135"/>
+          <line x1="70" y1="135" x2="70" y2="180"/><line x1="240" y1="135" x2="240" y2="180"/>
+          <line x1="20" y1="180" x2="20" y2="225"/><line x1="180" y1="180" x2="180" y2="225"/><line x1="340" y1="180" x2="340" y2="225"/>
+        </g>
+        <g stroke="#6a4225" stroke-width="1.4" stroke-linecap="round" opacity="0.5">
+          <path d="M60 60 L95 68"/><path d="M180 30 L210 22"/><path d="M250 110 L270 122"/>
+          <path d="M40 160 L75 168"/><path d="M310 190 L340 180"/><path d="M150 200 L165 210"/>
+        </g>
+        <ellipse cx="230" cy="70" rx="26" ry="8" fill="#6a4225" opacity="0.12"/>
+        <ellipse cx="110" cy="150" rx="20" ry="7" fill="#6a4225" opacity="0.12"/>
+      </svg>
+      <svg class="ba-layer" id="baAfter" viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" style="clip-path: inset(0 50% 0 0);">
+        <rect width="400" height="225" fill="#f3e6d2"/>
+        <g stroke="#8a5a35" stroke-width="1.4" fill="none">
+          <line x1="0" y1="45" x2="400" y2="45"/>
+          <line x1="0" y1="90" x2="400" y2="90"/>
+          <line x1="0" y1="135" x2="400" y2="135"/>
+          <line x1="0" y1="180" x2="400" y2="180"/>
+        </g>
+        <g stroke="#c9a876" stroke-width="1" fill="none">
+          <line x1="90" y1="0" x2="90" y2="45"/><line x1="260" y1="0" x2="260" y2="45"/>
+          <line x1="40" y1="45" x2="40" y2="90"/><line x1="210" y1="45" x2="210" y2="90"/><line x1="330" y1="45" x2="330" y2="90"/>
+          <line x1="130" y1="90" x2="130" y2="135"/><line x1="300" y1="90" x2="300" y2="135"/>
+          <line x1="70" y1="135" x2="70" y2="180"/><line x1="240" y1="135" x2="240" y2="180"/>
+          <line x1="20" y1="180" x2="20" y2="225"/><line x1="180" y1="180" x2="180" y2="225"/><line x1="340" y1="180" x2="340" y2="225"/>
+        </g>
+        <polygon points="0,0 160,0 40,225 0,225" fill="#ffffff" opacity="0.18"/>
+      </svg>
+      <span class="ba-label before">Before</span>
+      <span class="ba-label after">After</span>
+      <input type="range" class="ba-range" id="baRange" min="0" max="100" value="50" aria-label="Drag to compare before and after floor refinishing">
+    </div>
+    <p class="ba-caption">Drag to see the difference.</p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Flooring installed and refinished right</h2>
+      <p class="lede">We check your subfloor and site conditions before we quote the job, so the estimate holds.</p>
+    </div>
+    <div class="service-table">
+      <div class="service-row"><h3>Hardwood Installation</h3><p>Solid and engineered hardwood, installed with attention to subfloor and moisture prep.</p></div>
+      <div class="service-row"><h3>Hardwood Refinishing</h3><p>Sanding, staining, and sealing to bring tired floors back to life.</p></div>
+      <div class="service-row"><h3>Laminate Flooring</h3><p>Durable, budget-friendly laminate installation for any room in the house.</p></div>
+      <div class="service-row"><h3>Vinyl &amp; LVP</h3><p>Waterproof luxury vinyl plank, ideal for kitchens, bathrooms, and basements.</p></div>
+      <div class="service-row"><h3>Tile Installation</h3><p>Ceramic and porcelain tile for kitchens, bathrooms, and entryways.</p></div>
+      <div class="service-row"><h3>Carpet Installation</h3><p>Carpet and padding install for bedrooms, basements, and stairs.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="materials-section" id="materials">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Materials we work with</h2>
+      <p class="lede">A quick look at the range of finishes available for your space.</p>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch"><div class="chip" style="background:#a97142"></div><div class="name">Hardwood</div></div>
+      <div class="swatch"><div class="chip" style="background:#c9a876"></div><div class="name">Laminate</div></div>
+      <div class="swatch"><div class="chip" style="background:#8a8177"></div><div class="name">Vinyl / LVP</div></div>
+      <div class="swatch"><div class="chip" style="background:#d8d0c2"></div><div class="name">Tile</div></div>
+      <div class="swatch"><div class="chip" style="background:#7d6a54"></div><div class="name">Carpet</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What customers say</h2>
+      <p class="lede">A preview of how reviews would appear on the live site.</p>
+    </div>
+    <div class="pull-quote">
+      <div class="mark">&ldquo;</div>
+      <div>
+        <p>They moved fast, cleaned up every day, and the hardwood looks better than when the house was built.</p>
+        <div class="attrib">Clintonville homeowner</div>
+        <div class="sample-note">Sample review, shown for demonstration</div>
+      </div>
+    </div>
+    <div class="quote-minor-list">
+      <div class="quote-minor">
+        <p>"Straightforward estimate, no upselling, and the tile work in our bathroom is flawless."</p>
+        <div class="meta">Grandview homeowner · Sample review</div>
+      </div>
+      <div class="quote-minor">
+        <p>"Refinished our 1920s floors and they look brand new. Would use them again in a heartbeat."</p>
+        <div class="meta">German Village homeowner · Sample review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="estimator">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Rough cost estimate</h2>
+      <p class="lede">Move the slider and pick a material to see a rough price range before you call.</p>
+    </div>
+    <div class="calc-grid">
+      <div class="calc-controls">
+        <div class="calc-field">
+          <label for="estSqft">Area (sq ft): <span id="estSqftVal">800</span></label>
+          <input type="range" id="estSqft" min="200" max="2500" step="50" value="800">
+        </div>
+        <div class="calc-field">
+          <label for="estMaterial">Material</label>
+          <select id="estMaterial">
+            <option value="4,7">Luxury vinyl plank ($4–$7/sq ft)</option>
+            <option value="8,14">Hardwood ($8–$14/sq ft)</option>
+            <option value="7,12">Tile ($7–$12/sq ft)</option>
+            <option value="3,6">Carpet ($3–$6/sq ft)</option>
+          </select>
+        </div>
+      </div>
+      <div class="result-panel">
+        <div class="result-label">Estimated cost</div>
+        <div class="result-value" id="estResult">$3,200 – $5,600</div>
+        <p class="sample-note">Ballpark estimate only, based on typical Columbus-area pricing — your final quote depends on an on-site visit.</p>
+        <a href="#contact" class="btn btn-primary">Get my exact quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fin-section" id="billing">
+  <div class="wrap">
+    <div class="invoice-card">
+      <div class="invoice-head">
+        <div>
+          <h3>Estimate #ZS-2231</h3>
+          <div class="sub">Zetina &amp; Son Flooring</div>
+        </div>
+        <span class="sample-caption">Sample — for demonstration</span>
+      </div>
+      <div class="invoice-row"><span>Hardwood refinishing — 400 sq ft</span><span>$1,800.00</span></div>
+      <div class="invoice-row"><span>Stain &amp; sealant (2 coats)</span><span>$320.00</span></div>
+      <div class="invoice-row"><span>Materials &amp; disposal</span><span>$150.00</span></div>
+      <div class="invoice-row total"><span>Total due</span><span>$2,270.00</span></div>
+      <button class="invoice-pay-btn" type="button" onclick="document.getElementById('invToast').classList.add('show')">Pay Invoice</button>
+      <p class="invoice-toast" id="invToast">This is sample data for demonstration — no live payment processing is connected.</p>
+    </div>
+    <div>
+      <h2>Estimates and online payment</h2>
+      <p class="lede">Customers review an itemized estimate, approve it, and pay by card — no chasing checks after the job's done.</p>
+      <ul class="fin-list">
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>Itemized, easy-to-read estimates</span></li>
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>Online card payment for deposits and final invoices</span></li>
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>Automatic payment reminders</span></li>
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>Job history and receipts kept in one place</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="financing">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Financing available</h2>
+      <p class="lede">Ask about monthly payment options before committing to the full cost up front.</p>
+    </div>
+    <div class="calc-grid">
+      <div class="calc-controls">
+        <div class="calc-field">
+          <label for="finTotal">Total project cost: <span id="finTotalVal">$8,000</span></label>
+          <input type="range" id="finTotal" min="3000" max="25000" step="500" value="8000">
+        </div>
+        <div class="calc-field">
+          <label for="finTerm">Term length</label>
+          <select id="finTerm">
+            <option value="12">12 months</option>
+            <option value="24" selected>24 months</option>
+            <option value="36">36 months</option>
+            <option value="60">60 months</option>
+          </select>
+        </div>
+      </div>
+      <div class="result-panel">
+        <div class="result-label">Estimated monthly payment</div>
+        <div class="result-value" id="finResult">$369/mo</div>
+        <p class="sample-note">Sample estimate for illustration only — not an offer of credit. Actual rate and terms depend on an approved financing partner and applicant credit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="kicker">Get in touch</div>
+      <h2>Request your free estimate</h2>
+      <p class="lede">Tell us about your flooring project and we'll follow up to schedule a free in-home estimate.</p>
+      <div class="contact-info-row">
+        <svg class="icon"><use href="#ic-phone"/></svg>
+        <div><div class="label">Phone</div><div class="value"><a href="tel:+16147496096">(614) 749-6096</a></div></div>
+      </div>
+      <div class="contact-info-row">
+        <svg class="icon"><use href="#ic-pin"/></svg>
+        <div><div class="label">Service area</div><div class="value">Columbus, OH 43228 &amp; surrounding area</div></div>
+      </div>
+    </div>
+    <form class="quote" id="quoteForm">
+      <div class="field-row">
+        <div><label for="name">Full name</label><input id="name" required placeholder="Jane Smith"></div>
+        <div><label for="phone">Phone</label><input id="phone" required placeholder="(614) 555-0100"></div>
+      </div>
+      <div><label for="email">Email</label><input id="email" type="email" placeholder="you@email.com"></div>
+      <div>
+        <label for="service">Service needed</label>
+        <select id="service">
+          <option>Hardwood Installation</option>
+          <option>Hardwood Refinishing</option>
+          <option>Laminate Flooring</option>
+          <option>Vinyl / LVP</option>
+          <option>Tile Installation</option>
+          <option>Carpet Installation</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div><label for="msg">Tell us about your project</label><textarea id="msg" rows="3" placeholder="A little about what's going on..."></textarea></div>
+      <button type="submit">Request Free Estimate</button>
+      <div class="form-success" id="formSuccess">Thanks — this is a demo form. On the live site, this confirms we've received your request and will follow up shortly.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Zetina &amp; Son Flooring · Columbus, OH 43228 · (614) 749-6096</span>
+    <span>Concept site prepared for review — not a live, published website.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  function updateEstimator(){
+    var sqft = parseInt(document.getElementById('estSqft').value, 10);
+    document.getElementById('estSqftVal').textContent = sqft.toLocaleString();
+    var parts = document.getElementById('estMaterial').value.split(',').map(Number);
+    var low = sqft * parts[0], high = sqft * parts[1];
+    document.getElementById('estResult').textContent = '$' + Math.round(low).toLocaleString() + ' – $' + Math.round(high).toLocaleString();
+  }
+  document.getElementById('estSqft').addEventListener('input', updateEstimator);
+  document.getElementById('estMaterial').addEventListener('change', updateEstimator);
+  updateEstimator();
+
+  function updateFinancing(){
+    var principal = parseInt(document.getElementById('finTotal').value, 10);
+    document.getElementById('finTotalVal').textContent = '$' + principal.toLocaleString();
+    var n = parseInt(document.getElementById('finTerm').value, 10);
+    var r = 0.0999 / 12;
+    var payment = principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+    document.getElementById('finResult').textContent = '$' + Math.round(payment).toLocaleString() + '/mo';
+  }
+  document.getElementById('finTotal').addEventListener('input', updateFinancing);
+  document.getElementById('finTerm').addEventListener('change', updateFinancing);
+  updateFinancing();
+
+  var baRange = document.getElementById('baRange');
+  var baAfter = document.getElementById('baAfter');
+  function updateBA(){ baAfter.style.clipPath = 'inset(0 ' + (100 - baRange.value) + '% 0 0)'; }
+  baRange.addEventListener('input', updateBA);
+  updateBA();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painting and More | Columbus, OH Painting &amp; Home Repair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+  :root{
+    --paper:#f8f2e7;
+    --paper-2:#f0e6d3;
+    --card:#fffcf6;
+    --ink:#2b2620;
+    --ink-soft:#6b5f52;
+    --ink-faint:#a89a86;
+    --terra:#a8462c;
+    --terra-deep:#7e3520;
+    --gold:#c08a3f;
+    --line:#e4d7c2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter', -apple-system, Arial, sans-serif; color:var(--ink); background:var(--paper); line-height:1.62; font-size:16px;}
+  h1,h2,h3,.logo,.hero-quote p{font-family:'Lora', Georgia, serif;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+  .icon{width:1em; height:1em; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; vertical-align:-0.15em; flex-shrink:0;}
+
+  header.site{background:rgba(248,242,231,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:100;}
+  .header-inner{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+  .logo{font-size:1.28rem; font-weight:600; color:var(--ink);}
+  .logo span{color:var(--terra);}
+  nav{display:flex; gap:28px; font-size:0.92rem; font-weight:500;}
+  nav a{color:var(--ink-soft);}
+  nav a:hover{color:var(--ink);}
+  .btn{display:inline-block; padding:12px 24px; border-radius:5px; font-weight:600; font-size:0.9rem;}
+  .btn-primary{background:var(--terra); color:#fff;}
+  .btn-primary:hover{background:var(--terra-deep);}
+  .btn-ghost{border:1px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:#fff;}
+  .btn-ghost.on-dark{border-color:rgba(255,255,255,0.5); color:#fff;}
+  .btn-ghost.on-dark:hover{background:rgba(255,255,255,0.12);}
+
+  section{padding:88px 0;}
+  .kicker{font-size:0.82rem; color:var(--terra); font-weight:600; letter-spacing:0.03em; text-transform:uppercase; margin-bottom:16px;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:1.85rem; font-weight:600; margin-bottom:10px;}
+  .section-head p{color:var(--ink-soft); font-size:1rem;}
+
+  /* Hero — editorial pull-quote led */
+  .hero{padding:56px 0 40px;}
+  .hero .wrap{display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center;}
+  .hero-quote p{font-size:2.15rem; font-style:italic; font-weight:500; line-height:1.32; color:var(--ink); margin-bottom:16px;}
+  .hero-quote .attrib{font-family:'Inter',sans-serif; font-size:0.92rem; font-weight:600; color:var(--terra-deep); margin-bottom:26px;}
+  .hero-quote .lead{color:var(--ink-soft); font-size:1.02rem; max-width:48ch; margin-bottom:30px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-art-wrap{position:relative;}
+  .hero-art{width:100%; height:auto;}
+  @media (max-width:880px){ .hero .wrap{grid-template-columns:1fr;} .hero-art-wrap{order:-1; max-width:280px; margin:0 auto;} nav{display:none;} }
+
+  /* Trust split */
+  .trust .wrap{display:grid; grid-template-columns:1.3fr 0.7fr; gap:56px; align-items:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:56px 0;}
+  .trust p{color:var(--ink-soft); font-size:1.02rem; max-width:52ch;}
+  .trust p + p{margin-top:14px;}
+  .trust-num{text-align:center; border-left:1px solid var(--line); padding-left:48px;}
+  .trust-num .big{font-size:4.4rem; font-weight:600; color:var(--terra); line-height:1;}
+  .trust-num .cap{color:var(--ink-soft); font-size:0.92rem; margin-top:8px;}
+  @media (max-width:760px){ .trust .wrap{grid-template-columns:1fr; padding:40px 0;} .trust-num{border-left:none; border-top:1px solid var(--line); padding:24px 0 0;} }
+
+  /* Services — single-column bordered list, catch-all row differentiated */
+  .services{background:var(--paper-2);}
+  .svc-list{border-top:1px solid var(--line);}
+  .svc-row{display:grid; grid-template-columns:44px 1fr; gap:20px; padding:24px 0; border-bottom:1px solid var(--line);}
+  .svc-row .icon-wrap{color:var(--terra); width:44px; height:44px; display:flex; align-items:center; justify-content:center; font-size:1.5rem;}
+  .svc-row h3{font-size:1.05rem; font-weight:600; font-family:'Inter',sans-serif; margin-bottom:5px;}
+  .svc-row p{color:var(--ink-soft); font-size:0.92rem;}
+  .svc-row.more{border-bottom:none; border-top:2px dashed var(--line); margin-top:2px; padding-top:26px;}
+  .svc-row.more .icon-wrap{color:var(--gold);}
+
+  /* Estimator */
+  .estimator .wrap{display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:start;}
+  .est-controls .field{margin-bottom:24px;}
+  .est-controls label{display:block; font-size:0.85rem; font-weight:600; color:var(--ink); margin-bottom:9px;}
+  .est-controls input[type=range]{width:100%; accent-color:var(--terra);}
+  .est-controls select{width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:5px; font-family:inherit; font-size:0.95rem; background:var(--card);}
+  .est-controls select:focus{outline:2px solid var(--terra); outline-offset:1px;}
+  .est-result{border:1px solid var(--line); border-left:4px solid var(--terra); background:var(--card); border-radius:6px; padding:30px 28px;}
+  .est-result .label{font-size:0.82rem; color:var(--ink-soft); font-weight:600; margin-bottom:8px;}
+  .est-result .price{font-family:'Lora',serif; font-size:2rem; font-weight:600; margin-bottom:16px;}
+  .est-result .note{font-size:0.82rem; color:var(--ink-faint); font-style:italic; margin-bottom:20px;}
+  @media (max-width:880px){ .estimator .wrap{grid-template-columns:1fr;} }
+
+  /* Process — vertical timeline, distinct from grid/strip patterns */
+  .process{background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .timeline{max-width:640px; position:relative; padding-left:46px;}
+  .timeline::before{content:''; position:absolute; left:15px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .t-step{position:relative; padding-bottom:38px;}
+  .t-step:last-child{padding-bottom:0;}
+  .t-step .dot{position:absolute; left:-46px; top:2px; width:32px; height:32px; border-radius:50%; background:var(--paper); border:1.5px solid var(--terra); color:var(--terra); font-family:'Lora',serif; font-weight:600; font-size:0.88rem; display:flex; align-items:center; justify-content:center;}
+  .t-step h3{font-size:1.02rem; font-weight:600; margin-bottom:5px;}
+  .t-step p{color:var(--ink-soft); font-size:0.92rem;}
+
+  /* Financials */
+  .financials .wrap{display:grid; grid-template-columns:0.95fr 1.05fr; gap:52px; align-items:center;}
+  .fin-list{list-style:none; margin-top:20px;}
+  .fin-list li{display:flex; gap:12px; padding:9px 0; color:var(--ink-soft); font-size:0.95rem; align-items:flex-start;}
+  .fin-list .icon{color:var(--terra); margin-top:3px;}
+  .invoice-card{background:var(--card); border:1px solid var(--line); border-radius:8px; padding:30px; max-width:440px; margin-left:auto;}
+  .invoice-head{display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:16px;}
+  .invoice-head h3{font-size:1.05rem; font-weight:600;}
+  .invoice-head .sub{color:var(--ink-faint); font-size:0.78rem; margin-top:3px;}
+  .invoice-note{font-size:0.76rem; color:var(--ink-faint); font-style:italic;}
+  .invoice-row{display:flex; justify-content:space-between; padding:8px 0; font-size:0.9rem; color:var(--ink-soft); border-bottom:1px dashed var(--line);}
+  .invoice-row.total{border-bottom:none; border-top:1px solid var(--line); margin-top:6px; padding-top:14px; font-weight:600; color:var(--ink); font-size:1.02rem;}
+  .invoice-pay{width:100%; margin-top:20px; background:var(--ink); color:#fff; border:none; padding:13px; border-radius:5px; font-weight:600; font-size:0.9rem; cursor:pointer;}
+  .invoice-pay:hover{background:var(--terra-deep);}
+  .invoice-toast{display:none; font-size:0.78rem; color:var(--ink-faint); margin-top:12px; text-align:center;}
+  .invoice-toast.show{display:block;}
+  @media (max-width:880px){ .financials .wrap{grid-template-columns:1fr;} .invoice-card{margin-left:0;} }
+
+  /* Testimonials — three quotes divided by vertical rules, no card, no giant pull-quote */
+  .quote-row{display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .quote-col{padding:28px 26px; border-left:1px solid var(--line);}
+  .quote-col:first-child{border-left:none;}
+  .quote-col p{font-size:0.94rem; color:var(--ink); font-style:italic; margin-bottom:10px;}
+  .quote-col .who{font-size:0.82rem; color:var(--ink-soft); font-weight:600;}
+  .quote-col .tag{display:block; font-size:0.74rem; color:var(--ink-faint); font-style:italic; margin-top:2px;}
+  @media (max-width:760px){ .quote-row{grid-template-columns:1fr;} .quote-col{border-left:none; border-top:1px solid var(--line);} .quote-col:first-child{border-top:none;} }
+
+  .review-strip{display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .review-strip h3{font-size:1.25rem; font-weight:600; margin-bottom:6px;}
+  .review-strip p{color:var(--ink-soft); font-size:0.92rem; max-width:44ch;}
+  .review-strip .note{font-size:0.78rem; color:var(--ink-faint); font-style:italic; margin-top:8px;}
+  .review-qr{flex-shrink:0; background:var(--card); border:1px solid var(--line); border-radius:6px; padding:12px; line-height:0;}
+  .review-qr svg{width:112px; height:112px; display:block;}
+  @media (max-width:700px){ .review-strip .wrap{flex-direction:column; text-align:center;} }
+
+  /* Contact */
+  .contact{background:var(--ink); color:#f1ece2;}
+  .contact .kicker{color:#dda579;}
+  .contact .section-head p{color:#b8ac9c;}
+  .contact-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px;}
+  .info-row{display:flex; gap:14px; padding:16px 0; border-top:1px solid #45392e;}
+  .info-row .icon{color:#dda579; margin-top:2px;}
+  .info-row .label{font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:#a99b8a; margin-bottom:3px;}
+  .info-row .value{font-size:1rem;}
+  form.quote{display:flex; flex-direction:column; gap:16px;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  form.quote label{display:block; font-size:0.82rem; color:#b8ac9c; margin-bottom:6px;}
+  form.quote input, form.quote select, form.quote textarea{width:100%; padding:12px 14px; border-radius:5px; border:1px solid #4a3d31; background:#352b22; color:#f1ece2; font-size:0.94rem; font-family:inherit;}
+  form.quote textarea{min-height:90px; resize:vertical;}
+  form.quote button{background:var(--terra); color:#fff; border:none; padding:14px; border-radius:5px; font-weight:600; font-size:0.95rem; cursor:pointer; margin-top:2px;}
+  form.quote button:hover{background:var(--terra-deep);}
+  .form-success{display:none; padding:16px; border:1px solid #4a3d31; border-radius:5px; font-size:0.9rem; color:#d6cabb;}
+  .form-success.show{display:block;}
+  @media (max-width:880px){ .contact-grid{grid-template-columns:1fr;} .field-row{grid-template-columns:1fr;} }
+
+  footer{border-top:1px solid var(--line); background:var(--paper); color:var(--ink-soft); padding:26px 0; font-size:0.84rem;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  @media (max-width:880px){ section{padding:56px 0;} .hero-quote p{font-size:1.6rem;} }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-roller" viewBox="0 0 24 24"><rect x="3" y="4" width="13" height="6" rx="3"/><line x1="16" y1="7" x2="20" y2="7"/><line x1="20" y1="7" x2="20" y2="15"/><line x1="20" y1="15" x2="16" y2="19"/></symbol>
+  <symbol id="ic-house" viewBox="0 0 24 24"><path d="M4 11 L12 4 L20 11"/><path d="M6 10 V20 H18 V10"/></symbol>
+  <symbol id="ic-patch" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5" stroke-dasharray="2.5 2.5"/><path d="M9 12 L15 12 M12 9 L12 15"/></symbol>
+  <symbol id="ic-trim" viewBox="0 0 24 24"><path d="M5 19 V6 H18"/><line x1="5" y1="13" x2="10" y2="13"/><circle cx="7" cy="19" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="ic-deck" viewBox="0 0 24 24"><line x1="3" y1="8" x2="21" y2="8"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="3" y1="18" x2="21" y2="18"/><line x1="12" y1="4" x2="12" y2="21" stroke-opacity="0.4"/></symbol>
+  <symbol id="ic-wrench" viewBox="0 0 24 24"><path d="M14.5 6.5 a3.5 3.5 0 1 0 3 5.3 L21 15.3 19 17.3 15.2 13.5 a3.5 3.5 0 0 1 -4.8-4.8z"/><line x1="6" y1="18" x2="10.5" y2="13.5"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><polyline points="5 13 9 17 19 7"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24"><path d="M7 4h3l1 3-2 1.5c1 2.5 3 4.5 5.5 5.5L16 12l3 1v3c0 1-1 2-2 2C10 18 6 14 6 7c0-1 1-2 2-2z"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></symbol>
+</svg>
+
+<header class="site">
+  <div class="wrap header-inner">
+    <div class="logo">Painting <span>and More</span></div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#estimator">Get an estimate</a>
+      <a href="#process">Process</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#billing">Billing</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary">Request a Quote</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-quote">
+      <div class="kicker">Columbus, Ohio · Est. 1992</div>
+      <p>"I've been painting houses in Columbus since 1992. I still do every job myself."</p>
+      <div class="attrib">— Robert Eves, owner</div>
+      <p class="lead">Painting and More is a one-man Columbus operation doing interior and exterior painting, drywall repair, trim carpentry, and the small home-improvement jobs that come up along the way. Robert quotes the job and Robert finishes it.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Request a Quote</a>
+        <a href="#services" class="btn btn-ghost">See Our Services</a>
+      </div>
+    </div>
+    <div class="hero-art-wrap">
+      <svg class="hero-art" viewBox="0 0 300 260" aria-hidden="true">
+        <path d="M20 210 C 70 150, 140 220, 210 110" stroke="var(--terra)" stroke-opacity="0.28" stroke-width="15" stroke-linecap="round" fill="none"/>
+        <g stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M40 40 V220 H260"/>
+          <path d="M40 40 H150"/>
+          <line x1="70" y1="40" x2="70" y2="70"/>
+          <line x1="110" y1="40" x2="110" y2="60"/>
+        </g>
+        <circle cx="95" cy="120" r="4" fill="var(--terra)"/>
+        <circle cx="130" cy="150" r="2.6" fill="var(--terra)"/>
+        <circle cx="75" cy="165" r="3" fill="var(--terra)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div>
+      <p>Robert Eves has run Painting and More since 1992, out of the same shop on Weldon Avenue. There's no crew of subcontractors — when you call, you're talking to the person who'll be doing the work.</p>
+      <p>Most of the work comes from repeat customers and neighbor referrals on the Near East Side and around Columbus.</p>
+    </div>
+    <div class="trust-num">
+      <div class="big">34</div>
+      <div class="cap">years in business</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Painting &amp; repair services</h2>
+      <p>Licensed general home-improvement contractor. Most jobs start with paint, but Robert handles the repair work around it too.</p>
+    </div>
+    <div class="svc-list">
+      <div class="svc-row">
+        <div class="icon-wrap"><svg class="icon"><use href="#ic-roller"/></svg></div>
+        <div><h3>Interior Painting</h3><p>Walls, ceilings, and trim, with careful masking and cleanup on every job.</p></div>
+      </div>
+      <div class="svc-row">
+        <div class="icon-wrap"><svg class="icon"><use href="#ic-house"/></svg></div>
+        <div><h3>Exterior Painting</h3><p>Siding, trim, and doors prepped and sealed to hold through Ohio winters.</p></div>
+      </div>
+      <div class="svc-row">
+        <div class="icon-wrap"><svg class="icon"><use href="#ic-patch"/></svg></div>
+        <div><h3>Drywall Repair</h3><p>Holes, cracks, and water-damage patches, sanded smooth before any paint goes on.</p></div>
+      </div>
+      <div class="svc-row">
+        <div class="icon-wrap"><svg class="icon"><use href="#ic-trim"/></svg></div>
+        <div><h3>Trim &amp; Carpentry Touch-Ups</h3><p>Baseboard, casing, and small carpentry repairs done alongside a paint job.</p></div>
+      </div>
+      <div class="svc-row">
+        <div class="icon-wrap"><svg class="icon"><use href="#ic-deck"/></svg></div>
+        <div><h3>Deck &amp; Fence Staining</h3><p>Cleaning and staining to protect wood through another Columbus season.</p></div>
+      </div>
+      <div class="svc-row more">
+        <div class="icon-wrap"><svg class="icon"><use href="#ic-wrench"/></svg></div>
+        <div><h3>...And More</h3><p>Small jobs that come up alongside a paint project — patching after a repair, swapping a fixture, that kind of thing. Just ask.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="estimator" id="estimator">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Rough price range</h2>
+      <p>Pick the type of job and the approximate size to see typical Columbus-area pricing.</p>
+    </div>
+    <div class="est-wrap" style="display:contents">
+    <div class="est-controls">
+      <div class="field">
+        <label for="estSqft">Area (sq ft): <span id="estSqftVal">600</span></label>
+        <input type="range" id="estSqft" min="150" max="3000" step="50" value="600">
+      </div>
+      <div class="field">
+        <label for="estScope">Type of job</label>
+        <select id="estScope">
+          <option value="2.50,3.50">Interior painting</option>
+          <option value="3.00,4.50">Exterior painting</option>
+          <option value="1.50,2.50">Deck / fence staining</option>
+          <option value="0.90,1.60">Drywall repair &amp; patch</option>
+        </select>
+      </div>
+    </div>
+    <div class="est-result">
+      <div class="label">Estimated project cost</div>
+      <div class="price" id="estPrice">$1,500 – $2,100</div>
+      <p class="note">Ballpark estimate only, based on typical Columbus-area pricing — your final quote depends on an in-person walkthrough.</p>
+      <a class="btn btn-primary" href="#contact">Get my exact quote</a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The process</h2>
+    </div>
+    <div class="timeline">
+      <div class="t-step"><div class="dot">1</div><h3>Call or send a few details</h3><p>Tell us what's going on — a room, a whole exterior, a repair. We'll get back to you the same day.</p></div>
+      <div class="t-step"><div class="dot">2</div><h3>Walkthrough &amp; written quote</h3><p>Robert comes out, looks at the surfaces, and gives you an itemized price before anything starts.</p></div>
+      <div class="t-step"><div class="dot">3</div><h3>Prep, repair, and paint</h3><p>Drywall and trim work happens first, then prep and finish coats — cleaned up at the end of each day.</p></div>
+      <div class="t-step"><div class="dot">4</div><h3>Walkthrough &amp; invoice</h3><p>We look at every room together before the job is called done and you get a clean, itemized invoice.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="financials" id="billing">
+  <div class="wrap">
+    <div>
+      <h2>Estimates, invoices, and online payment</h2>
+      <p style="color:var(--ink-soft); font-size:1rem;">An itemized quote up front, and a clean invoice with online payment when the job's done — no chasing a paper receipt.</p>
+      <ul class="fin-list">
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>Itemized, easy-to-read written quotes</span></li>
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>Online card payment for deposits and final invoices</span></li>
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>A simple record of past jobs, always on hand</span></li>
+      </ul>
+    </div>
+    <div class="invoice-card">
+      <div class="invoice-head">
+        <div><h3>Invoice #PM-0341</h3><div class="sub">Painting and More</div></div>
+        <span class="invoice-note">Sample — for demonstration</span>
+      </div>
+      <div class="invoice-row"><span>Interior painting — 2 rooms</span><span>$980.00</span></div>
+      <div class="invoice-row"><span>Drywall patch (hallway)</span><span>$165.00</span></div>
+      <div class="invoice-row"><span>Trim touch-up</span><span>$120.00</span></div>
+      <div class="invoice-row total"><span>Total due</span><span>$1,265.00</span></div>
+      <button class="invoice-pay" type="button" onclick="document.getElementById('invToast').classList.add('show')">Pay Invoice</button>
+      <p class="invoice-toast" id="invToast">This is sample data for demonstration only — no live payment processing is connected.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What clients say</h2>
+      <p>A preview of how reviews would appear on the live site.</p>
+    </div>
+    <div class="quote-row">
+      <div class="quote-col">
+        <p>"He noticed things a painter usually wouldn't mention — fixed a soft spot in the trim before it got worse."</p>
+        <div class="who">Near East Side homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+      <div class="quote-col">
+        <p>"Quoted it, showed up when he said he would, and the price on the invoice matched the quote exactly."</p>
+        <div class="who">Olde Towne East homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+      <div class="quote-col">
+        <p>"We've had him back three times over the years for different rooms. Same guy every time, which says a lot."</p>
+        <div class="who">Bexley homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="review-strip">
+  <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+    <div>
+      <h3>Scan to find us &amp; leave a review</h3>
+      <p>Had a good experience? A review helps a small business like this more than you'd think.</p>
+      <p class="note">Demo QR code — once you have a Google Business Profile, this links straight to your review page.</p>
+    </div>
+    <div class="review-qr" id="reviewQR"></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="kicker">Get in touch</div>
+      <h2 style="font-size:1.85rem; margin-bottom:12px;">Request your free quote</h2>
+      <p style="color:#b8ac9c; margin-bottom:8px;">Tell us about your project and we'll follow up to schedule a walkthrough.</p>
+      <div class="info-row"><svg class="icon"><use href="#ic-phone"/></svg><div><div class="label">Phone</div><div class="value"><a href="tel:+16146078644">(614) 607-8644</a></div></div></div>
+      <div class="info-row"><svg class="icon"><use href="#ic-pin"/></svg><div><div class="label">Address</div><div class="value">878 Weldon Ave, Columbus, OH 43224</div></div></div>
+      <div class="info-row"><svg class="icon"><use href="#ic-pin"/></svg><div><div class="label">Service area</div><div class="value">Columbus, OH &amp; surrounding communities</div></div></div>
+    </div>
+    <form class="quote" id="quoteForm">
+      <div class="field-row">
+        <div><label for="name">Full name</label><input id="name" required placeholder="Jane Smith"></div>
+        <div><label for="phone">Phone</label><input id="phone" required placeholder="(614) 555-0100"></div>
+      </div>
+      <div><label for="email">Email</label><input id="email" type="email" placeholder="you@email.com"></div>
+      <div>
+        <label for="service">Service needed</label>
+        <select id="service">
+          <option>Interior Painting</option>
+          <option>Exterior Painting</option>
+          <option>Drywall Repair</option>
+          <option>Trim &amp; Carpentry</option>
+          <option>Deck / Fence Staining</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div><label for="msg">Tell us about your project</label><textarea id="msg" rows="3" placeholder="A little about what's going on..."></textarea></div>
+      <button type="submit">Request Free Quote</button>
+      <div class="form-success" id="formSuccess">Thanks — this is a demo form. On the live site, this confirms we've received your request and will follow up shortly.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Painting and More · 878 Weldon Ave, Columbus, OH 43224</span>
+    <span>Concept site prepared for review — not a live, published website.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  (function(){
+    var sqftEl = document.getElementById('estSqft');
+    var sqftVal = document.getElementById('estSqftVal');
+    var scopeEl = document.getElementById('estScope');
+    var priceEl = document.getElementById('estPrice');
+    function fmt(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+    function update(){
+      var sqft = parseInt(sqftEl.value, 10);
+      sqftVal.textContent = sqft.toLocaleString('en-US');
+      var rates = scopeEl.value.split(',').map(Number);
+      priceEl.textContent = fmt(sqft * rates[0]) + ' – ' + fmt(sqft * rates[1]);
+    }
+    sqftEl.addEventListener('input', update);
+    scopeEl.addEventListener('change', update);
+    update();
+  })();
+
+  var reviewQr = qrcode(0, 'M');
+  reviewQr.addData('https://www.google.com/search?q=Painting+and+More+Columbus+Ohio+reviews');
+  reviewQr.make();
+  document.getElementById('reviewQR').innerHTML = reviewQr.createSvgTag({cellSize:4, margin:2});
+</script>
+
+</body>
+</html>

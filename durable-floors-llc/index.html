@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durable Floors, LLC | Columbus, OH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+  :root {
+    --ink: #21252b;
+    --ink-soft: #5b6169;
+    --ink-faint: #8d929a;
+    --paper: #eef0ee;
+    --card: #ffffff;
+    --primary: #2f5566;
+    --primary-dark: #1f3c49;
+    --accent: #b3742e;
+    --line: #d7dbd8;
+    --green: #4a6b4f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'IBM Plex Sans', -apple-system, Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; font-size: 16px; }
+  h1, h2, h3, .logo { font-family: 'IBM Plex Serif', Georgia, serif; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+  .icon { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; vertical-align: -3px; }
+
+  header.site { background: rgba(238,240,238,0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+  .logo { font-size: 19px; font-weight: 600; }
+  nav { display: flex; gap: 28px; }
+  nav a { font-size: 14.5px; font-weight: 500; color: var(--ink-soft); }
+  nav a:hover { color: var(--ink); }
+  .btn { display: inline-block; padding: 12px 22px; border-radius: 3px; font-weight: 600; font-size: 14.5px; }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-dark); }
+  .btn-ghost { border: 1px solid var(--ink); color: var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: #fff; }
+
+  section { padding: 84px 0; }
+  h2 { font-size: 28px; font-weight: 600; margin-bottom: 10px; max-width: 26ch; }
+  .lede { color: var(--ink-soft); font-size: 16px; max-width: 48ch; }
+  .section-head { margin-bottom: 40px; }
+
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items: center; padding: 30px 28px 18px; }
+  .hero h1 { font-size: 37px; font-weight: 600; line-height: 1.25; margin-bottom: 16px; max-width: 15ch; }
+  .hero .lede { margin-bottom: 26px; font-size: 16.5px; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 26px; }
+  .fact-strip { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--line); padding-top: 16px; }
+  .fact-strip div { padding: 0 18px 0 0; margin-right: 18px; border-right: 1px solid var(--line); font-size: 13.5px; color: var(--ink-soft); }
+  .fact-strip div:last-child { border-right: none; }
+  .fact-strip strong { display: block; color: var(--ink); font-size: 15px; font-family: 'IBM Plex Serif', serif; }
+  .plank-frame { position: relative; width: 100%; aspect-ratio: 8 / 5; overflow: hidden; border-radius: 6px; border: 1px solid var(--line); background: var(--card); }
+  .plank-frame svg { width: 100%; height: 100%; display: block; }
+
+  .trust { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .trust-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: start; }
+  .trust-list { list-style: none; }
+  .trust-list li { display: flex; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); font-size: 15px; color: var(--ink-soft); align-items: flex-start; }
+  .trust-list li:first-child { border-top: none; }
+  .trust-list .icon { color: var(--primary); margin-top: 3px; }
+
+  .service-list { border-top: 1px solid var(--line); }
+  .service-row { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .service-row h3 { font-size: 16.5px; font-weight: 600; }
+  .service-row p { color: var(--ink-soft); font-size: 14.5px; }
+  @media (max-width: 700px) { .service-row { grid-template-columns: 1fr; gap: 4px; } }
+
+  .estimator { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .calc-field { margin-bottom: 20px; }
+  .calc-field label { display: block; font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; font-weight: 600; }
+  .calc-field select { width: 100%; padding: 11px 13px; border-radius: 4px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 14.5px; font-family: inherit; }
+  .calc-field input[type="range"] { width: 100%; accent-color: var(--primary); }
+  .result-panel { border: 1px solid var(--line); border-left: 4px solid var(--primary); border-radius: 5px; padding: 28px; background: var(--paper); }
+  .result-panel .result-label { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); margin-bottom: 10px; }
+  .result-panel .result-value { font-size: 30px; font-weight: 600; color: var(--ink); margin-bottom: 16px; font-family: 'IBM Plex Serif', serif; }
+  .result-panel .sample-note { margin-bottom: 18px; display: block; font-size: 13px; color: var(--ink-faint); font-style: italic; }
+  @media (max-width: 880px) { .calc-grid { grid-template-columns: 1fr; } }
+
+  .fin-section .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 52px; align-items: center; }
+  .invoice-card { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 30px; }
+  .invoice-head { display: flex; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+  .invoice-head h3 { font-size: 17px; font-weight: 600; }
+  .invoice-head .sub { color: var(--ink-faint); font-size: 12.5px; margin-top: 3px; }
+  .invoice-row { display: flex; justify-content: space-between; padding: 9px 0; font-size: 14.5px; color: var(--ink-soft); }
+  .invoice-row.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 14px; font-weight: 600; color: var(--ink); font-size: 16px; }
+  .invoice-pay-btn { width: 100%; margin-top: 18px; background: var(--ink); color: #fff; border: none; padding: 12px; border-radius: 4px; font-weight: 600; font-size: 14.5px; cursor: pointer; }
+  .invoice-pay-btn:hover { background: var(--primary-dark); }
+  .invoice-toast { display: none; font-size: 12.5px; color: var(--ink-faint); margin-top: 12px; text-align: center; }
+  .invoice-toast.show { display: block; }
+  .sample-caption { font-size: 11.5px; color: var(--ink-faint); font-style: italic; }
+  .fin-list { list-style: none; margin-top: 18px; }
+  .fin-list li { display: flex; gap: 12px; padding: 8px 0; color: var(--ink-soft); font-size: 15px; align-items: flex-start; }
+  .fin-list .icon { color: var(--green); margin-top: 3px; }
+  @media (max-width: 880px) { .fin-section .wrap { grid-template-columns: 1fr; } }
+
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
+  .review-col { padding: 22px 26px; border-left: 1px solid var(--line); }
+  .review-col:first-child { border-left: none; padding-left: 0; }
+  .review-col p { font-size: 15px; color: var(--ink); margin-bottom: 10px; }
+  .review-col .who { font-size: 13px; color: var(--ink-soft); font-weight: 600; }
+  .review-col .tag { font-size: 12px; color: var(--ink-faint); font-style: italic; display: block; margin-top: 2px; }
+  @media (max-width: 760px) { .reviews-grid { grid-template-columns: 1fr; } .review-col { border-left: none; border-top: 1px solid var(--line); padding: 22px 0; } .review-col:first-child { border-top: none; } }
+
+  .review-strip { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 40px 0; }
+  .review-strip .wrap { display: flex; align-items: center; justify-content: space-between; gap: 36px; flex-wrap: wrap; }
+  .review-strip .copy { max-width: 440px; }
+  .review-strip h3 { font-size: 1.2rem; margin-bottom: 6px; }
+  .review-strip p { color: var(--ink-soft); font-size: 14.5px; }
+  .review-strip .sample-note { font-size: 12.5px; color: var(--ink-faint); font-style: italic; margin-top: 8px; }
+  .review-strip .qr-box { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 10px; flex-shrink: 0; line-height: 0; }
+  .review-strip .qr-box svg { display: block; width: 108px; height: 108px; }
+  @media (max-width: 700px) { .review-strip .wrap { flex-direction: column; text-align: center; } }
+
+  .contact-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 52px; }
+  .contact-info-row { display: flex; gap: 14px; padding: 15px 0; border-top: 1px solid var(--line); }
+  .contact-info-row:first-of-type { border-top: none; }
+  .contact-info-row .icon { color: var(--primary); margin-top: 2px; }
+  .contact-info-row .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); margin-bottom: 3px; }
+  .contact-info-row .value { font-size: 15.5px; }
+  .contact-info-row .value a { color: var(--primary); }
+  form.quote { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 30px; display: flex; flex-direction: column; gap: 15px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  form.quote label { display: block; font-size: 13px; color: var(--ink-soft); margin-bottom: 6px; }
+  form.quote input, form.quote select, form.quote textarea { width: 100%; padding: 11px 13px; border-radius: 4px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 14.5px; font-family: inherit; }
+  form.quote textarea { min-height: 84px; resize: vertical; }
+  form.quote button { background: var(--primary); color: #fff; border: none; padding: 13px; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; margin-top: 2px; }
+  form.quote button:hover { background: var(--primary-dark); }
+  .form-success { display: none; padding: 16px; border: 1px solid var(--line); border-radius: 4px; font-size: 14px; color: var(--ink-soft); background: var(--paper); }
+  .form-success.show { display: block; }
+  @media (max-width: 880px) { .contact-grid { grid-template-columns: 1fr; } .field-row { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--line); background: var(--ink); color: #a7adb2; padding: 24px 0; font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media (max-width: 880px) {
+    nav { display: none; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 29px; }
+    section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="ic-check" viewBox="0 0 24 24"><path d="M4 12 L9 17 L20 6"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21 C12 21 5 14 5 9.5 A7 7 0 0 1 19 9.5 C19 14 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.4"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24"><path d="M6 4 L10 4 L11.5 8 L9 10 C10 13 11 14 14 15 L16 12.5 L20 14 L20 18 C20 19.1 19.1 20 18 20 C10.3 20 4 13.7 4 6 C4 4.9 4.9 4 6 4 Z"/></symbol>
+  <symbol id="ic-area" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 6 L14 11 L12 16 L10 11 Z"/></symbol>
+</svg>
+
+<header class="site">
+  <div class="wrap header-inner">
+    <div class="logo">Durable Floors</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#estimator">Estimate</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#billing">Billing</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary">Request an Estimate</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Flooring in Columbus, done by referral for 25 years</h1>
+      <p class="lede">Jim Gericke installs and refinishes hardwood, tile, vinyl, and carpet across the Columbus area. Most jobs come from a referral, and the pricing reflects that — labor and materials are billed at cost, no markup added.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Request an Estimate</a>
+        <a href="tel:+16147461377" class="btn btn-ghost">Call (614) 746-1377</a>
+      </div>
+      <div class="fact-strip">
+        <div><strong>25 years</strong>in business</div>
+        <div><strong>A+</strong>BBB rating</div>
+        <div><strong>Referral</strong>most jobs, word of mouth</div>
+      </div>
+    </div>
+    <div class="plank-frame">
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
+        <g stroke="#2f5566" stroke-width="1.6" fill="none" stroke-linejoin="round">
+          <rect x="8" y="14" width="94" height="36"/>
+          <rect x="102" y="14" width="94" height="36"/>
+          <rect x="196" y="14" width="94" height="36"/>
+          <rect x="-38" y="50" width="94" height="36"/>
+          <rect x="56" y="50" width="94" height="36"/>
+          <rect x="150" y="50" width="94" height="36"/>
+          <rect x="244" y="50" width="94" height="36"/>
+          <rect x="8" y="86" width="94" height="36"/>
+          <rect x="102" y="86" width="94" height="36"/>
+          <rect x="196" y="86" width="94" height="36"/>
+          <rect x="-38" y="122" width="94" height="36"/>
+          <rect x="56" y="122" width="94" height="36"/>
+          <rect x="150" y="122" width="94" height="36"/>
+          <rect x="244" y="122" width="94" height="36"/>
+          <rect x="8" y="158" width="94" height="36"/>
+          <rect x="102" y="158" width="94" height="36"/>
+          <rect x="196" y="158" width="94" height="36"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap trust-grid">
+    <div>
+      <h2>Referral Only, No Markup</h2>
+      <p class="lede">Jim doesn't advertise. Most work comes from someone whose floors he's already done, passing his number along.</p>
+    </div>
+    <ul class="trust-list">
+      <li><svg class="icon"><use href="#ic-check"/></svg><span>25 years installing and refinishing floors in the Columbus area.</span></li>
+      <li><svg class="icon"><use href="#ic-check"/></svg><span>A+ rated with the BBB (not accredited).</span></li>
+      <li><svg class="icon"><use href="#ic-check"/></svg><span>Labor and materials billed at cost — no added markup on top.</span></li>
+      <li><svg class="icon"><use href="#ic-check"/></svg><span>Based at 5137 Southminster Rd, serving Columbus and nearby suburbs.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Services</h2>
+      <p class="lede">Installation and refinishing, from a single room to a whole house.</p>
+    </div>
+    <div class="service-list">
+      <div class="service-row"><h3>Hardwood Installation</h3><p>Solid and engineered hardwood, fitted to your subfloor.</p></div>
+      <div class="service-row"><h3>Hardwood Refinishing</h3><p>Sanding, staining, and sealing worn or scratched floors.</p></div>
+      <div class="service-row"><h3>Tile</h3><p>Ceramic and porcelain tile for kitchens, bathrooms, and entryways.</p></div>
+      <div class="service-row"><h3>Vinyl &amp; LVP</h3><p>Waterproof luxury vinyl plank for kitchens, baths, and basements.</p></div>
+      <div class="service-row"><h3>Carpet</h3><p>Carpet and padding for bedrooms, stairs, and basements.</p></div>
+      <div class="service-row"><h3>Subfloor Repair</h3><p>Soft spots, squeaks, and water damage fixed before new flooring goes down.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="estimator" id="estimator">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What a job like this runs</h2>
+      <p class="lede">Pick the material and square footage for a rough price range before you call.</p>
+    </div>
+    <div class="calc-grid">
+      <div>
+        <div class="calc-field">
+          <label for="estSqft">Area (sq ft): <span id="estSqftVal">600</span></label>
+          <input type="range" id="estSqft" min="150" max="2500" step="50" value="600">
+        </div>
+        <div class="calc-field">
+          <label for="estMaterial">Material</label>
+          <select id="estMaterial">
+            <option value="3,5">Hardwood refinishing ($3–$5/sq ft)</option>
+            <option value="8,13">Hardwood installation ($8–$13/sq ft)</option>
+            <option value="4,7">Vinyl / LVP ($4–$7/sq ft)</option>
+            <option value="7,12">Tile ($7–$12/sq ft)</option>
+            <option value="3,6">Carpet ($3–$6/sq ft)</option>
+          </select>
+        </div>
+      </div>
+      <div class="result-panel">
+        <div class="result-label">Estimated cost</div>
+        <div class="result-value" id="estResult">$1,800 – $3,000</div>
+        <p class="sample-note">Ballpark only — based on typical Columbus-area pricing. Final quote depends on an on-site look.</p>
+        <a href="#contact" class="btn btn-primary">Get my exact quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What customers say</h2>
+      <p class="lede">A preview of how reviews would show up on the live site.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-col">
+        <p>"Jim did our hardwood floors after our neighbor recommended him. Showed up when he said he would, and the price didn't move from the estimate."</p>
+        <div class="who">Upper Arlington homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+      <div class="review-col">
+        <p>"Refinished floors in a 1940s house. Took the time to match the stain to what was already there. Would call him again."</p>
+        <div class="who">Clintonville homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+      <div class="review-col">
+        <p>"No sales pitch, just told us what it'd cost and did the work. Tile in the bathroom has held up great two years later."</p>
+        <div class="who">Grandview homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fin-section" id="billing">
+  <div class="wrap">
+    <div class="invoice-card">
+      <div class="invoice-head">
+        <div>
+          <h3>Estimate #DF-0817</h3>
+          <div class="sub">Durable Floors, LLC</div>
+        </div>
+        <span class="sample-caption">Sample — for demonstration</span>
+      </div>
+      <div class="invoice-row"><span>Hardwood refinishing — 320 sq ft</span><span>$1,120.00</span></div>
+      <div class="invoice-row"><span>Stain &amp; sealant (2 coats)</span><span>$260.00</span></div>
+      <div class="invoice-row"><span>Materials &amp; disposal</span><span>$110.00</span></div>
+      <div class="invoice-row total"><span>Total due</span><span>$1,490.00</span></div>
+      <button class="invoice-pay-btn" type="button" onclick="document.getElementById('invToast').classList.add('show')">Pay Invoice</button>
+      <p class="invoice-toast" id="invToast">Sample data for demonstration — no live payment processing is connected.</p>
+    </div>
+    <div>
+      <h2>Invoices, paid online</h2>
+      <p class="lede">Review the estimate, approve it, and pay by card when the job's done — no chasing down a check.</p>
+      <ul class="fin-list">
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>Itemized estimate before work starts</span></li>
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>Card payment for deposits and final invoices</span></li>
+        <li><svg class="icon"><use href="#ic-check"/></svg><span>A record of past jobs and payments in one place</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="financing">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Financing available</h2>
+      <p class="lede">Ask about monthly payment options before committing to the full cost up front.</p>
+    </div>
+    <div class="calc-grid">
+      <div>
+        <div class="calc-field">
+          <label for="finTotal">Total project cost: <span id="finTotalVal">$5,000</span></label>
+          <input type="range" id="finTotal" min="1500" max="20000" step="500" value="5000">
+        </div>
+        <div class="calc-field">
+          <label for="finTerm">Term length</label>
+          <select id="finTerm">
+            <option value="12">12 months</option>
+            <option value="24" selected>24 months</option>
+            <option value="36">36 months</option>
+            <option value="60">60 months</option>
+          </select>
+        </div>
+      </div>
+      <div class="result-panel">
+        <div class="result-label">Estimated monthly payment</div>
+        <div class="result-value" id="finResult">$231/mo</div>
+        <p class="sample-note">Sample estimate for illustration only — not an offer of credit. Actual rate and terms depend on an approved financing partner and applicant credit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="review-strip">
+  <div class="wrap">
+    <div class="copy">
+      <h3>Scan to find us and leave a review</h3>
+      <p>Most jobs come from a referral. If Jim did right by you, a quick Google review helps the next customer find him.</p>
+      <p class="sample-note">Demo QR code — once there's a Google Business Profile, this links straight to it.</p>
+    </div>
+    <div class="qr-box" id="reviewQR"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Request your estimate</h2>
+      <p class="lede">Tell us about the job and we'll follow up to schedule a look at the space.</p>
+      <div class="contact-info-row">
+        <svg class="icon"><use href="#ic-phone"/></svg>
+        <div><div class="label">Phone</div><div class="value"><a href="tel:+16147461377">(614) 746-1377</a></div></div>
+      </div>
+      <div class="contact-info-row">
+        <svg class="icon"><use href="#ic-pin"/></svg>
+        <div><div class="label">Address</div><div class="value">5137 Southminster Rd, Columbus, OH 43221</div></div>
+      </div>
+      <div class="contact-info-row">
+        <svg class="icon"><use href="#ic-area"/></svg>
+        <div><div class="label">Service area</div><div class="value">Columbus, OH &amp; nearby suburbs</div></div>
+      </div>
+    </div>
+    <form class="quote" id="quoteForm">
+      <div class="field-row">
+        <div><label for="name">Full name</label><input id="name" required placeholder="Jane Smith"></div>
+        <div><label for="phone">Phone</label><input id="phone" required placeholder="(614) 555-0100"></div>
+      </div>
+      <div><label for="email">Email</label><input id="email" type="email" placeholder="you@email.com"></div>
+      <div>
+        <label for="service">Service needed</label>
+        <select id="service">
+          <option>Hardwood Installation</option>
+          <option>Hardwood Refinishing</option>
+          <option>Tile</option>
+          <option>Vinyl / LVP</option>
+          <option>Carpet</option>
+          <option>Subfloor Repair</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div><label for="msg">Tell us about the job</label><textarea id="msg" rows="3" placeholder="Room size, current flooring, what you're looking for..."></textarea></div>
+      <button type="submit">Request Estimate</button>
+      <div class="form-success" id="formSuccess">Thanks — this is a demo form. On the live site, this confirms the request was received and Jim will follow up.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Durable Floors, LLC · Columbus, OH 43221 · (614) 746-1377</span>
+    <span>Concept site prepared as a design proposal — not the business's official website.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  function updateEstimator(){
+    var sqft = parseInt(document.getElementById('estSqft').value, 10);
+    document.getElementById('estSqftVal').textContent = sqft.toLocaleString();
+    var parts = document.getElementById('estMaterial').value.split(',').map(Number);
+    var low = sqft * parts[0], high = sqft * parts[1];
+    document.getElementById('estResult').textContent = '$' + Math.round(low).toLocaleString() + ' – $' + Math.round(high).toLocaleString();
+  }
+  document.getElementById('estSqft').addEventListener('input', updateEstimator);
+  document.getElementById('estMaterial').addEventListener('change', updateEstimator);
+  updateEstimator();
+
+  function updateFinancing(){
+    var principal = parseInt(document.getElementById('finTotal').value, 10);
+    document.getElementById('finTotalVal').textContent = '$' + principal.toLocaleString();
+    var n = parseInt(document.getElementById('finTerm').value, 10);
+    var r = 0.0999 / 12;
+    var payment = principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+    document.getElementById('finResult').textContent = '$' + Math.round(payment).toLocaleString() + '/mo';
+  }
+  document.getElementById('finTotal').addEventListener('input', updateFinancing);
+  document.getElementById('finTerm').addEventListener('change', updateFinancing);
+  updateFinancing();
+
+  (function(){
+    var qr = qrcode(0, 'M');
+    qr.addData('https://www.google.com/search?q=Durable+Floors+LLC+Columbus+Ohio+reviews');
+    qr.make();
+    document.getElementById('reviewQR').innerHTML = qr.createSvgTag({cellSize:4, margin:2});
+  })();
+</script>
+
+</body>
+</html>

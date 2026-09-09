@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evans Hauling &amp; Junk Removal | Columbus, OH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+  :root{
+    --ink:#241c16;
+    --paper:#f7f2ea;
+    --paper-2:#efe6d8;
+    --rust:#b5461f;
+    --rust-deep:#8a3216;
+    --line:#e2d5c2;
+    --muted:#6b5c4a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:16px;}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-0.01em;color:var(--ink);}
+  a{color:inherit;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  .icon{width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+
+  header{border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;}
+  .brand{font-family:'Fraunces',serif;font-size:21px;font-weight:600;}
+  .brand small{display:block;font-family:-apple-system,sans-serif;font-size:11.5px;font-weight:400;color:var(--muted);letter-spacing:.02em;}
+  nav.links{display:flex;gap:32px;font-size:14.5px;font-weight:500;}
+  nav.links a{text-decoration:none;color:var(--muted);}
+  nav.links a:hover{color:var(--rust);}
+  .btn{display:inline-block;background:var(--rust);color:#fff9f4;padding:11px 22px;border-radius:3px;text-decoration:none;font-weight:600;font-size:14.5px;border:1px solid var(--rust);}
+  .btn:hover{background:var(--rust-deep);border-color:var(--rust-deep);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  section{padding:96px 0;}
+  section:not(:first-of-type){border-top:1px solid var(--line);}
+  .hero{padding:64px 0 80px;}
+
+  .hero .wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:center;}
+  .kicker{font-size:13.5px;color:var(--rust);font-weight:600;margin-bottom:18px;}
+  .hero h1{font-size:3.1rem;line-height:1.06;margin-bottom:22px;}
+  .hero p.lead{font-size:1.1rem;color:var(--muted);max-width:46ch;margin-bottom:32px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-art{width:100%;height:auto;color:var(--rust);}
+
+  .process{display:grid;grid-template-columns:repeat(3,1fr);}
+  .process .step{padding:0 32px;}
+  .process .step:first-child{padding-left:0;}
+  .process .step:not(:first-child){border-left:1px solid var(--line);}
+  .process .num{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:500;line-height:1;margin-bottom:14px;color:transparent;-webkit-text-stroke:1.4px var(--line);}
+  .process h3{font-size:1.15rem;margin-bottom:8px;}
+  .process p{color:var(--muted);font-size:0.95rem;}
+
+  .services-head{max-width:560px;margin-bottom:52px;}
+  .services-head h2{font-size:2.1rem;margin-bottom:14px;}
+  .services-head p{color:var(--muted);font-size:1.02rem;}
+  .service-list{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;}
+  .service-item{display:flex;gap:16px;padding:24px 0 24px 20px;border-left:2px solid var(--line);border-bottom:1px solid var(--line);}
+  .service-item .icon{color:var(--rust);margin-top:2px;}
+  .service-item h3{font-size:1.05rem;font-weight:600;font-family:-apple-system,sans-serif;margin-bottom:4px;}
+  .service-item p{font-size:0.92rem;color:var(--muted);}
+
+  .financials{background:var(--ink);color:var(--paper);}
+  .fin-wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:center;}
+  .financials h2{color:#fff;font-size:2rem;margin-bottom:18px;}
+  .financials p{color:#c9bfae;margin-bottom:18px;}
+  .financials ul{list-style:none;}
+  .financials li{display:flex;gap:12px;margin-bottom:12px;color:#e8e0d2;font-size:0.96rem;align-items:flex-start;}
+  .financials li .icon{width:16px;height:16px;color:#d98a5f;margin-top:5px;}
+  .invoice-card{background:var(--paper);color:var(--ink);border-radius:6px;padding:30px;box-shadow:0 24px 60px rgba(0,0,0,0.35);}
+  .invoice-top{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px;}
+  .invoice-top .job{font-weight:600;font-size:1.02rem;}
+  .invoice-top .num{color:var(--muted);font-size:0.85rem;}
+  .status{display:inline-block;background:#e7f0e5;color:#3d6b34;font-size:0.78rem;font-weight:600;padding:3px 10px;border-radius:3px;margin-bottom:16px;}
+  .invoice-line{display:flex;justify-content:space-between;font-size:0.94rem;padding:8px 0;border-bottom:1px dashed var(--line);}
+  .invoice-total{display:flex;justify-content:space-between;font-weight:600;font-size:1.15rem;padding-top:14px;}
+  .pay-btn{width:100%;margin-top:20px;background:var(--rust);color:#fff9f4;border:none;padding:13px;border-radius:3px;font-weight:600;font-size:0.95rem;cursor:not-allowed;opacity:.9;}
+  .fin-caption{margin-top:12px;font-size:0.8rem;color:var(--muted);text-align:center;}
+
+  .testimonial-feature{max-width:760px;margin:0 auto 48px;}
+  .testimonial-feature p.quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.7rem;line-height:1.35;color:var(--ink);margin-bottom:20px;}
+  .testimonial-feature .who{font-size:0.92rem;font-weight:600;color:var(--muted);}
+  .testimonial-feature .stars{color:var(--rust);letter-spacing:2px;margin-bottom:16px;font-size:0.9rem;}
+  .quote-row{display:flex;gap:0;border-top:1px solid var(--line);padding-top:32px;}
+  .quote-row .mini{flex:1;padding:0 28px;}
+  .quote-row .mini:first-child{padding-left:0;}
+  .quote-row .mini:not(:first-child){border-left:1px solid var(--line);}
+  .quote-row p{font-size:0.95rem;color:var(--muted);margin-bottom:10px;}
+  .quote-row .who{font-size:0.85rem;font-weight:600;}
+  .sample-note{font-size:0.75rem;color:var(--muted);opacity:.75;margin-top:6px;}
+
+  .contact-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;}
+  .contact-info h2{font-size:2rem;margin-bottom:14px;}
+  .contact-info p.lead{color:var(--muted);margin-bottom:32px;}
+  .info-row{display:flex;gap:14px;margin-bottom:24px;align-items:flex-start;}
+  .info-row .icon{color:var(--rust);margin-top:2px;}
+  .info-row strong{display:block;font-size:0.95rem;}
+  .info-row span{color:var(--muted);font-size:0.9rem;}
+  .f-row{margin-bottom:22px;}
+  .f-row.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .f-row label{display:block;font-size:0.82rem;color:var(--muted);margin-bottom:6px;}
+  .f-row input,.f-row select,.f-row textarea{width:100%;border:none;border-bottom:1px solid var(--line);background:transparent;padding:8px 2px;font-family:inherit;font-size:0.98rem;color:var(--ink);}
+  .f-row input:focus,.f-row select:focus,.f-row textarea:focus{outline:none;border-bottom-color:var(--rust);}
+  .f-row textarea{resize:vertical;}
+  .success{display:none;padding:40px 0;}
+  .success.show{display:block;}
+  .success h3{margin-bottom:8px;}
+  .success p{color:var(--muted);}
+
+  .estimator-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  .estimator-controls label{display:block;font-size:0.82rem;color:var(--muted);margin-bottom:6px;}
+  .estimator-controls select{width:100%;border:none;border-bottom:1px solid var(--line);background:transparent;padding:8px 2px;font-family:inherit;font-size:0.98rem;color:var(--ink);}
+  .estimator-controls select:focus{outline:none;border-bottom-color:var(--rust);}
+  .estimator-result{border:1px solid var(--line);border-left:4px solid var(--rust);padding:28px 30px;background:var(--paper-2);}
+  .estimator-price{font-family:'Fraunces',serif;font-size:2.1rem;font-weight:500;margin-bottom:10px;}
+  .estimator-result .sample-note{margin-bottom:18px;display:block;}
+  .estimator-result .btn{display:inline-block;}
+  @media (max-width:880px){.estimator-grid{grid-template-columns:1fr;}}
+
+  .zip-check{display:flex;gap:8px;margin-top:10px;max-width:260px;}
+  .zip-check input{flex:1;border:1px solid var(--line);border-radius:3px;padding:8px 10px;font-family:inherit;font-size:0.9rem;background:#fff;color:var(--ink);}
+  .zip-check input:focus{outline:none;border-color:var(--rust);}
+  .zip-check button{border:1px solid var(--rust);background:var(--rust);color:#fff9f4;border-radius:3px;padding:8px 14px;font-size:0.85rem;font-weight:600;cursor:pointer;}
+  .zip-check button:hover{background:var(--rust-deep);border-color:var(--rust-deep);}
+  .zip-result{margin-top:10px;font-size:0.88rem;display:none;align-items:center;gap:6px;}
+  .zip-result.show{display:flex;}
+  .zip-result.yes{color:#3d6b34;}
+  .zip-result.no{color:var(--muted);}
+  .zip-result .icon{width:16px;height:16px;}
+
+  .review-strip{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+  .review-copy h3{font-size:1.3rem;margin-bottom:6px;}
+  .review-copy .sample-note{font-size:0.82rem;}
+  .review-qr{flex-shrink:0;width:120px;height:120px;}
+  .review-qr svg{width:100%;height:100%;}
+  @media (max-width:600px){.review-strip{flex-direction:column;text-align:center;}}
+
+  footer{padding:40px 0;}
+  footer .brand-line{font-family:'Fraunces',serif;font-size:1.05rem;}
+  footer .fine{font-size:0.78rem;color:var(--muted);margin-top:6px;max-width:64ch;}
+
+  @media (max-width:880px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{max-width:320px;margin:0 auto;}
+    .process{grid-template-columns:1fr;gap:32px;}
+    .process .step{padding-left:0;}
+    .process .step:not(:first-child){border-left:none;border-top:1px solid var(--line);padding-top:32px;}
+    .service-list{grid-template-columns:1fr;}
+    .fin-wrap{grid-template-columns:1fr;}
+    .contact-wrap{grid-template-columns:1fr;}
+    .quote-row{flex-direction:column;gap:24px;}
+    .quote-row .mini{padding-left:0;}
+    .quote-row .mini:not(:first-child){border-left:none;border-top:1px solid var(--line);padding-top:24px;}
+    nav.links{display:none;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-truck" viewBox="0 0 32 22">
+    <rect x="1" y="4" width="18" height="12" rx="1"/>
+    <path d="M19 9h7l4 4v3h-2"/>
+    <circle cx="8" cy="19" r="2.4"/>
+    <circle cx="24" cy="19" r="2.4"/>
+    <line x1="10.4" y1="19" x2="21.6" y2="19"/>
+  </symbol>
+  <symbol id="i-sofa" viewBox="0 0 24 20">
+    <path d="M3 11V7a2 2 0 012-2h14a2 2 0 012 2v4"/>
+    <path d="M2 11h20v5a1 1 0 01-1 1H3a1 1 0 01-1-1z"/>
+    <path d="M4 17v2M20 17v2"/>
+  </symbol>
+  <symbol id="i-house" viewBox="0 0 24 22">
+    <path d="M2 11L12 2l10 9"/>
+    <path d="M5 10v10h14V10"/>
+    <path d="M10 20v-6h4v6"/>
+  </symbol>
+  <symbol id="i-boxes" viewBox="0 0 24 22">
+    <rect x="2" y="9" width="10" height="10"/>
+    <rect x="11" y="3" width="11" height="10"/>
+    <line x1="7" y1="9" x2="7" y2="19"/>
+    <line x1="16.5" y1="3" x2="16.5" y2="13"/>
+  </symbol>
+  <symbol id="i-hammer" viewBox="0 0 24 24">
+    <path d="M14 4l6 6-3 3-6-6z"/>
+    <path d="M14.5 8.5L4 19l1 1 10.5-10.5"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M12 7v5l4 2"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/>
+    <circle cx="12" cy="9" r="2.4"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M12 3l7 3v6c0 4.6-3 7.8-7 9-4-1.2-7-4.4-7-9V6z"/>
+    <path d="M9 12l2 2 4-4"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Evans Hauling <small>Junk Removal &amp; Cleanouts &middot; Columbus, OH</small></div>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#estimator">Get an estimate</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn">Request service</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">BBB Accredited Business — Columbus, OH</div>
+      <h1>Junk removal &amp; cleanouts in Columbus, Ohio.</h1>
+      <p class="lead">Evans Hauling &amp; Junk Removal clears out furniture, appliances, garages, basements, and full estates across Columbus. Same-day service available.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn">Request a free quote</a>
+        <a href="#services" class="btn btn-ghost">What we take</a>
+      </div>
+    </div>
+    <div>
+      <svg class="hero-art" viewBox="0 0 360 220" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="20" y="60" width="150" height="100" rx="3"/>
+        <path d="M170 90h60l40 40v30h-16"/>
+        <circle cx="70" cy="172" r="18"/>
+        <circle cx="250" cy="172" r="18"/>
+        <line x1="88" y1="172" x2="232" y2="172"/>
+        <rect x="45" y="130" width="34" height="24" opacity="0.5"/>
+        <rect x="90" y="118" width="30" height="36" opacity="0.5"/>
+        <path d="M310 100l20-8M312 112l22-2M308 124l20 6" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap process">
+    <div class="step">
+      <div class="num">01</div>
+      <h3>Tell us what's going</h3>
+      <p>Call, text, or fill out the form with a few details or photos of what needs to go.</p>
+    </div>
+    <div class="step">
+      <div class="num">02</div>
+      <h3>Get a flat price</h3>
+      <p>We quote a flat rate up front based on volume and labor — no surprise fees added later.</p>
+    </div>
+    <div class="step">
+      <div class="num">03</div>
+      <h3>We haul it away</h3>
+      <p>Our crew handles the lifting, loading, and cleanup.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <h2>Junk removal for every job</h2>
+      <p>From a single old couch to clearing out an entire estate, our crew handles the heavy lifting so you don't have to.</p>
+    </div>
+    <div class="service-list">
+      <div class="service-item"><svg class="icon"><use href="#i-sofa"/></svg><div><h3>Furniture &amp; appliance removal</h3><p>Couches, mattresses, refrigerators, washers and dryers — hauled out same day.</p></div></div>
+      <div class="service-item"><svg class="icon"><use href="#i-house"/></svg><div><h3>Garage &amp; basement cleanouts</h3><p>Reclaim your storage space without lifting a finger.</p></div></div>
+      <div class="service-item"><svg class="icon"><use href="#i-boxes"/></svg><div><h3>Estate cleanouts</h3><p>Compassionate, thorough cleanout service for estates, downsizing, and moves.</p></div></div>
+      <div class="service-item"><svg class="icon"><use href="#i-hammer"/></svg><div><h3>Light demo debris removal</h3><p>Cleanup after small demolition, renovation, or remodeling projects.</p></div></div>
+      <div class="service-item"><svg class="icon"><use href="#i-truck"/></svg><div><h3>General junk removal</h3><p>Household clutter, yard waste, and everything in between.</p></div></div>
+      <div class="service-item"><svg class="icon"><use href="#i-clock"/></svg><div><h3>Same-day &amp; next-day service</h3><p>Flexible scheduling when you need it gone now, not next week.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="estimator">
+  <div class="wrap">
+    <div class="services-head">
+      <h2>Get a ballpark price now</h2>
+      <p>Pick roughly how much needs to go and see a typical price range before you even call.</p>
+    </div>
+    <div class="estimator-grid">
+      <div class="estimator-controls">
+        <div class="f-row">
+          <label for="loadSize">How much needs to go?</label>
+          <select id="loadSize">
+            <option value="75,150">Single item (couch, mattress, appliance)</option>
+            <option value="175,275">Quarter truck load</option>
+            <option value="300,425" selected>Half truck load</option>
+            <option value="450,650">Full truck load</option>
+          </select>
+        </div>
+      </div>
+      <div class="estimator-result">
+        <div class="estimator-price" id="estPrice">$300 &ndash; $425</div>
+        <div class="sample-note">Ballpark estimate only, based on typical Columbus-area pricing — your final quote depends on what we actually see on site.</div>
+        <a href="#contact" class="btn">Get my exact quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="financials" id="pricing">
+  <div class="wrap fin-wrap">
+    <div>
+      <h2>Pay online, no paper trail</h2>
+      <p>Every job gets an upfront estimate before we start, and a clean digital invoice when we're done.</p>
+      <ul>
+        <li><svg class="icon"><use href="#i-shield"/></svg>Upfront, itemized estimates</li>
+        <li><svg class="icon"><use href="#i-shield"/></svg>Pay online by card once the job's done</li>
+        <li><svg class="icon"><use href="#i-shield"/></svg>Digital receipts sent by email or text</li>
+      </ul>
+    </div>
+    <div>
+      <div class="invoice-card">
+        <div class="invoice-top"><div class="job">Garage cleanout — Northwest Columbus</div><div class="num">#EH-1042</div></div>
+        <span class="status">Paid</span>
+        <div class="invoice-line"><span>Labor &amp; hauling (2 crew, 2 hrs)</span><span>$180.00</span></div>
+        <div class="invoice-line"><span>Disposal &amp; recycling fee</span><span>$65.00</span></div>
+        <div class="invoice-total"><span>Total</span><span>$245.00</span></div>
+        <button class="pay-btn" disabled>View invoice</button>
+      </div>
+      <div class="fin-caption">Sample invoice shown for demonstration purposes only.</div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="testimonial-feature">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Showed up on time, cleared out the whole garage in under an hour. Easiest part of our move."</p>
+      <div class="who">Northwest Columbus homeowner</div>
+      <div class="sample-note">Sample review, shown for demonstration</div>
+    </div>
+    <div class="quote-row">
+      <div class="mini">
+        <p>"Handled my dad's estate cleanout with so much care. Fair price, no pressure, very respectful crew."</p>
+        <div class="who">Clintonville resident</div>
+        <div class="sample-note">Sample review</div>
+      </div>
+      <div class="mini">
+        <p>"Booked same-day, they hauled off an old couch and fridge in one trip. Would call again."</p>
+        <div class="who">German Village resident</div>
+        <div class="sample-note">Sample review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="review-funnel">
+  <div class="wrap review-strip">
+    <div class="review-copy">
+      <h3>Scan to find us &amp; leave a review</h3>
+      <p class="sample-note">Demo QR code — once you have a Google Business Profile, this links straight to your review page.</p>
+    </div>
+    <div id="reviewQR" class="review-qr"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-wrap">
+    <div class="contact-info">
+      <h2>Get a free quote</h2>
+      <p class="lead">Tell us what needs to go and we'll get back to you with pricing and availability.</p>
+      <div class="info-row"><svg class="icon"><use href="#i-pin"/></svg><div>
+        <strong>Service area</strong><span>Columbus, Ohio and surrounding communities</span>
+        <div class="zip-check">
+          <input type="text" id="zipInput" placeholder="Your zip code" maxlength="5" inputmode="numeric">
+          <button type="button" id="zipBtn">Check</button>
+        </div>
+        <div class="zip-result" id="zipResult"></div>
+      </div></div>
+      <div class="info-row"><svg class="icon"><use href="#i-shield"/></svg><div><strong>BBB accredited</strong><span>Accredited business since 2023</span></div></div>
+      <div class="info-row"><svg class="icon"><use href="#i-clock"/></svg><div><strong>Availability</strong><span>Same-day and next-day appointments available</span></div></div>
+    </div>
+    <div>
+      <form id="quoteForm">
+        <div id="formFields">
+          <div class="f-row"><label>Full name</label><input required placeholder="Jane Smith"></div>
+          <div class="f-row two">
+            <div><label>Phone number</label><input type="tel" required placeholder="(614) 555-0100"></div>
+            <div><label>Email</label><input type="email" placeholder="jane@email.com"></div>
+          </div>
+          <div class="f-row"><label>Service needed</label>
+            <select>
+              <option>Furniture / appliance removal</option>
+              <option>Garage or basement cleanout</option>
+              <option>Estate cleanout</option>
+              <option>Demo debris removal</option>
+              <option>General junk removal</option>
+            </select>
+          </div>
+          <div class="f-row"><label>What needs to go?</label><textarea rows="3" placeholder="A couch, mattress, and some boxes from the garage..."></textarea></div>
+          <button type="submit" class="btn">Request free quote</button>
+        </div>
+        <div class="success" id="formSuccess">
+          <h3>Thanks — we'll be in touch shortly.</h3>
+          <p>This is a demo form; no message was actually sent.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand-line">Evans Hauling &amp; Junk Removal</div>
+    <div class="fine">Columbus, Ohio &middot; BBB Accredited Business. Concept site prepared as a design proposal — not the business's published website.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formFields').style.display='none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  function updateEstimate(){
+    var sel = document.getElementById('loadSize');
+    var parts = sel.value.split(',');
+    document.getElementById('estPrice').textContent = '$' + parts[0] + ' – $' + parts[1];
+  }
+  document.getElementById('loadSize').addEventListener('change', updateEstimate);
+  updateEstimate();
+
+  var SERVICE_ZIPS = [43201,43202,43203,43204,43205,43206,43207,43209,43210,43211,43212,43213,43214,43215,43217,43219,43220,43221,43222,43223,43224,43227,43228,43229,43230,43231,43232,43235,43240,43016,43017,43026,43068,43081,43082,43085,43110,43119,43123,43125,43137,43147,43162,43064];
+  document.getElementById('zipBtn').addEventListener('click', function(){
+    var zip = parseInt(document.getElementById('zipInput').value, 10);
+    var result = document.getElementById('zipResult');
+    if (SERVICE_ZIPS.indexOf(zip) !== -1){
+      result.className = 'zip-result show yes';
+      result.innerHTML = '<svg class="icon"><use href="#i-shield"/></svg> Yes — we service ' + zip + '.';
+    } else {
+      result.className = 'zip-result show no';
+      result.innerHTML = 'Give us a call to confirm — we may still be able to help.';
+    }
+  });
+
+  var reviewQr = qrcode(0, 'M');
+  reviewQr.addData('https://www.google.com/search?q=Evans+Hauling+Junk+Removal+Columbus+Ohio+reviews');
+  reviewQr.make();
+  document.getElementById('reviewQR').innerHTML = reviewQr.createSvgTag({cellSize:4, margin:2});
+</script>
+
+</body>
+</html>

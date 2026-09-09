@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mid Ohio Pressure Wash | Columbus, OH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+  :root{
+    --ink:#16211f;
+    --primary:#0f6d6a;
+    --primary-dark:#0b524f;
+    --paper:#f5f8f6;
+    --panel:#ffffff;
+    --line:#dfe8e5;
+    --muted:#5f6f6b;
+    --accent:#c1632b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;overflow-x:hidden;}
+  h1,h2{font-family:'Manrope',system-ui,sans-serif;font-weight:700;letter-spacing:-0.01em;color:var(--ink);}
+  a{color:inherit;}
+  svg{display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .icon{width:24px;height:24px;flex-shrink:0;}
+  .icon path,.icon circle,.icon line,.icon rect{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(245,248,246,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;}
+  .brand{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.14rem;text-decoration:none;color:var(--ink);border-bottom:2px solid var(--accent);padding-bottom:2px;}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{font-size:0.93rem;text-decoration:none;color:var(--ink);opacity:0.8;}
+  .nav-links a:hover{opacity:1;color:var(--primary);}
+  .nav-phone{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ink);text-decoration:none;font-size:0.94rem;}
+  .nav-phone .icon{color:var(--primary);width:18px;height:18px;}
+
+  .hero{padding:66px 0 0;text-align:center;}
+  .lede-tag{color:var(--muted);font-size:0.92rem;margin-bottom:16px;}
+  .hero h1{font-size:clamp(2rem,4.4vw,3rem);line-height:1.15;max-width:16ch;margin:0 auto 20px;}
+  .hero h1 .hl{color:var(--primary);}
+  .hero-sub{color:var(--muted);font-size:1.04rem;max-width:52ch;margin:0 auto 30px;}
+  .hero-ctas{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin-bottom:16px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:6px;font-weight:700;font-size:0.95rem;text-decoration:none;cursor:pointer;border:none;font-family:inherit;transition:background .15s ease;}
+  .btn-primary{background:var(--primary);color:#f2fbf9;}
+  .btn-primary:hover{background:var(--primary-dark);}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
+  .btn-outline:hover{border-color:var(--primary);color:var(--primary);}
+  .btn-text{color:var(--ink);font-weight:600;}
+  .btn-text:hover{color:var(--primary);}
+
+  .hero-banner{color:var(--primary);max-width:900px;margin:20px auto 0;}
+  .hero-banner svg{width:100%;height:auto;}
+
+  .fact-line{border-top:1px solid var(--line);margin-top:40px;padding:16px 0;text-align:center;color:var(--muted);font-size:0.86rem;}
+  .fact-line span{margin:0 4px;}
+
+  section{padding:74px 0;}
+  .section-intro{max-width:640px;margin-bottom:36px;}
+  .section-intro h2{font-size:1.85rem;margin-bottom:12px;}
+  .section-intro p{color:var(--muted);font-size:1.02rem;}
+
+  .service-index{list-style:none;border-top:1px solid var(--line);}
+  .service-index li{display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:start;padding:24px 0;border-bottom:1px solid var(--line);}
+  .service-index .num{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.3rem;color:var(--line);}
+  .service-index .icon{color:var(--primary);margin-bottom:8px;}
+  .service-index h3{font-size:1.08rem;font-weight:700;margin-bottom:5px;}
+  .service-index p{color:var(--muted);font-size:0.94rem;max-width:56ch;}
+
+  .financials{background:var(--ink);color:#e2e8e5;}
+  .fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+  .fin-copy h2{color:#f2fbf9;font-size:1.85rem;margin-bottom:14px;}
+  .fin-copy p{color:#a9bcb6;margin-bottom:22px;font-size:1rem;}
+  .fin-points{list-style:none;}
+  .fin-points li{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;color:#c9d6d1;font-size:0.94rem;}
+  .fin-points .icon{color:var(--accent);width:20px;height:20px;margin-top:2px;}
+
+  .invoice-card{background:var(--panel);color:var(--ink);border-radius:10px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.4);}
+  .invoice-head{display:flex;justify-content:space-between;align-items:flex-start;padding:22px 26px;border-bottom:1px solid var(--line);}
+  .invoice-head .brand-mini{font-weight:700;font-size:1.02rem;}
+  .invoice-head .num{font-size:0.82rem;color:var(--muted);margin-top:3px;}
+  .sample-caption{font-size:0.74rem;color:var(--muted);white-space:nowrap;padding-top:2px;}
+  .invoice-body{padding:20px 26px;}
+  .invoice-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);font-size:0.93rem;}
+  .invoice-row:last-of-type{border-bottom:none;}
+  .invoice-total{display:flex;justify-content:space-between;padding:16px 26px;background:#eef4f2;font-weight:700;font-size:1.05rem;}
+  .invoice-total span:last-child{color:var(--accent);}
+  .invoice-actions{padding:18px 26px;display:flex;gap:10px;}
+  .invoice-actions .btn{flex:1;justify-content:center;padding:11px;font-size:0.87rem;}
+  .btn-pay{background:var(--primary);color:#f2fbf9;}
+  .btn-pay:hover{background:var(--primary-dark);}
+  .btn-view{background:#eef2f0;color:var(--ink);}
+  .btn-view:hover{background:#e2e9e6;}
+
+  .testimonials{background:var(--paper);}
+  .test-list{max-width:760px;}
+  .test-row{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-top:1px solid var(--line);}
+  .test-row:last-child{border-bottom:1px solid var(--line);}
+  .test-row .icon{color:var(--primary);flex-shrink:0;margin-top:2px;}
+  .test-row p{font-size:1rem;color:var(--ink);}
+  .test-row cite{font-style:normal;color:var(--muted);font-size:0.86rem;display:block;margin-top:6px;}
+  .sample-tag{font-size:0.68rem;color:var(--muted);background:#eef2f0;padding:2px 8px;border-radius:100px;margin-left:6px;}
+  .test-disclaimer{color:var(--muted);font-size:0.86rem;margin-top:26px;}
+
+  .contact{background:var(--panel);border-top:1px solid var(--line);}
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:50px;align-items:start;}
+  .contact-card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:30px;}
+  .contact-card h2{font-size:1.7rem;margin-bottom:14px;}
+  .contact-card p{color:var(--muted);margin-bottom:22px;}
+  .info-line{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;font-size:0.94rem;}
+  .info-line .icon{color:var(--primary);width:20px;height:20px;}
+  form{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:30px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+  label{display:block;font-size:0.82rem;font-weight:600;color:var(--ink);margin-bottom:6px;}
+  input,select,textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:0.92rem;background:#fbfdfc;}
+  textarea{resize:vertical;min-height:90px;}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(15,109,106,0.14);}
+  .full{grid-column:1/-1;}
+  .submit-btn{width:100%;justify-content:center;margin-top:4px;}
+  .form-success{display:none;text-align:center;padding:30px 10px;}
+  .form-success .icon{margin:0 auto 14px;color:var(--primary);width:40px;height:40px;}
+  .form-success h3{font-family:'Manrope',sans-serif;font-size:1.25rem;margin-bottom:8px;}
+  .form-success p{color:var(--muted);font-size:0.92rem;}
+
+  footer{background:var(--ink);color:#9db1ac;padding:40px 0 26px;}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .footer-brand{font-family:'Manrope',sans-serif;font-weight:700;color:#f2fbf9;font-size:1.05rem;}
+  .footer-cols{display:flex;gap:56px;}
+  .footer-cols h4{color:#f2fbf9;font-size:0.82rem;font-weight:700;margin-bottom:10px;}
+  .footer-cols span,.footer-cols a{display:block;color:#9db1ac;font-size:0.87rem;text-decoration:none;margin-bottom:7px;}
+  .footer-bottom{padding-top:18px;font-size:0.78rem;color:#728882;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  #transformation{background:var(--panel);}
+  .ba-frame{position:relative;width:100%;max-width:900px;margin:0 auto;aspect-ratio:16/9;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper);}
+  .ba-layer{position:absolute;inset:0;}
+  .ba-layer svg{width:100%;height:100%;display:block;}
+  .ba-before{color:#93a29d;}
+  .ba-after{color:var(--primary);}
+  .ba-label{position:absolute;top:14px;font-size:0.72rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;background:rgba(255,255,255,0.88);padding:4px 10px;border-radius:3px;color:var(--ink);}
+  .ba-label-before{left:14px;}
+  .ba-label-after{right:14px;}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--panel);box-shadow:0 0 0 1px rgba(0,0,0,0.2);pointer-events:none;}
+  .ba-handle::after{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;border-radius:50%;background:var(--panel);border:2px solid var(--primary);transform:translate(-50%,-50%);}
+  .ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;}
+  .ba-caption{text-align:center;color:var(--muted);font-size:0.86rem;margin-top:16px;}
+
+  .estimator{background:var(--panel);}
+  .estimator-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  .estimator-controls .field{margin-bottom:24px;}
+  .estimator-controls label{display:block;font-size:0.85rem;font-weight:600;color:var(--ink);margin-bottom:8px;}
+  .estimator-controls .field-value{color:var(--muted);font-weight:500;}
+  .estimator-controls input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:var(--line);border-radius:2px;padding:0;border:none;}
+  .estimator-controls input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--primary);cursor:pointer;border:3px solid var(--panel);box-shadow:0 0 0 1px var(--primary);}
+  .estimator-controls input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--primary);cursor:pointer;border:3px solid var(--panel);box-shadow:0 0 0 1px var(--primary);}
+  .estimator-result{border:1px solid var(--line);border-left:4px solid var(--primary);padding:28px 26px;background:var(--paper);border-radius:0 10px 10px 0;}
+  .estimator-result .range{font-family:'Manrope',system-ui,sans-serif;font-weight:800;font-size:2.1rem;color:var(--ink);margin-bottom:6px;}
+  .estimator-result .disclaimer{font-size:0.86rem;color:var(--muted);margin:14px 0 20px;}
+
+  #review-funnel{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 0;}
+  .review-strip{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;}
+  .review-copy{display:flex;align-items:flex-start;gap:16px;max-width:520px;}
+  .review-copy h3{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:6px;}
+  .sample-note{font-size:0.82rem;color:var(--muted);}
+  .review-qr{flex-shrink:0;background:#fff;padding:10px;border:1px solid var(--line);border-radius:8px;}
+  .review-qr svg{display:block;width:120px;height:120px;}
+
+  @media (max-width:880px){
+    .nav-links{display:none;}
+    .fin-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .service-index li{grid-template-columns:40px 1fr;}
+    .estimator-grid{grid-template-columns:1fr;}
+    .review-strip{justify-content:center;text-align:center;}
+    .review-copy{flex-direction:column;align-items:center;}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.2 1.8"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 7"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6 4h3l2 5-2.5 1.6a11 11 0 0 0 5 5L15 13l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4 6.2 2 2 0 0 1 6 4z"/></symbol>
+  <symbol id="icon-drop" viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 1 1-12 0c0-4 6-11 6-11z"/></symbol>
+  <symbol id="icon-concrete" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 12h18M9 5v14M15 5v14"/></symbol>
+  <symbol id="icon-paver" viewBox="0 0 24 24"><path d="M3 8h6v5H3zM11 8h6v5h-6zM19 8h2v5h-2zM7 13v5M15 13v5"/><path d="M3 18h18"/></symbol>
+  <symbol id="icon-deck" viewBox="0 0 24 24"><path d="M3 7.5h18M3 12h18M3 16.5h18"/><path d="M7.5 5v4.5M15 5v4.5M7.5 9.5v4.5M15 9.5v4.5M7.5 14v4.5M15 14v4.5" opacity="0.5"/></symbol>
+  <symbol id="icon-roof" viewBox="0 0 24 24"><path d="M3 13l9-8 9 8"/><path d="M5.5 11.3v8.7h13v-8.7"/><path d="M8 15h2M14 15h2M8 18h2M14 18h2" opacity="0.5"/></symbol>
+  <symbol id="icon-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1.1" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="4" cy="18" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-quote" viewBox="0 0 24 24"><path d="M7 8.5C5 9.5 4 11 4 13.2c0 2 1.2 3.3 3 3.3 1.6 0 2.8-1.2 2.8-2.8 0-1.4-1-2.4-2.3-2.5.2-1 1-2 2.5-2.7M15 8.5c-2 1-3 2.5-3 4.7 0 2 1.2 3.3 3 3.3 1.6 0 2.8-1.2 2.8-2.8 0-1.4-1-2.4-2.3-2.5.2-1 1-2 2.5-2.7"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap navbar">
+    <a class="brand" href="#top">Mid Ohio Pressure Wash</a>
+    <nav class="nav-links">
+      <a href="#transformation">Our work</a>
+      <a href="#services">Services</a>
+      <a href="#estimator">Get an estimate</a>
+      <a href="#billing">Billing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-phone" href="tel:+16149309562"><svg class="icon"><use href="#icon-phone"/></svg> (614) 930-9562</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="lede-tag">Columbus, OH 43204 &amp; Central Ohio</p>
+    <h1>Soft wash and pressure washing, done <span class="hl">right</span>.</h1>
+    <p class="hero-sub">We clean concrete, pavers, decks, and roofs across Central Ohio. We use the right amount of pressure for each surface so nothing gets damaged in the process.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Request a free estimate</a>
+      <a href="tel:+16149309562" class="btn btn-outline">Call (614) 930-9562</a>
+    </div>
+    <div class="hero-banner" aria-hidden="true">
+      <svg viewBox="0 0 900 240" width="100%">
+        <path d="M330 110l90-72 90 72" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M345 104v-4M365 89v-4M385 74v-4M405 59v-4M455 59v-4M475 74v-4M495 89v-4M515 104v-4" stroke="currentColor" stroke-width="1.3" opacity="0.45"/>
+        <path d="M600 40q26 6 34 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M420 70q120 -6 150 12" fill="none" stroke="#c1632b" stroke-width="1.3" stroke-dasharray="1 8" stroke-linecap="round" opacity="0.7"/>
+        <circle cx="470" cy="78" r="2.4" fill="#c1632b" stroke="none"/>
+        <circle cx="510" cy="84" r="2" fill="#c1632b" stroke="none"/>
+        <circle cx="546" cy="90" r="2.6" fill="#c1632b" stroke="none"/>
+        <rect x="330" y="170" width="70" height="46" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="400" y="170" width="70" height="46" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="470" y="170" width="70" height="46" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <line x1="365" y1="170" x2="365" y2="216" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        <line x1="435" y1="170" x2="435" y2="216" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        <line x1="505" y1="170" x2="505" y2="216" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="fact-line">
+      <span>Free estimates</span>·<span>Same-week scheduling</span>·<span>Mon–Sat, 8am–6pm</span>
+    </div>
+  </div>
+</section>
+
+<section id="transformation">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>See the difference</h2>
+      <p>Drag the slider to see a section of siding before and after a Mid Ohio soft wash.</p>
+    </div>
+    <div class="ba-frame">
+      <div class="ba-layer ba-before">
+        <svg viewBox="0 0 600 340" aria-hidden="true">
+          <rect x="40" y="40" width="520" height="260" fill="none" stroke="currentColor" stroke-width="2"/>
+          <g stroke="currentColor" stroke-width="1" opacity="0.5">
+            <line x1="40" y1="80" x2="560" y2="80"/>
+            <line x1="40" y1="120" x2="560" y2="120"/>
+            <line x1="40" y1="160" x2="560" y2="160"/>
+            <line x1="40" y1="200" x2="560" y2="200"/>
+            <line x1="40" y1="240" x2="560" y2="240"/>
+            <line x1="40" y1="280" x2="560" y2="280"/>
+          </g>
+          <path d="M160 40q10 60 -8 120t10 100" fill="none" stroke="currentColor" stroke-width="3" opacity="0.4"/>
+          <path d="M320 40q-14 70 6 130t-10 90" fill="none" stroke="currentColor" stroke-width="3" opacity="0.35"/>
+          <path d="M440 40q8 80 -6 140t8 80" fill="none" stroke="currentColor" stroke-width="3" opacity="0.35"/>
+          <ellipse cx="230" cy="150" rx="26" ry="14" fill="currentColor" opacity="0.2"/>
+          <ellipse cx="380" cy="220" rx="34" ry="16" fill="currentColor" opacity="0.16"/>
+        </svg>
+        <span class="ba-label ba-label-before">Before</span>
+      </div>
+      <div class="ba-layer ba-after" id="baAfter">
+        <svg viewBox="0 0 600 340" aria-hidden="true">
+          <rect x="40" y="40" width="520" height="260" fill="none" stroke="currentColor" stroke-width="2"/>
+          <g stroke="currentColor" stroke-width="1" opacity="0.5">
+            <line x1="40" y1="80" x2="560" y2="80"/>
+            <line x1="40" y1="120" x2="560" y2="120"/>
+            <line x1="40" y1="160" x2="560" y2="160"/>
+            <line x1="40" y1="200" x2="560" y2="200"/>
+            <line x1="40" y1="240" x2="560" y2="240"/>
+            <line x1="40" y1="280" x2="560" y2="280"/>
+          </g>
+          <line x1="140" y1="45" x2="140" y2="295" style="stroke:var(--accent)" stroke-width="1.4" opacity="0.45"/>
+          <line x1="460" y1="45" x2="460" y2="295" style="stroke:var(--accent)" stroke-width="1.4" opacity="0.45"/>
+        </svg>
+        <span class="ba-label ba-label-after">After</span>
+      </div>
+      <div class="ba-handle" id="baHandle"></div>
+      <input type="range" min="0" max="100" value="50" id="baSlider" class="ba-range" aria-label="Drag to compare before and after">
+    </div>
+    <p class="ba-caption">Drag to see the difference.</p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>What we clean</h2>
+      <p>From driveways to rooftops, we handle exterior surfaces across the Columbus area.</p>
+    </div>
+    <ul class="service-index">
+      <li><span class="num">01</span><div><svg class="icon"><use href="#icon-drop"/></svg><h3>Soft wash</h3><p>Low-pressure cleaning for siding and other delicate exterior surfaces.</p></div></li>
+      <li><span class="num">02</span><div><svg class="icon"><use href="#icon-concrete"/></svg><h3>Concrete cleaning</h3><p>Driveways, walkways, and garage floors stripped of stains and grime.</p></div></li>
+      <li><span class="num">03</span><div><svg class="icon"><use href="#icon-paver"/></svg><h3>Paver cleaning</h3><p>Patios and paver walkways restored without disturbing the sand joints.</p></div></li>
+      <li><span class="num">04</span><div><svg class="icon"><use href="#icon-deck"/></svg><h3>Deck cleaning</h3><p>Wood and composite decks cleaned and prepped for staining or sealing.</p></div></li>
+      <li><span class="num">05</span><div><svg class="icon"><use href="#icon-roof"/></svg><h3>Roof cleaning</h3><p>Soft-wash roof treatment that removes streaks and buildup safely.</p></div></li>
+      <li><span class="num">06</span><div><svg class="icon"><use href="#icon-list"/></svg><h3>Custom requests</h3><p>Have something else in mind? Ask — most exterior surfaces are in scope.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="estimator" id="estimator">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>Get a ballpark price</h2>
+      <p>Move the slider and pick a surface to see roughly what your job would run — no phone call required.</p>
+    </div>
+    <div class="estimator-grid">
+      <div class="estimator-controls">
+        <div class="field">
+          <label for="estSqft">Area to clean <span class="field-value" id="estSqftVal">1,500 sq ft</span></label>
+          <input type="range" id="estSqft" min="500" max="4000" step="100" value="1500">
+        </div>
+        <div class="field">
+          <label for="estSurface">Surface type</label>
+          <select id="estSurface">
+            <option value="0.15|0.25">Concrete / driveway</option>
+            <option value="0.20|0.35">Vinyl siding</option>
+            <option value="0.35|0.55">Wood deck</option>
+          </select>
+        </div>
+      </div>
+      <div class="estimator-result">
+        <div class="range" id="estRange">$225 – $375</div>
+        <p class="disclaimer">Ballpark estimate only, based on typical Columbus-area pricing — your final quote depends on an on-site visit.</p>
+        <a href="#contact" class="btn btn-primary">Get my exact quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="financials" id="billing">
+  <div class="wrap fin-grid">
+    <div class="fin-copy">
+      <h2>Online invoicing</h2>
+      <p>You'll get a digital invoice as soon as the job is done, and you can pay it from your phone or computer.</p>
+      <ul class="fin-points">
+        <li><svg class="icon"><use href="#icon-check"/></svg> Digital invoice sent the moment the job wraps up</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg> Pay securely from a phone or computer</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg> A running history of past jobs and payments</li>
+      </ul>
+    </div>
+    <div class="invoice-card">
+      <div class="invoice-head">
+        <div><div class="brand-mini">Mid Ohio Pressure Wash</div><div class="num">Invoice #MOP-0417</div></div>
+        <span class="sample-caption">Sample — for demonstration</span>
+      </div>
+      <div class="invoice-body">
+        <div class="invoice-row"><span>Roof soft wash</span><span>$385.00</span></div>
+        <div class="invoice-row"><span>Paver patio cleaning</span><span>$150.00</span></div>
+        <div class="invoice-row"><span>Concrete driveway cleaning</span><span>$180.00</span></div>
+      </div>
+      <div class="invoice-total"><span>Total due</span><span>$715.00</span></div>
+      <div class="invoice-actions">
+        <button class="btn btn-view" type="button" onclick="alert('Sample invoice — no real payment is processed in this demo.')">Download PDF</button>
+        <button class="btn btn-pay" type="button" onclick="alert('Sample invoice — no real payment is processed in this demo.')">Pay online</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>What customers say</h2>
+    </div>
+    <div class="test-list">
+      <div class="test-row">
+        <svg class="icon"><use href="#icon-quote"/></svg>
+        <div>
+          <p>Roof looks completely different — no more black streaks. Fast, professional crew.</p>
+          <cite>Homeowner, Hilliard<span class="sample-tag">Sample review</span></cite>
+        </div>
+      </div>
+      <div class="test-row">
+        <svg class="icon"><use href="#icon-quote"/></svg>
+        <div>
+          <p>Patio pavers came out spotless without any damage to the sand joints.</p>
+          <cite>Homeowner, Dublin<span class="sample-tag">Sample review</span></cite>
+        </div>
+      </div>
+      <div class="test-row">
+        <svg class="icon"><use href="#icon-quote"/></svg>
+        <div>
+          <p>Booking and paying online made the whole thing painless.</p>
+          <cite>Homeowner, Grandview<span class="sample-tag">Sample review</span></cite>
+        </div>
+      </div>
+    </div>
+    <p class="test-disclaimer">Sample layout — real Google/Yelp reviews would be pulled in here before launch.</p>
+  </div>
+</section>
+
+<section id="review-funnel">
+  <div class="wrap review-strip">
+    <div class="review-copy">
+      <svg class="icon" style="width:32px;height:32px;color:var(--primary);"><use href="#icon-quote"/></svg>
+      <div>
+        <h3>Scan to find us &amp; leave a review</h3>
+        <p class="sample-note">Demo QR code — once you have a Google Business Profile, this links straight to your review page.</p>
+      </div>
+    </div>
+    <div class="review-qr" id="reviewQR"></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h2>Get in touch</h2>
+        <p>Call or send the form below for a free estimate.</p>
+        <div class="info-line"><svg class="icon"><use href="#icon-pin"/></svg> 3267 Stephen Dr S, Columbus, OH 43204</div>
+        <div class="info-line"><svg class="icon"><use href="#icon-phone"/></svg> <a href="tel:+16149309562">(614) 930-9562</a></div>
+        <div class="info-line"><svg class="icon"><use href="#icon-clock"/></svg> Mon–Sat, 8am–6pm</div>
+      </div>
+      <div>
+        <form id="quoteForm" onsubmit="return handleSubmit(event)">
+          <div class="form-row">
+            <div><label for="name">Full name</label><input id="name" type="text" placeholder="Jane Smith" required></div>
+            <div><label for="phone">Phone</label><input id="phone" type="tel" placeholder="(614) 555-0100" required></div>
+          </div>
+          <div class="form-row"><div class="full"><label for="email">Email</label><input id="email" type="email" placeholder="jane@email.com"></div></div>
+          <div class="form-row"><div class="full"><label for="service">Service needed</label>
+            <select id="service">
+              <option>Soft wash (siding)</option>
+              <option>Concrete cleaning</option>
+              <option>Paver cleaning</option>
+              <option>Deck cleaning</option>
+              <option>Roof cleaning</option>
+              <option>Something else</option>
+            </select>
+          </div></div>
+          <div class="form-row"><div class="full"><label for="message">Project details</label><textarea id="message" placeholder="Tell us about your space, size, and timing..."></textarea></div></div>
+          <button class="btn btn-primary submit-btn" type="submit">Request free estimate</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <svg class="icon"><use href="#icon-check"/></svg>
+          <h3>Thanks — we'll be in touch</h3>
+          <p>This is a demo form; no message was actually sent.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">Mid Ohio Pressure Wash</div>
+      <div class="footer-cols">
+        <div><h4>Contact</h4><span>3267 Stephen Dr S</span><span>Columbus, OH 43204</span><span>(614) 930-9562</span></div>
+        <div><h4>Site</h4><a href="#services">Services</a><a href="#billing">Billing</a><a href="#contact">Contact</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Mid Ohio Pressure Wash</span>
+      <span>Concept mockup for review — not the business's live site; photos, pricing, and copy to be confirmed with the owner.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e){
+    e.preventDefault();
+    document.getElementById('quoteForm').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+    return false;
+  }
+
+  function updateEstimator(){
+    var sqft = parseInt(document.getElementById('estSqft').value, 10);
+    document.getElementById('estSqftVal').textContent = sqft.toLocaleString() + ' sq ft';
+    var parts = document.getElementById('estSurface').value.split('|');
+    var low = Math.round(sqft * parseFloat(parts[0]));
+    var high = Math.round(sqft * parseFloat(parts[1]));
+    document.getElementById('estRange').textContent = '$' + low.toLocaleString() + ' – $' + high.toLocaleString();
+  }
+  document.getElementById('estSqft').addEventListener('input', updateEstimator);
+  document.getElementById('estSurface').addEventListener('change', updateEstimator);
+  updateEstimator();
+
+  var baSlider = document.getElementById('baSlider');
+  var baAfter = document.getElementById('baAfter');
+  var baHandle = document.getElementById('baHandle');
+  function updateBA(){
+    var v = baSlider.value;
+    baAfter.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+    baHandle.style.left = v + '%';
+  }
+  baSlider.addEventListener('input', updateBA);
+  updateBA();
+
+  var qr = qrcode(0, 'M');
+  qr.addData('https://www.google.com/search?q=Mid-Ohio+Pressure+Wash+Columbus+Ohio+reviews');
+  qr.make();
+  document.getElementById('reviewQR').innerHTML = qr.createSvgTag({cellSize:4, margin:2});
+</script>
+
+</body>
+</html>

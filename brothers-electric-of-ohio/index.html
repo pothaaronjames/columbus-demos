@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brothers Electric of Ohio LLC | Columbus, OH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+  :root{
+    --ink:#0e1620;
+    --paper:#f4f6f8;
+    --blue:#245b9e;
+    --blue-deep:#163f73;
+    --line:#d7dee5;
+    --muted:#5b6672;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:16px;}
+  h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;letter-spacing:-0.01em;color:var(--ink);}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  .icon{width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+
+  header{border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;}
+  .brand{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;}
+  .brand small{display:block;font-family:-apple-system,sans-serif;font-size:11.5px;font-weight:400;color:var(--muted);letter-spacing:.02em;}
+  nav.links{display:flex;gap:32px;font-size:14.5px;font-weight:500;}
+  nav.links a{text-decoration:none;color:var(--muted);}
+  nav.links a:hover{color:var(--blue);}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:11px 22px;border-radius:3px;text-decoration:none;font-weight:600;font-size:14.5px;border:1px solid var(--blue);}
+  .btn:hover{background:var(--blue-deep);border-color:var(--blue-deep);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--ink);}
+  .btn .icon{width:16px;height:16px;}
+
+  section{padding:96px 0;}
+  section:not(:first-of-type){border-top:1px solid var(--line);}
+  .hero{padding:64px 0 80px;}
+
+  .hero .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;}
+  .kicker{font-size:13.5px;color:var(--blue);font-weight:600;margin-bottom:18px;}
+  .hero h1{font-size:2.9rem;line-height:1.1;margin-bottom:22px;}
+  .hero p.lead{font-size:1.08rem;color:var(--muted);max-width:44ch;margin-bottom:32px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-art{width:100%;height:auto;color:var(--blue);}
+
+  .stat-row{display:flex;flex-wrap:wrap;}
+  .stat-row .stat{flex:1;min-width:180px;padding:0 32px;}
+  .stat-row .stat:first-child{padding-left:0;}
+  .stat-row .stat:not(:first-child){border-left:1px solid var(--line);}
+  .stat-row .stat .label{font-size:1.02rem;font-weight:600;margin-bottom:4px;}
+  .stat-row .stat .sub{font-size:0.85rem;color:var(--muted);}
+
+  .services-head{max-width:560px;margin-bottom:52px;}
+  .services-head h2{font-size:2.1rem;margin-bottom:14px;}
+  .services-head p{color:var(--muted);font-size:1.02rem;}
+  .service-list{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;}
+  .service-item{display:flex;gap:16px;padding:14px 0 24px 20px;border-left:2px solid var(--line);border-bottom:1px solid var(--line);position:relative;}
+  .service-item .idx{display:block;font-size:0.7rem;color:var(--muted);opacity:.55;margin-bottom:10px;}
+  .service-item .icon{color:var(--blue);margin-top:2px;}
+  .service-item h3{font-size:1.05rem;font-weight:600;font-family:-apple-system,sans-serif;margin-bottom:4px;}
+  .service-item p{font-size:0.92rem;color:var(--muted);}
+  .service-item .col{display:flex;flex-direction:column;}
+  .service-item .row{display:flex;gap:16px;align-items:flex-start;}
+
+  .estimator-head{max-width:560px;margin-bottom:44px;}
+  .estimator-head h2{font-size:2.1rem;margin-bottom:14px;}
+  .estimator-head p{color:var(--muted);font-size:1.02rem;}
+  .estimator-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  .estimate-result{border:1px solid var(--line);border-left:4px solid var(--blue);padding:28px 26px;background:#fff;}
+  .estimate-result .label{font-size:0.85rem;color:var(--muted);margin-bottom:8px;}
+  .estimate-price{font-family:'IBM Plex Mono',monospace;font-size:2.1rem;font-weight:500;color:var(--blue-deep);margin-bottom:16px;}
+  .estimate-result .btn{margin-top:6px;}
+
+  .zip-check{margin-top:10px;display:flex;gap:8px;align-items:center;}
+  .zip-check input{width:90px;border:none;border-bottom:1px solid var(--line);background:transparent;padding:6px 2px;font-family:inherit;font-size:0.92rem;color:var(--ink);}
+  .zip-check input:focus{outline:none;border-bottom-color:var(--blue);}
+  .zip-check button{background:transparent;border:1px solid var(--line);border-radius:3px;padding:6px 12px;font-size:0.82rem;font-weight:600;color:var(--ink);cursor:pointer;}
+  .zip-check button:hover{border-color:var(--blue);color:var(--blue);}
+  .zip-result{font-size:0.85rem;margin-top:8px;display:none;align-items:center;gap:6px;}
+  .zip-result.show{display:flex;}
+  .zip-result.yes{color:#1f7a3f;}
+  .zip-result.no{color:var(--muted);}
+  .zip-result .icon{width:15px;height:15px;}
+
+  .review-strip{padding:56px 0;}
+  .review-strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+  .review-strip h3{font-size:1.3rem;margin-bottom:6px;}
+  .review-strip p{color:var(--muted);font-size:0.94rem;max-width:44ch;}
+  .qr-box{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px;flex-shrink:0;line-height:0;}
+  .qr-box svg{display:block;width:104px;height:104px;}
+
+  .financials{background:var(--ink);color:var(--paper);}
+  .fin-wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:center;}
+  .financials h2{color:#fff;font-size:2rem;margin-bottom:18px;}
+  .financials p{color:#aab6c2;margin-bottom:18px;}
+  .financials ul{list-style:none;}
+  .financials li{display:flex;gap:12px;margin-bottom:12px;color:#dbe3ea;font-size:0.96rem;align-items:flex-start;}
+  .financials li .icon{width:16px;height:16px;color:#5b9bdb;margin-top:5px;}
+  .invoice-card{background:var(--paper);color:var(--ink);border-radius:6px;padding:30px;box-shadow:0 24px 60px rgba(0,0,0,0.4);}
+  .invoice-top{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px;}
+  .invoice-top .job{font-weight:600;font-size:1.02rem;}
+  .invoice-top .num{color:var(--muted);font-size:0.85rem;}
+  .status{display:inline-block;background:#fdf2d8;color:#8a6a10;font-size:0.78rem;font-weight:600;padding:3px 10px;border-radius:3px;margin-bottom:16px;}
+  .invoice-line{display:flex;justify-content:space-between;font-size:0.94rem;padding:8px 0;border-bottom:1px dashed var(--line);}
+  .invoice-total{display:flex;justify-content:space-between;font-weight:600;font-size:1.15rem;padding-top:14px;}
+  .pay-btn{width:100%;margin-top:20px;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:3px;font-weight:600;font-size:0.95rem;cursor:not-allowed;opacity:.9;}
+  .fin-caption{margin-top:12px;font-size:0.8rem;color:var(--muted);text-align:center;}
+
+  .testimonial-feature{max-width:760px;margin:0 auto 48px;}
+  .testimonial-feature p.quote{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.55rem;line-height:1.4;color:var(--ink);margin-bottom:20px;}
+  .testimonial-feature .who{font-size:0.92rem;font-weight:600;color:var(--muted);}
+  .testimonial-feature .stars{color:var(--blue);letter-spacing:2px;margin-bottom:16px;font-size:0.9rem;}
+  .quote-row{display:flex;gap:0;border-top:1px solid var(--line);padding-top:32px;}
+  .quote-row .mini{flex:1;padding:0 28px;}
+  .quote-row .mini:first-child{padding-left:0;}
+  .quote-row .mini:not(:first-child){border-left:1px solid var(--line);}
+  .quote-row p{font-size:0.95rem;color:var(--muted);margin-bottom:10px;}
+  .quote-row .who{font-size:0.85rem;font-weight:600;}
+  .sample-note{font-size:0.75rem;color:var(--muted);opacity:.75;margin-top:6px;}
+
+  .contact-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;}
+  .contact-info h2{font-size:2rem;margin-bottom:14px;}
+  .contact-info p.lead{color:var(--muted);margin-bottom:32px;}
+  .info-row{display:flex;gap:14px;margin-bottom:24px;align-items:flex-start;}
+  .info-row .icon{color:var(--blue);margin-top:2px;}
+  .info-row strong{display:block;font-size:0.95rem;}
+  .info-row span{color:var(--muted);font-size:0.9rem;}
+  .info-row a{color:var(--blue);font-weight:600;text-decoration:none;}
+  .f-row{margin-bottom:22px;}
+  .f-row.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .f-row label{display:block;font-size:0.82rem;color:var(--muted);margin-bottom:6px;}
+  .f-row input,.f-row select,.f-row textarea{width:100%;border:none;border-bottom:1px solid var(--line);background:transparent;padding:8px 2px;font-family:inherit;font-size:0.98rem;color:var(--ink);}
+  .f-row input:focus,.f-row select:focus,.f-row textarea:focus{outline:none;border-bottom-color:var(--blue);}
+  .f-row textarea{resize:vertical;}
+  .success{display:none;padding:40px 0;}
+  .success.show{display:block;}
+  .success h3{margin-bottom:8px;}
+  .success p{color:var(--muted);}
+
+  footer{padding:40px 0;}
+  footer .brand-line{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem;}
+  footer .fine{font-size:0.78rem;color:var(--muted);margin-top:6px;max-width:64ch;}
+
+  @media (max-width:880px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero .wrap > div:first-child{order:2;}
+    .hero-art{max-width:320px;margin:0 auto;}
+    .stat-row .stat{flex:1 1 45%;border-left:none !important;padding-left:0 !important;margin-bottom:20px;}
+    .service-list{grid-template-columns:1fr;}
+    .estimator-grid{grid-template-columns:1fr;}
+    .review-strip .wrap{flex-direction:column;text-align:center;}
+    .fin-wrap{grid-template-columns:1fr;}
+    .contact-wrap{grid-template-columns:1fr;}
+    .quote-row{flex-direction:column;gap:24px;}
+    .quote-row .mini{padding-left:0;}
+    .quote-row .mini:not(:first-child){border-left:none;border-top:1px solid var(--line);padding-top:24px;}
+    nav.links{display:none;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-wrench" viewBox="0 0 24 24">
+    <path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2-2z"/>
+  </symbol>
+  <symbol id="i-panel" viewBox="0 0 24 24">
+    <rect x="4" y="3" width="16" height="18" rx="1"/>
+    <line x1="8" y1="7" x2="8" y2="12"/>
+    <line x1="12" y1="7" x2="12" y2="15"/>
+    <line x1="16" y1="7" x2="16" y2="10"/>
+  </symbol>
+  <symbol id="i-wire" viewBox="0 0 24 12">
+    <path d="M1 6h5l3 5h6l3-5h5"/>
+    <circle cx="9" cy="6" r="1.3"/>
+    <circle cx="15" cy="6" r="1.3"/>
+  </symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24">
+    <path d="M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.2 1 2v.2h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0012 3z"/>
+    <path d="M9.5 18.5h5M10.3 21h3.4"/>
+  </symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24">
+    <circle cx="12" cy="9" r="6"/>
+    <line x1="9.5" y1="6.5" x2="9.5" y2="9"/>
+    <line x1="14.5" y1="6.5" x2="14.5" y2="9"/>
+    <path d="M9 11c0 1.8 1.3 3 3 3s3-1.2 3-3"/>
+    <line x1="12" y1="15" x2="12" y2="21"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M12 3l7 3v6c0 4.6-3 7.8-7 9-4-1.2-7-4.4-7-9V6z"/>
+    <path d="M9 12l2 2 4-4"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24">
+    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M12 21s7-7.2 7-12a7 7 0 10-14 0c0 4.8 7 12 7 12z"/>
+    <circle cx="12" cy="9" r="2.4"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24">
+    <polyline points="5 13 10 18 19 6"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Brothers Electric <small>of Ohio LLC &middot; Residential Electrician</small></div>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#estimator">Get an estimate</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+16146801834" class="btn"><svg class="icon"><use href="#i-phone"/></svg>(614) 680-1834</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <svg class="hero-art" viewBox="0 0 320 240" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="30" y="30" width="90" height="140" rx="4"/>
+        <line x1="55" y1="60" x2="55" y2="100"/>
+        <line x1="75" y1="60" x2="75" y2="130"/>
+        <line x1="95" y1="60" x2="95" y2="80"/>
+        <path d="M120 100h50l20 30h60"/>
+        <circle cx="128" cy="100" r="3"/>
+        <circle cx="250" cy="130" r="3"/>
+        <path d="M190 130l14-14M190 130l14 14" opacity="0.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="kicker">Licensed residential electricians &middot; Columbus, OH</div>
+      <h1>Licensed residential electricians in Columbus, Ohio.</h1>
+      <p class="lead">Brothers Electric of Ohio LLC handles repairs, panel upgrades, wiring, and EV charger installs for homeowners across Columbus.</p>
+      <div class="hero-actions">
+        <a href="tel:+16146801834" class="btn"><svg class="icon"><use href="#i-phone"/></svg>Call (614) 680-1834</a>
+        <a href="#contact" class="btn btn-ghost">Request free estimate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap stat-row">
+    <div class="stat"><div class="label">Licensed &amp; insured</div><div class="sub">Residential electrical work</div></div>
+    <div class="stat"><div class="label">Same-day estimates</div><div class="sub">Most requests quoted within 24 hrs</div></div>
+    <div class="stat"><div class="label">Panel to fixture</div><div class="sub">Full-scope electrical service</div></div>
+    <div class="stat"><div class="label">Columbus, OH</div><div class="sub">Serving the metro area</div></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <h2>Full-service residential electrical work</h2>
+      <p>From a flickering light switch to a full panel upgrade, our licensed electricians handle it safely and up to code.</p>
+    </div>
+    <div class="service-list">
+      <div class="service-item"><div class="col"><span class="idx mono">01</span><div class="row"><svg class="icon"><use href="#i-wrench"/></svg><div><h3>Electrical repair</h3><p>Diagnose and fix faulty outlets, switches, wiring, and circuit issues.</p></div></div></div></div>
+      <div class="service-item"><div class="col"><span class="idx mono">02</span><div class="row"><svg class="icon"><use href="#i-panel"/></svg><div><h3>Panel upgrades</h3><p>Safely upgrade your home's electrical panel to handle modern demand.</p></div></div></div></div>
+      <div class="service-item"><div class="col"><span class="idx mono">03</span><div class="row"><svg class="icon"><use href="#i-wire"/></svg><div><h3>Wiring &amp; rewiring</h3><p>New circuit wiring and whole-home rewiring for older properties.</p></div></div></div></div>
+      <div class="service-item"><div class="col"><span class="idx mono">04</span><div class="row"><svg class="icon"><use href="#i-bulb"/></svg><div><h3>Lighting installation</h3><p>Indoor and outdoor lighting, fixtures, dimmers, and smart controls.</p></div></div></div></div>
+      <div class="service-item"><div class="col"><span class="idx mono">05</span><div class="row"><svg class="icon"><use href="#i-plug"/></svg><div><h3>EV charger installation</h3><p>Professional installation of home EV charging stations.</p></div></div></div></div>
+      <div class="service-item"><div class="col"><span class="idx mono">06</span><div class="row"><svg class="icon"><use href="#i-shield"/></svg><div><h3>Safety inspections</h3><p>Thorough electrical inspections and troubleshooting before you buy or sell a home.</p></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="estimator">
+  <div class="wrap">
+    <div class="estimator-head">
+      <h2>What might this cost?</h2>
+      <p>Pick the job you need below for a typical price range before you call.</p>
+    </div>
+    <div class="estimator-grid">
+      <div class="estimator-controls">
+        <div class="f-row">
+          <label>What do you need done?</label>
+          <select id="jobType">
+            <option value="outlet">Outlet / switch install</option>
+            <option value="panel">Panel upgrade</option>
+            <option value="ev">EV charger install</option>
+            <option value="rewire">Whole-home rewire</option>
+          </select>
+        </div>
+      </div>
+      <div class="estimate-result">
+        <div class="label">Estimated cost range</div>
+        <div class="estimate-price" id="estimatePrice">$150 &ndash; $300</div>
+        <div class="sample-note">Ballpark estimate only, based on typical Columbus-area pricing &mdash; your final quote depends on an on-site visit.</div>
+        <a href="#contact" class="btn">Get my exact quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="financials" id="pricing">
+  <div class="wrap fin-wrap">
+    <div>
+      <h2>Clear estimates, easy approval</h2>
+      <p>Every job starts with an itemized estimate you can review and approve online before any work begins.</p>
+      <ul>
+        <li><svg class="icon"><use href="#i-shield"/></svg>Upfront, itemized estimates</li>
+        <li><svg class="icon"><use href="#i-shield"/></svg>Approve and pay securely online</li>
+        <li><svg class="icon"><use href="#i-shield"/></svg>Digital invoices and job history</li>
+      </ul>
+    </div>
+    <div>
+      <div class="invoice-card">
+        <div class="invoice-top"><div class="job">200A panel upgrade — Westerville Rd</div><div class="num mono">#BE-2087</div></div>
+        <span class="status">Awaiting approval</span>
+        <div class="invoice-line"><span>Panel &amp; breaker materials</span><span>$980.00</span></div>
+        <div class="invoice-line"><span>Labor (2 electricians, 1 day)</span><span>$720.00</span></div>
+        <div class="invoice-line"><span>Permit &amp; inspection fee</span><span>$150.00</span></div>
+        <div class="invoice-total"><span>Total</span><span>$1,850.00</span></div>
+        <button class="pay-btn" disabled>View &amp; approve</button>
+      </div>
+      <div class="fin-caption">Sample estimate shown for demonstration purposes only.</div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="testimonial-feature">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Diagnosed a wiring issue two other electricians missed. Fast, clean work, fair price."</p>
+      <div class="who">Westerville homeowner</div>
+      <div class="sample-note">Sample review, shown for demonstration</div>
+    </div>
+    <div class="quote-row">
+      <div class="mini">
+        <p>"Installed our EV charger in an afternoon. Explained everything clearly before starting."</p>
+        <div class="who">Clintonville resident</div>
+        <div class="sample-note">Sample review</div>
+      </div>
+      <div class="mini">
+        <p>"Panel upgrade was seamless — permits handled, inspection passed first try."</p>
+        <div class="who">Grandview Heights homeowner</div>
+        <div class="sample-note">Sample review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="review-strip" id="review-qr">
+  <div class="wrap">
+    <div>
+      <h3>Scan to find us &amp; leave a review</h3>
+      <p class="sample-note">Demo QR code &mdash; once you have a Google Business Profile, this links straight to your review page.</p>
+    </div>
+    <div class="qr-box" id="reviewQR"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-wrap">
+    <div class="contact-info">
+      <h2>Request a free estimate</h2>
+      <p class="lead">Tell us about your electrical project and we'll get back to you with pricing and availability.</p>
+      <div class="info-row"><svg class="icon"><use href="#i-phone"/></svg><div><strong>Call or text</strong><span><a href="tel:+16146801834">(614) 680-1834</a></span></div></div>
+      <div class="info-row"><svg class="icon"><use href="#i-pin"/></svg><div>
+        <strong>Service area</strong><span>Columbus, Ohio and surrounding areas</span>
+        <div class="zip-check">
+          <input id="zipInput" type="text" inputmode="numeric" maxlength="5" placeholder="Zip code">
+          <button type="button" id="zipCheckBtn">Check</button>
+        </div>
+        <div class="zip-result" id="zipResult"></div>
+      </div></div>
+      <div class="info-row"><svg class="icon"><use href="#i-shield"/></svg><div><strong>Licensed &amp; insured</strong><span>Residential electrical specialists</span></div></div>
+    </div>
+    <div>
+      <form id="quoteForm">
+        <div id="formFields">
+          <div class="f-row"><label>Full name</label><input required placeholder="Jane Smith"></div>
+          <div class="f-row two">
+            <div><label>Phone number</label><input type="tel" required placeholder="(614) 555-0100"></div>
+            <div><label>Email</label><input type="email" placeholder="jane@email.com"></div>
+          </div>
+          <div class="f-row"><label>Service needed</label>
+            <select>
+              <option>Electrical repair</option>
+              <option>Panel upgrade</option>
+              <option>Wiring / rewiring</option>
+              <option>Lighting installation</option>
+              <option>EV charger installation</option>
+              <option>Safety inspection</option>
+            </select>
+          </div>
+          <div class="f-row"><label>Describe the issue or project</label><textarea rows="3" placeholder="Breaker keeps tripping in the kitchen..."></textarea></div>
+          <button type="submit" class="btn">Request free estimate</button>
+        </div>
+        <div class="success" id="formSuccess">
+          <h3>Thanks — we'll be in touch shortly.</h3>
+          <p>This is a demo form; no message was actually sent.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand-line">Brothers Electric of Ohio LLC</div>
+    <div class="fine">Columbus, Ohio &middot; (614) 680-1834. Concept site prepared as a design proposal — not the business's published website.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formFields').style.display='none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  var jobRanges = {
+    outlet: [150, 300],
+    panel: [1800, 3500],
+    ev: [600, 1200],
+    rewire: [6000, 15000]
+  };
+  function fmtUsd(n){ return '$' + n.toLocaleString('en-US'); }
+  function updateEstimate(){
+    var r = jobRanges[document.getElementById('jobType').value];
+    document.getElementById('estimatePrice').textContent = fmtUsd(r[0]) + ' – ' + fmtUsd(r[1]);
+  }
+  document.getElementById('jobType').addEventListener('change', updateEstimate);
+  updateEstimate();
+
+  var serviceZips = [43201,43202,43203,43204,43205,43206,43207,43209,43210,43211,43212,43213,43214,43215,43217,43219,43220,43221,43222,43223,43224,43227,43228,43229,43230,43231,43232,43235,43240,43016,43017,43026,43068,43081,43082,43085,43110,43119,43123,43125,43137,43147,43162,43064];
+  document.getElementById('zipCheckBtn').addEventListener('click', function(){
+    var val = document.getElementById('zipInput').value.trim();
+    var resultEl = document.getElementById('zipResult');
+    if(!/^\d{5}$/.test(val)){
+      resultEl.className = 'zip-result show no';
+      resultEl.innerHTML = 'Enter a 5-digit zip code.';
+      return;
+    }
+    if(serviceZips.indexOf(parseInt(val, 10)) !== -1){
+      resultEl.className = 'zip-result show yes';
+      resultEl.innerHTML = '<svg class="icon"><use href="#i-check"/></svg> Yes &mdash; we service ' + val + '.';
+    } else {
+      resultEl.className = 'zip-result show no';
+      resultEl.innerHTML = 'Give us a call to confirm &mdash; we may still be able to help.';
+    }
+  });
+
+  var reviewQr = qrcode(0, 'M');
+  reviewQr.addData('https://www.google.com/search?q=Brothers+Electric+of+Ohio+Columbus+Ohio+reviews');
+  reviewQr.make();
+  document.getElementById('reviewQR').innerHTML = reviewQr.createSvgTag({cellSize:4, margin:2});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schneider's Pressure Washing | Columbus, OH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b232c;
+    --primary:#2c5079;
+    --primary-dark:#1f3a5a;
+    --paper:#f6f3ec;
+    --panel:#ffffff;
+    --line:#e2dccc;
+    --muted:#6b6558;
+    --accent:#b9812f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;overflow-x:hidden;}
+  h1,h2{font-family:'Newsreader',Georgia,serif;font-weight:600;letter-spacing:-0.01em;color:var(--ink);}
+  a{color:inherit;}
+  svg{display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .icon{width:26px;height:26px;flex-shrink:0;}
+  .icon path,.icon circle,.icon line,.icon polyline{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(246,243,236,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;}
+  .brand{font-family:'Newsreader',serif;font-weight:600;font-size:1.22rem;text-decoration:none;color:var(--ink);}
+  .nav-links{display:flex;gap:30px;list-style:none;}
+  .nav-links a{font-size:0.94rem;text-decoration:none;color:var(--ink);opacity:0.8;}
+  .nav-links a:hover{opacity:1;color:var(--primary);}
+  .nav-cta{background:var(--primary);color:#fdfbf6;font-weight:600;padding:9px 18px;border-radius:4px;text-decoration:none;font-size:0.9rem;white-space:nowrap;}
+  .nav-cta:hover{background:var(--primary-dark);}
+
+  .hero{padding:64px 0 0;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+  .lede-tag{color:var(--muted);font-size:0.92rem;margin-bottom:16px;}
+  .hero h1{font-size:clamp(2rem,4.2vw,2.9rem);line-height:1.18;margin-bottom:20px;}
+  .hero h1 .hl{color:var(--primary);font-style:italic;}
+  .hero-sub{color:var(--muted);font-size:1.04rem;max-width:46ch;margin-bottom:30px;}
+  .hero-ctas{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:4px;font-weight:600;font-size:0.95rem;text-decoration:none;cursor:pointer;border:none;font-family:inherit;transition:background .15s ease;}
+  .btn-primary{background:var(--primary);color:#fdfbf6;}
+  .btn-primary:hover{background:var(--primary-dark);}
+  .btn-text{color:var(--ink);font-weight:500;}
+  .btn-text:hover{color:var(--primary);}
+  .hero-art{color:var(--primary);}
+  .hero-art svg{width:100%;height:auto;}
+
+  .fact-ribbon{border-top:1px solid var(--line);margin-top:56px;padding:18px 0;display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
+  .fact-ribbon span{font-size:0.86rem;color:var(--muted);padding:0 22px;border-right:1px solid var(--line);}
+  .fact-ribbon span:last-child{border-right:none;}
+
+  section{padding:74px 0;}
+  .section-intro{max-width:640px;margin-bottom:40px;}
+  .section-intro h2{font-size:1.9rem;margin-bottom:12px;}
+  .section-intro p{color:var(--muted);font-size:1.02rem;}
+
+  .service-list{list-style:none;border-top:1px solid var(--line);}
+  .service-list li{display:flex;gap:22px;align-items:flex-start;padding:26px 0;border-bottom:1px solid var(--line);}
+  .service-list .icon{margin-top:4px;color:var(--primary);}
+  .service-list h3{font-size:1.12rem;font-weight:600;margin-bottom:6px;}
+  .service-list p{color:var(--muted);font-size:0.95rem;max-width:56ch;}
+
+  .financials{background:var(--ink);color:#e9e6dd;}
+  .fin-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:56px;align-items:center;}
+  .fin-copy h2{color:#fdfbf6;font-size:1.9rem;margin-bottom:14px;}
+  .fin-copy p{color:#b8b4a8;margin-bottom:22px;font-size:1rem;}
+  .fin-points{list-style:none;}
+  .fin-points li{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;color:#d6d3c8;font-size:0.94rem;}
+  .fin-points .icon{color:var(--accent);width:20px;height:20px;margin-top:2px;}
+
+  .invoice-card{background:var(--panel);color:var(--ink);border-radius:8px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.35);}
+  .invoice-head{display:flex;justify-content:space-between;align-items:flex-start;padding:22px 26px;border-bottom:1px solid var(--line);}
+  .invoice-head .brand-mini{font-family:'Newsreader',serif;font-weight:600;font-size:1.08rem;}
+  .invoice-head .num{font-size:0.82rem;color:var(--muted);margin-top:3px;}
+  .sample-caption{font-size:0.74rem;color:var(--muted);white-space:nowrap;padding-top:2px;}
+  .invoice-body{padding:20px 26px;}
+  .invoice-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);font-size:0.93rem;}
+  .invoice-row:last-of-type{border-bottom:none;}
+  .invoice-total{display:flex;justify-content:space-between;padding:16px 26px;background:#f2eee2;font-weight:700;font-size:1.06rem;}
+  .invoice-total span:last-child{color:var(--accent);}
+  .invoice-actions{padding:18px 26px;display:flex;gap:10px;}
+  .invoice-actions .btn{flex:1;justify-content:center;padding:11px;font-size:0.87rem;}
+  .btn-pay{background:var(--primary);color:#fdfbf6;}
+  .btn-pay:hover{background:var(--primary-dark);}
+  .btn-view{background:#eeeadd;color:var(--ink);}
+  .btn-view:hover{background:#e5e0d0;}
+
+  .testimonials{background:var(--paper);}
+  .test-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;align-items:start;}
+  .pull-quote p{font-family:'Newsreader',serif;font-size:1.5rem;line-height:1.45;color:var(--ink);margin-bottom:20px;}
+  .pull-quote p::before{content:"\201C";color:var(--primary);}
+  .pull-quote p::after{content:"\201D";color:var(--primary);}
+  .pull-quote cite{font-style:normal;color:var(--muted);font-size:0.92rem;display:flex;align-items:center;gap:10px;}
+  .test-stack{display:flex;flex-direction:column;gap:26px;padding-top:6px;border-left:1px solid var(--line);padding-left:30px;}
+  .mini-quote p{font-size:0.96rem;color:var(--ink);margin-bottom:8px;}
+  .mini-quote cite{font-style:normal;color:var(--muted);font-size:0.86rem;display:flex;align-items:center;gap:8px;}
+  .sample-tag{font-size:0.68rem;color:var(--muted);background:#eeeadd;padding:2px 8px;border-radius:100px;}
+  .test-disclaimer{color:var(--muted);font-size:0.86rem;margin-top:34px;}
+
+  .contact{background:var(--panel);border-top:1px solid var(--line);}
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:52px;align-items:start;}
+  .contact-info h2{font-size:1.85rem;margin-bottom:14px;}
+  .contact-info p{color:var(--muted);margin-bottom:24px;}
+  .info-line{display:flex;gap:12px;align-items:center;margin-bottom:14px;font-size:0.95rem;color:var(--ink);}
+  .info-line .icon{color:var(--primary);width:20px;height:20px;}
+  form{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:30px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+  label{display:block;font-size:0.82rem;font-weight:600;color:var(--ink);margin-bottom:6px;}
+  input,select,textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:0.92rem;background:#fdfcf8;}
+  textarea{resize:vertical;min-height:90px;}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(44,80,121,0.14);}
+  .full{grid-column:1/-1;}
+  .submit-btn{width:100%;justify-content:center;margin-top:6px;}
+  .form-success{display:none;text-align:center;padding:30px 10px;}
+  .form-success .icon{margin:0 auto 14px;color:#3f7f52;width:40px;height:40px;}
+  .form-success h3{font-family:'Newsreader',serif;font-size:1.3rem;margin-bottom:8px;}
+  .form-success p{color:var(--muted);font-size:0.92rem;}
+
+  footer{background:var(--ink);color:#a8a496;padding:40px 0 26px;}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .footer-brand{font-family:'Newsreader',serif;color:#fdfbf6;font-size:1.1rem;}
+  .footer-cols{display:flex;gap:56px;}
+  .footer-cols h4{color:#fdfbf6;font-size:0.82rem;font-weight:600;margin-bottom:10px;}
+  .footer-cols span,.footer-cols a{display:block;color:#a8a496;font-size:0.87rem;text-decoration:none;margin-bottom:7px;}
+  .footer-bottom{padding-top:18px;font-size:0.78rem;color:#7c7869;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  #transformation{background:var(--panel);}
+  .ba-frame{position:relative;width:100%;max-width:900px;margin:0 auto;aspect-ratio:16/9;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper);}
+  .ba-layer{position:absolute;inset:0;}
+  .ba-layer svg{width:100%;height:100%;display:block;}
+  .ba-before{color:#a8a193;}
+  .ba-after{color:var(--primary);}
+  .ba-label{position:absolute;top:14px;font-size:0.72rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;background:rgba(255,255,255,0.88);padding:4px 10px;border-radius:3px;color:var(--ink);}
+  .ba-label-before{left:14px;}
+  .ba-label-after{right:14px;}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--panel);box-shadow:0 0 0 1px rgba(0,0,0,0.2);pointer-events:none;}
+  .ba-handle::after{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;border-radius:50%;background:var(--panel);border:2px solid var(--primary);transform:translate(-50%,-50%);}
+  .ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;}
+  .ba-caption{text-align:center;color:var(--muted);font-size:0.86rem;margin-top:16px;}
+
+  .estimator{background:var(--panel);}
+  .estimator-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  .estimator-controls .field{margin-bottom:24px;}
+  .estimator-controls label{display:block;font-size:0.85rem;font-weight:600;color:var(--ink);margin-bottom:8px;}
+  .estimator-controls .field-value{color:var(--muted);font-weight:500;}
+  .estimator-controls input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:var(--line);border-radius:2px;padding:0;border:none;}
+  .estimator-controls input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--primary);cursor:pointer;border:3px solid var(--panel);box-shadow:0 0 0 1px var(--primary);}
+  .estimator-controls input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--primary);cursor:pointer;border:3px solid var(--panel);box-shadow:0 0 0 1px var(--primary);}
+  .estimator-result{border:1px solid var(--line);border-left:4px solid var(--primary);padding:28px 26px;background:var(--paper);}
+  .estimator-result .range{font-family:'Newsreader',Georgia,serif;font-size:2.1rem;font-weight:600;color:var(--ink);margin-bottom:6px;}
+  .estimator-result .disclaimer{font-size:0.86rem;color:var(--muted);margin:14px 0 20px;font-style:italic;}
+
+  .reminder-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:start;}
+  .reminder-panel form{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:26px;}
+  .reminder-panel .field{margin-bottom:16px;}
+  .sample-note{font-size:0.78rem;color:var(--muted);font-style:italic;margin-top:14px;}
+
+  @media (max-width:880px){
+    .nav-links{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .estimator-grid{grid-template-columns:1fr;}
+    .reminder-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;max-width:340px;margin:0 auto;}
+    .fin-grid{grid-template-columns:1fr;}
+    .test-grid{grid-template-columns:1fr;}
+    .test-stack{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:26px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .fact-ribbon{flex-direction:column;text-align:center;gap:10px;}
+    .fact-ribbon span{border-right:none;padding:0;}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3.2 1.8"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 7"/></symbol>
+  <symbol id="icon-concrete" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 12h18M9 5v14M15 5v14"/></symbol>
+  <symbol id="icon-house" viewBox="0 0 24 24"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10.5V20h12v-9.5"/><path d="M10.5 20v-5h3v5"/></symbol>
+  <symbol id="icon-deck" viewBox="0 0 24 24"><path d="M3 7.5h18M3 12h18M3 16.5h18"/><path d="M7.5 5v4.5M15 5v4.5M7.5 9.5v4.5M15 9.5v4.5M7.5 14v4.5M15 14v4.5" opacity="0.5"/></symbol>
+  <symbol id="icon-fence" viewBox="0 0 24 24"><path d="M5 21V9l2-4 2 4v12M13 21V9l2-4 2 4v12"/><path d="M3 13h18"/></symbol>
+  <symbol id="icon-quote" viewBox="0 0 24 24"><path d="M7 8.5C5 9.5 4 11 4 13.2c0 2 1.2 3.3 3 3.3 1.6 0 2.8-1.2 2.8-2.8 0-1.4-1-2.4-2.3-2.5.2-1 1-2 2.5-2.7M15 8.5c-2 1-3 2.5-3 4.7 0 2 1.2 3.3 3 3.3 1.6 0 2.8-1.2 2.8-2.8 0-1.4-1-2.4-2.3-2.5.2-1 1-2 2.5-2.7"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap navbar">
+    <a class="brand" href="#top">Schneider's Pressure Washing</a>
+    <nav class="nav-links">
+      <a href="#transformation">Our work</a>
+      <a href="#services">Services</a>
+      <a href="#estimator">Get an estimate</a>
+      <a href="#billing">Billing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Get a free quote</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="lede-tag">Columbus, Ohio &amp; surrounding suburbs</p>
+      <h1>Pressure washing for driveways, siding, decks, and fences <span class="hl">done right</span>.</h1>
+      <p class="hero-sub">Schneider's Pressure Washing handles concrete, house exteriors, decks, and fencing for homeowners across Central Ohio — careful work and fair pricing, without the horror stories you hear about rental pressure washers.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get a free quote</a>
+        <a href="#services" class="btn btn-text">See what we clean →</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 480 360" width="100%">
+        <line x1="20" y1="300" x2="460" y2="300" stroke="currentColor" stroke-width="2"/>
+        <g stroke="currentColor" stroke-width="1.2" opacity="0.4">
+          <line x1="55" y1="300" x2="80" y2="326"/>
+          <line x1="105" y1="300" x2="130" y2="326"/>
+          <line x1="155" y1="300" x2="180" y2="326"/>
+        </g>
+        <polyline points="230,120 300,66 372,120" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="230" y="120" width="142" height="150" fill="none" stroke="currentColor" stroke-width="2"/>
+        <rect x="252" y="150" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="324" y="150" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <rect x="288" y="212" width="30" height="58" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M292 156a70 70 0 0 1 32 60" fill="none" stroke="#b9812f" stroke-width="1.4" opacity="0.55" stroke-linecap="round"/>
+        <rect x="46" y="238" width="26" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M72 243h10" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M84 243q70 -70 168 -55" fill="none" stroke="#b9812f" stroke-width="1.4" stroke-dasharray="1 9" stroke-linecap="round"/>
+        <circle cx="128" cy="216" r="3" fill="#b9812f" stroke="none"/>
+        <circle cx="176" cy="192" r="2.6" fill="#b9812f" stroke="none"/>
+        <circle cx="222" cy="182" r="2.2" fill="#b9812f" stroke="none"/>
+      </svg>
+    </div>
+  </div>
+  <div class="fact-ribbon">
+    <span>Locally owned &amp; operated</span>
+    <span>Free, no-obligation estimates</span>
+    <span>Mon–Sat, 8am–6pm</span>
+  </div>
+</section>
+
+<section id="transformation">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>See the difference</h2>
+      <p>Drag the slider to see a driveway before and after a Schneider's clean.</p>
+    </div>
+    <div class="ba-frame">
+      <div class="ba-layer ba-before">
+        <svg viewBox="0 0 600 340" aria-hidden="true">
+          <polygon points="60,300 540,300 460,80 140,80" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="140" y1="80" x2="60" y2="300" stroke="currentColor" stroke-width="2"/>
+          <line x1="460" y1="80" x2="540" y2="300" stroke="currentColor" stroke-width="2"/>
+          <line x1="220" y1="90" x2="160" y2="295" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+          <line x1="300" y1="90" x2="300" y2="298" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+          <line x1="380" y1="90" x2="440" y2="295" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+          <path d="M180 200q20 10 10 30t20 30" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.75"/>
+          <path d="M380 160q-15 20 5 25t-10 35" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.75"/>
+          <ellipse cx="260" cy="240" rx="46" ry="18" fill="currentColor" opacity="0.2"/>
+          <ellipse cx="400" cy="270" rx="60" ry="22" fill="currentColor" opacity="0.16"/>
+          <ellipse cx="190" cy="150" rx="30" ry="12" fill="currentColor" opacity="0.14"/>
+        </svg>
+        <span class="ba-label ba-label-before">Before</span>
+      </div>
+      <div class="ba-layer ba-after" id="baAfter">
+        <svg viewBox="0 0 600 340" aria-hidden="true">
+          <polygon points="60,300 540,300 460,80 140,80" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="140" y1="80" x2="60" y2="300" stroke="currentColor" stroke-width="2"/>
+          <line x1="460" y1="80" x2="540" y2="300" stroke="currentColor" stroke-width="2"/>
+          <line x1="220" y1="90" x2="160" y2="295" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+          <line x1="300" y1="90" x2="300" y2="298" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+          <line x1="380" y1="90" x2="440" y2="295" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+          <line x1="200" y1="110" x2="240" y2="270" style="stroke:var(--accent)" stroke-width="1.4" opacity="0.5"/>
+          <line x1="340" y1="105" x2="380" y2="280" style="stroke:var(--accent)" stroke-width="1.4" opacity="0.5"/>
+        </svg>
+        <span class="ba-label ba-label-after">After</span>
+      </div>
+      <div class="ba-handle" id="baHandle"></div>
+      <input type="range" min="0" max="100" value="50" id="baSlider" class="ba-range" aria-label="Drag to compare before and after">
+    </div>
+    <p class="ba-caption">Drag to see the difference.</p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>What we clean</h2>
+      <p>Four services, one crew — straightforward exterior cleaning, without upselling you on things you don't need.</p>
+    </div>
+    <ul class="service-list">
+      <li>
+        <svg class="icon"><use href="#icon-concrete"/></svg>
+        <div><h3>Concrete cleaning</h3><p>Driveways, sidewalks, and patios stripped of grime, oil stains, and mildew buildup.</p></div>
+      </li>
+      <li>
+        <svg class="icon"><use href="#icon-house"/></svg>
+        <div><h3>House washing</h3><p>Soft-wash exterior cleaning that lifts dirt and algae without damaging siding or paint.</p></div>
+      </li>
+      <li>
+        <svg class="icon"><use href="#icon-deck"/></svg>
+        <div><h3>Deck cleaning</h3><p>Wood and composite decks cleaned and refreshed, ready for staining or year-round use.</p></div>
+      </li>
+      <li>
+        <svg class="icon"><use href="#icon-fence"/></svg>
+        <div><h3>Fence cleaning</h3><p>Wood and vinyl fencing cleared of grime and mildew for a like-new finish.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="estimator" id="estimator">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2>Get a ballpark price</h2>
+      <p>Move the slider and pick a surface — see roughly what your job would run before you even pick up the phone.</p>
+    </div>
+    <div class="estimator-grid">
+      <div class="estimator-controls">
+        <div class="field">
+          <label for="estSqft">Area to clean <span class="field-value" id="estSqftVal">1,500 sq ft</span></label>
+          <input type="range" id="estSqft" min="500" max="4000" step="100" value="1500">
+        </div>
+        <div class="field">
+          <label for="estSurface">Surface type</label>
+          <select id="estSurface">
+            <option value="0.15|0.25">Concrete / driveway</option>
+            <option value="0.20|0.35">Vinyl siding</option>
+            <option value="0.35|0.55">Wood deck</option>
+          </select>
+        </div>
+      </div>
+      <div class="estimator-result">
+        <div class="range" id="estRange">$225 – $375</div>
+        <p class="disclaimer">Ballpark estimate only, based on typical Columbus-area pricing — your final quote depends on an on-site visit.</p>
+        <a href="#contact" class="btn btn-primary">Get my exact quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="financials" id="billing">
+  <div class="wrap fin-grid">
+    <div class="fin-copy">
+      <h2>Pay online, skip the paper trail</h2>
+      <p>Customers get a clean digital invoice after every job and can pay securely in a couple of taps — no checkbook required.</p>
+      <ul class="fin-points">
+        <li><svg class="icon"><use href="#icon-check"/></svg> A professional invoice instead of a handwritten receipt</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg> Estimates you can review before approving the work</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg> Faster payment, less time chasing checks</li>
+      </ul>
+    </div>
+    <div class="invoice-card">
+      <div class="invoice-head">
+        <div><div class="brand-mini">Schneider's Pressure Washing</div><div class="num">Invoice #SPW-1042</div></div>
+        <span class="sample-caption">Sample — for demonstration</span>
+      </div>
+      <div class="invoice-body">
+        <div class="invoice-row"><span>Driveway &amp; walkway cleaning</span><span>$220.00</span></div>
+        <div class="invoice-row"><span>House soft wash (2-story)</span><span>$310.00</span></div>
+        <div class="invoice-row"><span>Fence cleaning (150 ft)</span><span>$95.00</span></div>
+      </div>
+      <div class="invoice-total"><span>Total due</span><span>$625.00</span></div>
+      <div class="invoice-actions">
+        <button class="btn btn-view" type="button" onclick="alert('This is a sample invoice preview — no real payment is processed in this demo.')">View details</button>
+        <button class="btn btn-pay" type="button" onclick="alert('This is a sample invoice preview — no real payment is processed in this demo.')">Pay now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="test-grid">
+      <blockquote class="pull-quote">
+        <p>Driveway looks brand new. They showed up on time and cleaned up after themselves — exactly what you want from a pressure-washing crew.</p>
+        <cite>— Homeowner, Columbus <span class="sample-tag">Sample review</span></cite>
+      </blockquote>
+      <div class="test-stack">
+        <div class="mini-quote">
+          <p>"Easy to book, fair pricing, and the online invoice made paying simple."</p>
+          <cite>— Homeowner, Westerville <span class="sample-tag">Sample</span></cite>
+        </div>
+        <div class="mini-quote">
+          <p>"Our siding hasn't looked this clean since we moved in."</p>
+          <cite>— Homeowner, Grove City <span class="sample-tag">Sample</span></cite>
+        </div>
+      </div>
+    </div>
+    <p class="test-disclaimer">Sample layout — real customer reviews would replace these before launch.</p>
+  </div>
+</section>
+
+<section id="reminders">
+  <div class="wrap reminder-grid">
+    <div class="reminder-copy">
+      <h2>Sign up for a wash reminder</h2>
+      <p>Give us your info and we'll call when it's time for your seasonal wash. Most homes only need one or two visits a year.</p>
+    </div>
+    <div class="reminder-panel">
+      <form id="reminderForm" onsubmit="return handleReminderSubmit(event)">
+        <div class="field"><label for="remName">Full name</label><input id="remName" type="text" placeholder="Jane Smith" required></div>
+        <div class="field"><label for="remPhone">Phone</label><input id="remPhone" type="tel" placeholder="(614) 555-0100" required></div>
+        <div class="field"><label for="remFreq">When should we remind you?</label>
+          <select id="remFreq">
+            <option>Spring wash</option>
+            <option>Fall wash</option>
+            <option>Every 6 months</option>
+          </select>
+        </div>
+        <button class="btn btn-primary submit-btn" type="submit">Sign me up</button>
+      </form>
+      <div class="form-success" id="reminderSuccess">
+        <svg class="icon"><use href="#icon-check"/></svg>
+        <h3>You're on the list</h3>
+        <p>We'll reach out when it's time.</p>
+      </div>
+      <p class="sample-note">Demo signup — this preview doesn't send real messages, but the feature is ready to wire up.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Request your free quote</h2>
+        <p>Tell us about your project and we'll follow up with pricing — no obligation.</p>
+        <div class="info-line"><svg class="icon"><use href="#icon-pin"/></svg> Columbus, Ohio &amp; surrounding areas</div>
+        <div class="info-line"><svg class="icon"><use href="#icon-clock"/></svg> Mon–Sat, 8am–6pm</div>
+      </div>
+      <div>
+        <form id="quoteForm" onsubmit="return handleSubmit(event)">
+          <div class="form-row">
+            <div><label for="name">Full name</label><input id="name" type="text" placeholder="Jane Smith" required></div>
+            <div><label for="phone">Phone</label><input id="phone" type="tel" placeholder="(614) 555-0100" required></div>
+          </div>
+          <div class="form-row"><div class="full"><label for="email">Email</label><input id="email" type="email" placeholder="jane@email.com"></div></div>
+          <div class="form-row"><div class="full"><label for="service">Service needed</label>
+            <select id="service">
+              <option>Concrete / driveway cleaning</option>
+              <option>House washing</option>
+              <option>Deck cleaning</option>
+              <option>Fence cleaning</option>
+              <option>Something else</option>
+            </select>
+          </div></div>
+          <div class="form-row"><div class="full"><label for="message">Project details</label><textarea id="message" placeholder="Tell us about your space, size, and timing..."></textarea></div></div>
+          <button class="btn btn-primary submit-btn" type="submit">Request free quote</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <svg class="icon"><use href="#icon-check"/></svg>
+          <h3>Thanks — we'll be in touch</h3>
+          <p>This is a demo form; no message was actually sent.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">Schneider's Pressure Washing</div>
+      <div class="footer-cols">
+        <div><h4>Contact</h4><span>Columbus, Ohio</span><span>Serving Central Ohio</span></div>
+        <div><h4>Site</h4><a href="#services">Services</a><a href="#billing">Billing</a><a href="#contact">Contact</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Schneider's Pressure Washing</span>
+      <span>Concept mockup for review — not the business's live site; photos, pricing, and copy to be confirmed with the owner.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e){
+    e.preventDefault();
+    document.getElementById('quoteForm').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+    return false;
+  }
+
+  function handleReminderSubmit(e){
+    e.preventDefault();
+    document.getElementById('reminderForm').style.display='none';
+    document.getElementById('reminderSuccess').style.display='block';
+    return false;
+  }
+
+  function updateEstimator(){
+    var sqft = parseInt(document.getElementById('estSqft').value, 10);
+    document.getElementById('estSqftVal').textContent = sqft.toLocaleString() + ' sq ft';
+    var parts = document.getElementById('estSurface').value.split('|');
+    var low = Math.round(sqft * parseFloat(parts[0]));
+    var high = Math.round(sqft * parseFloat(parts[1]));
+    document.getElementById('estRange').textContent = '$' + low.toLocaleString() + ' – $' + high.toLocaleString();
+  }
+  document.getElementById('estSqft').addEventListener('input', updateEstimator);
+  document.getElementById('estSurface').addEventListener('change', updateEstimator);
+  updateEstimator();
+
+  var baSlider = document.getElementById('baSlider');
+  var baAfter = document.getElementById('baAfter');
+  var baHandle = document.getElementById('baHandle');
+  function updateBA(){
+    var v = baSlider.value;
+    baAfter.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+    baHandle.style.left = v + '%';
+  }
+  baSlider.addEventListener('input', updateBA);
+  updateBA();
+</script>
+
+</body>
+</html>

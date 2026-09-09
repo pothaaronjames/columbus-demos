@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WG Carpentry LLC | Carpentry, Repairs & Handyman — Reynoldsburg, OH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+  :root{
+    --primary:#3f4a52;
+    --primary-dark:#2c343a;
+    --ink:#221e1a;
+    --paper:#f5f1e8;
+    --paper-2:#ece4d3;
+    --accent:#b9852f;
+    --muted:#6f6a60;
+    --border:#ddd2ba;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter', system-ui, sans-serif; color:var(--ink); background:var(--paper); line-height:1.65; font-size:16px;}
+  h1,h2,h3,.brand{font-family:'Bitter', Georgia, serif; font-weight:600;}
+  a{color:inherit;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 24px;}
+  .icon{width:1em; height:1em; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; vertical-align:-0.15em; flex-shrink:0;}
+
+  .topbar{background:var(--ink); color:#c7c2b8; font-size:0.86rem;}
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding:9px 24px; flex-wrap:wrap; gap:8px;}
+  .topbar .phone{color:#fff; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;}
+
+  header.main{background:var(--white); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:50;}
+  header.main .wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; gap:20px;}
+  .brand{font-size:1.3rem; color:var(--ink); display:flex; flex-direction:column; line-height:1.15;}
+  .brand span{font-family:'Inter', sans-serif; font-size:0.72rem; color:var(--muted); font-weight:500; margin-top:2px;}
+  nav.mainnav{display:flex; gap:26px; font-weight:500; font-size:0.94rem;}
+  nav.mainnav a{text-decoration:none; color:var(--ink);}
+  nav.mainnav a:hover{color:var(--primary);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; background:var(--primary); color:#fff; padding:12px 22px;
+    border-radius:4px; text-decoration:none; font-weight:600; font-size:0.92rem; border:1px solid var(--primary);
+    transition:background .15s ease;
+  }
+  .btn:hover{background:var(--primary-dark);}
+  .btn.ghost{background:transparent; color:var(--white); border:1px solid rgba(255,255,255,0.5);}
+  .btn.ghost:hover{background:rgba(255,255,255,0.1);}
+
+  .hero{background:var(--ink); color:#efece4; padding:76px 0 64px;}
+  .hero .wrap{display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:center;}
+  .hero h1{font-size:2.3rem; line-height:1.28; margin-bottom:20px; color:#fff;}
+  .hero p.lead{font-size:1.04rem; color:#cbc7bc; max-width:48ch; margin-bottom:30px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .joinery{width:100%; height:auto; color:#565048;}
+  .joinery .accent-line{color:var(--accent);}
+  .hero-caption{margin-top:16px; font-size:0.86rem; color:#8f8a7e; text-align:center;}
+  @media (max-width: 880px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero{padding:56px 0 48px;}
+    nav.mainnav{display:none;}
+  }
+
+  .process{background:var(--white); border-bottom:1px solid var(--border); padding:36px 0;}
+  .process .wrap{display:flex; gap:0;}
+  .process .step{flex:1; padding:0 28px;}
+  .process .step + .step{border-left:1px solid var(--border);}
+  .process .step .n{font-family:'Bitter',serif; font-size:0.82rem; color:var(--accent); font-weight:700; margin-bottom:6px; letter-spacing:0.04em;}
+  .process .step .t{font-weight:600; margin-bottom:4px; font-size:0.98rem;}
+  .process .step p{color:var(--muted); font-size:0.87rem;}
+  @media (max-width:760px){
+    .process .wrap{flex-direction:column; gap:22px;}
+    .process .step + .step{border-left:none; border-top:1px solid var(--border); padding-top:22px;}
+  }
+
+  section{padding:72px 0;}
+  .intro{max-width:640px; margin-bottom:36px;}
+  .intro h2{font-size:1.8rem; color:var(--ink); margin-bottom:10px;}
+  .intro p{color:var(--muted); font-size:1rem;}
+
+  .services{background:var(--paper);}
+  .svc-list{max-width:760px;}
+  .svc-item{display:flex; gap:16px; padding:20px 0; border-top:1px solid var(--border);}
+  .svc-item:first-child{border-top:none;}
+  .svc-item .icon-wrap{color:var(--primary); font-size:1.4rem; padding-top:2px; flex-shrink:0;}
+  .svc-item h3{font-size:1.02rem; color:var(--ink); margin-bottom:4px; font-weight:600;}
+  .svc-item p{font-size:0.9rem; color:var(--muted);}
+
+  .estimator{background:var(--white);}
+  .financing{background:var(--white); border-top:1px solid var(--border);}
+  .est-wrap{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  .est-controls .field{margin-bottom:22px;}
+  .est-controls label{display:block; font-size:0.85rem; font-weight:600; color:var(--ink); margin-bottom:8px;}
+  .est-controls input[type=range]{width:100%; accent-color:var(--primary);}
+  .est-controls select{
+    width:100%; padding:11px 12px; border:1px solid var(--border); border-radius:4px; font-family:inherit; font-size:0.95rem; background:#fff;
+  }
+  .est-controls select:focus{outline:2px solid var(--primary); outline-offset:1px;}
+  .est-result{border:1px solid var(--border); border-left:4px solid var(--primary); background:var(--paper); border-radius:4px; padding:28px 26px;}
+  .est-result .label{font-size:0.82rem; color:var(--muted); font-weight:600; margin-bottom:8px;}
+  .est-result .price{font-family:'Bitter',serif; font-size:1.9rem; color:var(--ink); margin-bottom:16px;}
+  .est-result .sample-note{font-size:0.82rem; color:var(--muted); font-style:italic; margin-bottom:18px;}
+  @media (max-width:880px){ .est-wrap{grid-template-columns:1fr;} }
+
+  .financials{background:var(--ink); color:#e2ded4;}
+  .financials .intro h2{color:#fff;}
+  .financials .intro p{color:#b3ada0;}
+  .fin-wrap{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  .fin-copy .sample-note{font-size:0.82rem; color:#9a9488; font-style:italic; margin-bottom:14px;}
+  .invoice-card{background:var(--white); color:var(--ink); border-radius:6px; box-shadow:0 24px 48px rgba(0,0,0,0.35); padding:26px 24px;}
+  .invoice-head{display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:14px; margin-bottom:14px;}
+  .invoice-head .co{font-family:'Bitter',serif; font-weight:700; color:var(--ink);}
+  .invoice-head .meta{text-align:right; font-size:0.83rem; color:var(--muted);}
+  .invoice-rows div{display:flex; justify-content:space-between; padding:8px 0; font-size:0.9rem; border-bottom:1px dashed var(--border);}
+  .invoice-total{display:flex; justify-content:space-between; padding-top:14px; font-weight:700; font-size:1.1rem; color:var(--primary);}
+  .pay-btn{margin-top:18px; width:100%; background:var(--primary); color:#fff; border:none; padding:12px; border-radius:4px; font-weight:600; font-size:0.92rem; cursor:pointer;}
+  .pay-btn:hover{background:var(--primary-dark);}
+  .fin-points{list-style:none;}
+  .fin-points li{margin-bottom:14px; color:#cbc7bc; padding-left:26px; position:relative; font-size:0.94rem;}
+  .fin-points li .icon{position:absolute; left:0; top:3px; color:var(--accent);}
+  @media (max-width:880px){ .fin-wrap{grid-template-columns:1fr;} }
+
+  .review-strip{background:var(--paper-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:44px 0;}
+  .review-strip .wrap{display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap;}
+  .review-strip .copy{max-width:460px;}
+  .review-strip h3{font-size:1.25rem; color:var(--ink); margin-bottom:8px;}
+  .review-strip .copy > p{color:var(--muted); font-size:0.94rem;}
+  .review-strip .sample-note{font-size:0.82rem; color:#8a8577; font-style:italic; margin-top:10px;}
+  .review-strip .qr-box{background:var(--white); border:1px solid var(--border); border-radius:6px; padding:12px; flex-shrink:0; line-height:0;}
+  .review-strip .qr-box svg{display:block; width:120px; height:120px;}
+  @media (max-width:700px){ .review-strip .wrap{flex-direction:column; text-align:center;} }
+
+  .testimonials{background:var(--paper);}
+  .pull-quote{max-width:680px; margin:0 auto 44px; text-align:center;}
+  .pull-quote p{font-family:'Bitter',serif; font-size:1.4rem; font-style:italic; color:var(--ink); line-height:1.4; margin-bottom:16px;}
+  .pull-quote .who{font-size:0.88rem; color:var(--muted); font-weight:600;}
+  .pull-quote .tag{display:block; font-size:0.78rem; color:#9c9891; font-style:italic; margin-top:4px;}
+  .more-quotes{max-width:760px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:0 40px;}
+  .more-quotes .q{padding:18px 0; border-top:1px solid var(--border);}
+  .more-quotes .q p{font-size:0.92rem; color:var(--ink); margin-bottom:6px;}
+  .more-quotes .q .who{font-size:0.82rem; color:var(--muted);}
+  .more-quotes .q .tag{font-size:0.74rem; color:#9c9891; font-style:italic;}
+  @media (max-width:700px){ .more-quotes{grid-template-columns:1fr;} }
+
+  .contact{background:var(--white);}
+  .contact-wrap{display:grid; grid-template-columns:1fr 1.15fr; gap:52px;}
+  .contact-info h3{color:var(--ink); margin-bottom:14px; font-size:1.25rem;}
+  .contact-info > p{color:var(--muted); margin-bottom:26px; font-size:0.96rem;}
+  .info-row{display:flex; gap:14px; margin-bottom:18px; align-items:flex-start;}
+  .info-row .icon{color:var(--primary); font-size:1.15rem; margin-top:2px;}
+  .info-row div strong{display:block; color:var(--ink); font-size:0.92rem;}
+  .info-row div span{color:var(--muted); font-size:0.9rem;}
+  form.quote{background:var(--paper); border:1px solid var(--border); border-radius:6px; padding:30px;}
+  form.quote label{display:block; font-size:0.85rem; font-weight:600; color:var(--ink); margin-bottom:6px;}
+  form.quote .field{margin-bottom:18px;}
+  form.quote input, form.quote select, form.quote textarea{
+    width:100%; padding:11px 12px; border:1px solid var(--border); border-radius:4px; font-family:inherit; font-size:0.95rem; background:#fff;
+  }
+  form.quote input:focus, form.quote select:focus, form.quote textarea:focus{outline:2px solid var(--primary); outline-offset:1px;}
+  form.quote .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  form.quote button{
+    width:100%; background:var(--primary); color:#fff; border:none; padding:13px; border-radius:4px;
+    font-weight:600; font-size:0.94rem; cursor:pointer;
+  }
+  form.quote button:hover{background:var(--primary-dark);}
+  .form-success{display:none; text-align:center; padding:44px 10px;}
+  .form-success.show{display:block;}
+  .form-success .icon{width:2.4rem; height:2.4rem; color:#3f8b52; margin:0 auto 14px; display:block;}
+  @media (max-width:880px){ .contact-wrap{grid-template-columns:1fr;} form.quote .row2{grid-template-columns:1fr;} }
+
+  footer{background:var(--ink); color:#a49f93; padding:40px 0 24px; font-size:0.88rem;}
+  footer .wrap{display:grid; grid-template-columns:2fr 1fr 1fr; gap:30px;}
+  footer h4{color:#fff; font-family:'Bitter',serif; font-size:0.96rem; margin-bottom:12px; font-weight:600;}
+  footer a{color:#a49f93; text-decoration:none;}
+  footer a:hover{color:#fff;}
+  footer .fbottom{border-top:1px solid #3a362f; margin-top:28px; padding-top:18px; text-align:center; font-size:0.78rem; color:#75705f;}
+  @media (max-width:700px){ footer .wrap{grid-template-columns:1fr; text-align:center;} }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 4h3l1 3-2 1.5c1 2.5 3 4.5 5.5 5.5L16 12l3 1v3c0 1-1 2-2 2C10 18 6 14 6 7c0-1 1-2 2-2z"/></symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></symbol>
+  <symbol id="icon-area" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 6l2 5-2 5-2-5 2-5z"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><polyline points="5 13 9 17 19 7"/></symbol>
+  <symbol id="icon-trim" viewBox="0 0 24 24"><path d="M4 20V6a2 2 0 0 1 2-2h2"/><path d="M4 20h16"/><path d="M8 4c3 0 3 3 6 3s3 3 6 3"/></symbol>
+  <symbol id="icon-door" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1"/><circle cx="14.5" cy="12" r="0.9" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-deck" viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="7" cy="7" r="0.7" fill="currentColor" stroke="none"/><circle cx="17" cy="7" r="0.7" fill="currentColor" stroke="none"/><circle cx="7" cy="12" r="0.7" fill="currentColor" stroke="none"/><circle cx="17" cy="12" r="0.7" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-shelf" viewBox="0 0 24 24"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><line x1="6" y1="8" x2="6" y2="16"/><line x1="18" y1="8" x2="18" y2="16"/></symbol>
+  <symbol id="icon-repair" viewBox="0 0 24 24"><path d="M14.5 5.5a3.5 3.5 0 0 0-4.9 4.2L4 15.3V19h3.7l5.6-5.6a3.5 3.5 0 0 0 4.2-4.9l-2.6 2.6-2-2 2.6-2.6z"/></symbol>
+  <symbol id="icon-lawn" viewBox="0 0 24 24"><path d="M4 18c2-2 2-4 0-6"/><path d="M9 18c2-2 2-6 0-9"/><path d="M14 18c2-2 2-4 0-6"/><path d="M19 18c2-2 2-6 0-9"/></symbol>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>BBB Accredited since 2015 — Reynoldsburg, OH</span>
+    <a class="phone" href="tel:+16145512172"><svg class="icon"><use href="#icon-phone"/></svg> (614) 551-2172</a>
+  </div>
+</div>
+
+<header class="main">
+  <div class="wrap">
+    <div class="brand">WG Carpentry LLC <span>Carpentry · Repairs · Handyman</span></div>
+    <nav class="mainnav">
+      <a href="#services">Services</a>
+      <a href="#estimator">Estimate</a>
+      <a href="#financials">Billing</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#contact">Request an estimate</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Carpentry and handyman work in Reynoldsburg and around Columbus.</h1>
+      <p class="lead">WG Carpentry LLC is a small, BBB-accredited crew run by Dana and Warren Harding — trim, repairs, small built-ins, and the general fixes that pile up around a house. We've been at it for 11 years, usually with three of us on a job.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#contact">Request a free estimate</a>
+        <a class="btn ghost" href="tel:+16145512172">Call (614) 551-2172</a>
+      </div>
+    </div>
+    <div>
+      <svg class="joinery" viewBox="0 0 400 260" aria-hidden="true">
+        <path d="M20 60 Q100 50 180 62 T340 58" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.55"/>
+        <path d="M20 100 Q110 90 190 102 T360 98" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.55"/>
+        <path d="M20 140 Q100 130 180 142 T340 138" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.55"/>
+        <path class="accent-line" d="M40 190 L80 190 L100 220 L140 190 L160 220 L200 190 L220 220 L260 190 L280 220 L320 190 L360 190" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <p class="hero-caption">Est. 2015 · Reynoldsburg, Ohio</p>
+    </div>
+  </div>
+</section>
+
+<div class="process">
+  <div class="wrap">
+    <div class="step">
+      <div class="n">01</div>
+      <div class="t">Call or text what needs fixing</div>
+      <p>We'll ask a few questions and give you a rough idea over the phone.</p>
+    </div>
+    <div class="step">
+      <div class="n">02</div>
+      <div class="t">We take a look</div>
+      <p>For anything bigger than a quick fix, we walk the job before quoting a firm price.</p>
+    </div>
+    <div class="step">
+      <div class="n">03</div>
+      <div class="t">Pay when it's done</div>
+      <p>Review the invoice and pay online once the work's finished.</p>
+    </div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Services</h2>
+      <p>Most of our work is repairs, trim, and small carpentry jobs around the house. We also mow a handful of lawns for regular customers.</p>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item">
+        <div class="icon-wrap"><svg class="icon"><use href="#icon-trim"/></svg></div>
+        <div><h3>Trim &amp; molding</h3><p>Baseboard, casing, and crown molding installed or replaced.</p></div>
+      </div>
+      <div class="svc-item">
+        <div class="icon-wrap"><svg class="icon"><use href="#icon-door"/></svg></div>
+        <div><h3>Doors &amp; windows</h3><p>Sticking doors, worn hardware, screens and storm doors repaired or swapped out.</p></div>
+      </div>
+      <div class="svc-item">
+        <div class="icon-wrap"><svg class="icon"><use href="#icon-deck"/></svg></div>
+        <div><h3>Deck repair</h3><p>Rotted boards replaced, loose railings reset, decks restained.</p></div>
+      </div>
+      <div class="svc-item">
+        <div class="icon-wrap"><svg class="icon"><use href="#icon-shelf"/></svg></div>
+        <div><h3>Shelving &amp; built-ins</h3><p>Closet shelving, mudroom benches, simple built-in cabinets.</p></div>
+      </div>
+      <div class="svc-item">
+        <div class="icon-wrap"><svg class="icon"><use href="#icon-repair"/></svg></div>
+        <div><h3>General repairs</h3><p>Drywall patches, loose railings, cabinet doors that won't close right — the small stuff that piles up.</p></div>
+      </div>
+      <div class="svc-item">
+        <div class="icon-wrap"><svg class="icon"><use href="#icon-lawn"/></svg></div>
+        <div><h3>Lawn maintenance</h3><p>Mowing and basic yard upkeep for a handful of regular customers. Ask if we're taking on new lawns.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="estimator" id="estimator">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Typical job pricing</h2>
+      <p>Pick the closest job type for a rough price range.</p>
+    </div>
+    <div class="est-wrap">
+      <div class="est-controls">
+        <div class="field">
+          <label for="jobType">Type of job</label>
+          <select id="jobType">
+            <option value="trim">Trim or molding (per room)</option>
+            <option value="door">Door or window repair</option>
+            <option value="deck">Deck board or rail repair</option>
+            <option value="shelf">Shelving or a small built-in</option>
+            <option value="punch">General repair list (half day)</option>
+          </select>
+        </div>
+      </div>
+      <div class="est-result">
+        <div class="label">Typical price range</div>
+        <div class="price" id="estPrice">$250 – $450</div>
+        <p class="sample-note">Ballpark based on typical jobs — exact price depends on materials and what we find once we're there.</p>
+        <a class="btn" href="#contact">Get my exact quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="financials" id="financials">
+  <div class="wrap">
+    <div class="intro">
+      <h2>How billing works</h2>
+      <p>You'll get an itemized invoice after the job's done, and you can pay it right from your phone.</p>
+    </div>
+    <div class="fin-wrap">
+      <div class="fin-copy">
+        <p class="sample-note">Sample invoice, shown for demonstration purposes.</p>
+        <div class="invoice-card">
+          <div class="invoice-head">
+            <div class="co">WG Carpentry LLC<br><small style="font-weight:400;color:var(--muted)">Invoice #WG-0219</small></div>
+            <div class="meta">Issued: 06/03/2026<br>Due: 06/17/2026</div>
+          </div>
+          <div class="invoice-rows">
+            <div><span>Baseboard install (2 rooms)</span><span>$340.00</span></div>
+            <div><span>Interior door repair</span><span>$95.00</span></div>
+            <div><span>Deck board replacement (3 boards)</span><span>$210.00</span></div>
+          </div>
+          <div class="invoice-total"><span>Total due</span><span>$645.00</span></div>
+          <button class="pay-btn" type="button" onclick="alert('This is a sample invoice for demonstration only — no payment will be processed.')">Pay invoice securely</button>
+        </div>
+      </div>
+      <ul class="fin-points">
+        <li><svg class="icon"><use href="#icon-check"/></svg>Get a clear invoice instead of a handwritten receipt.</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>Review and approve estimates before we start.</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>Pay online instead of writing a check.</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>Keep a simple record of past jobs and payments.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="financing" id="financing">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Payment plans for bigger jobs</h2>
+      <p>Ask about monthly payment options for a full deck rebuild or a built-in — no need to pay it all at once.</p>
+    </div>
+    <div class="est-wrap">
+      <div class="est-controls">
+        <div class="field">
+          <label for="finAmount">Total project cost: <span id="finAmountVal">$3,000</span></label>
+          <input type="range" id="finAmount" min="1000" max="8000" step="250" value="3000">
+        </div>
+        <div class="field">
+          <label for="finTerm">Term length</label>
+          <select id="finTerm">
+            <option value="12">12 months</option>
+            <option value="24" selected>24 months</option>
+            <option value="36">36 months</option>
+          </select>
+        </div>
+      </div>
+      <div class="est-result">
+        <div class="label">Estimated monthly payment</div>
+        <div class="price" id="finPayment">$139/mo</div>
+        <p class="sample-note">Sample estimate for illustration only — not an offer of credit. Actual rate and terms depend on an approved financing partner and applicant credit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="wrap">
+    <div class="pull-quote">
+      <p>"Warren fixed our deck railing the same week we called. Didn't try to talk us into a whole new deck."</p>
+      <div class="who">Reynoldsburg homeowner</div>
+      <span class="tag">Sample review</span>
+    </div>
+    <div class="more-quotes">
+      <div class="q">
+        <p>"Dana and Warren have done small stuff for us for years — shelves, a sticky door, drywall after we took down a shelf. They show up when they say they will."</p>
+        <div class="who">Blacklick homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+      <div class="q">
+        <p>"Had a short list of little repairs nobody else wanted to bother with. WG got through all of it in an afternoon."</p>
+        <div class="who">Columbus resident</div>
+        <span class="tag">Sample review</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="review-strip">
+  <div class="wrap">
+    <div class="copy">
+      <h3>Scan to leave a review</h3>
+      <p>Most of our work comes from word of mouth. If we did right by you, a quick Google review helps the next person find us.</p>
+      <p class="sample-note">Demo QR code — once you have a Google Business Profile, this links straight to your review page.</p>
+    </div>
+    <div class="qr-box" id="reviewQR"></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h3>Get in touch</h3>
+        <p>Reach out for carpentry, repairs, or handyman work in Reynoldsburg and the greater Columbus area.</p>
+        <div class="info-row"><svg class="icon"><use href="#icon-phone"/></svg><div><strong>Phone</strong><span><a href="tel:+16145512172">(614) 551-2172</a></span></div></div>
+        <div class="info-row"><svg class="icon"><use href="#icon-pin"/></svg><div><strong>Address</strong><span>6414 Birchview Dr N, Reynoldsburg, OH 43068</span></div></div>
+        <div class="info-row"><svg class="icon"><use href="#icon-area"/></svg><div><strong>Service area</strong><span>Reynoldsburg, Blacklick &amp; the greater Columbus area</span></div></div>
+      </div>
+      <div>
+        <form class="quote" id="quoteForm">
+          <div class="field"><label for="name">Full name</label><input id="name" required placeholder="Jane Smith"></div>
+          <div class="row2">
+            <div class="field"><label for="phone">Phone</label><input id="phone" required placeholder="(614) 555-0100"></div>
+            <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="jane@email.com"></div>
+          </div>
+          <div class="field"><label for="service">Service needed</label>
+            <select id="service">
+              <option>Trim &amp; molding</option>
+              <option>Doors &amp; windows</option>
+              <option>Deck repair</option>
+              <option>Shelving &amp; built-ins</option>
+              <option>General repairs</option>
+              <option>Lawn maintenance</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="msg">Tell us about the job</label><textarea id="msg" rows="4" placeholder="A little about what's going on..."></textarea></div>
+          <button type="submit">Request free estimate</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><polyline points="7 12.5 10.5 16 17 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Thanks — we'll be in touch.</h3>
+          <p style="color:var(--muted); margin-top:8px;">A member of the WG Carpentry team will reach out shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>WG Carpentry LLC</h4>
+      <p>Carpentry, repairs, and handyman work in Reynoldsburg and the greater Columbus area.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><a href="tel:+16145512172">(614) 551-2172</a></p>
+      <p>6414 Birchview Dr N<br>Reynoldsburg, OH 43068</p>
+    </div>
+    <div>
+      <h4>Quick links</h4>
+      <p><a href="#services">Services</a></p>
+      <p><a href="#financials">Billing</a></p>
+      <p><a href="#contact">Free estimate</a></p>
+    </div>
+  </div>
+  <div class="fbottom">Concept site prepared as a design proposal — not the business's official website. &copy; WG Carpentry LLC.</div>
+</footer>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  (function(){
+    var jobEl = document.getElementById('jobType');
+    var priceEl = document.getElementById('estPrice');
+    var ranges = {
+      trim: [250, 450],
+      door: [125, 300],
+      deck: [300, 900],
+      shelf: [400, 1200],
+      punch: [200, 380]
+    };
+    function fmt(n){ return '$' + n.toLocaleString('en-US'); }
+    function update(){
+      var r = ranges[jobEl.value];
+      priceEl.textContent = fmt(r[0]) + ' – ' + fmt(r[1]);
+    }
+    jobEl.addEventListener('change', update);
+    update();
+  })();
+
+  (function(){
+    var amountEl = document.getElementById('finAmount');
+    var amountVal = document.getElementById('finAmountVal');
+    var termEl = document.getElementById('finTerm');
+    var paymentEl = document.getElementById('finPayment');
+    function update(){
+      var principal = parseInt(amountEl.value, 10);
+      amountVal.textContent = '$' + principal.toLocaleString('en-US');
+      var n = parseInt(termEl.value, 10);
+      var r = 0.0999 / 12;
+      var payment = principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      paymentEl.textContent = '$' + Math.round(payment).toLocaleString('en-US') + '/mo';
+    }
+    amountEl.addEventListener('input', update);
+    termEl.addEventListener('change', update);
+    update();
+  })();
+
+  (function(){
+    var qr = qrcode(0, 'M');
+    qr.addData('https://www.google.com/search?q=WG+Carpentry+LLC+Reynoldsburg+Ohio+reviews');
+    qr.make();
+    document.getElementById('reviewQR').innerHTML = qr.createSvgTag({cellSize:4, margin:2});
+  })();
+</script>
+
+</body>
+</html>

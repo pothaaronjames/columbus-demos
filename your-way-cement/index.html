@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Way Cement LLC | Concrete — Columbus, OH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --slate:#3c4a52;
+    --slate-dark:#28333a;
+    --slate-mid:#5a6a72;
+    --clay:#b45c3a;
+    --clay-dark:#984c2e;
+    --paper:#f2ede2;
+    --paper-2:#e7dfd0;
+    --ink:#26241f;
+    --ink-soft:#655f53;
+    --border:#d9d0bc;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter', system-ui, sans-serif; color:var(--ink); background:var(--paper); line-height:1.65; font-size:16px;}
+  h1,h2,h3{font-family:'Fraunces', Georgia, serif; font-weight:600;}
+  a{color:inherit;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 24px;}
+  .icon{width:1em; height:1em; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; vertical-align:-0.15em; flex-shrink:0;}
+
+  .topbar{background:var(--slate-dark); color:#c7cdd1; font-size:0.85rem;}
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding:9px 24px; flex-wrap:wrap; gap:8px;}
+  .topbar .phone{color:#fff; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;}
+
+  header.main{background:var(--white); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:50;}
+  header.main .wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; gap:20px;}
+  .brand{font-size:1.3rem; color:var(--ink); display:flex; flex-direction:column; line-height:1.15;}
+  .brand span{font-family:'Inter', sans-serif; font-size:0.72rem; color:var(--ink-soft); font-weight:500; margin-top:2px;}
+  nav.mainnav{display:flex; gap:24px; font-weight:500; font-size:0.92rem;}
+  nav.mainnav a{text-decoration:none; color:var(--ink);}
+  nav.mainnav a:hover{color:var(--clay);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; background:var(--clay); color:#fff; padding:12px 22px;
+    border-radius:4px; text-decoration:none; font-weight:600; font-size:0.92rem; border:1px solid var(--clay);
+    transition:background .15s ease;
+  }
+  .btn:hover{background:var(--clay-dark);}
+  .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--border);}
+  .btn.ghost:hover{background:var(--paper-2);}
+
+  .hero{padding:68px 0 56px; border-bottom:1px solid var(--border);}
+  .hero .wrap{display:grid; grid-template-columns:1.15fr 0.85fr; gap:52px; align-items:center;}
+  .hero h1{font-size:2.5rem; line-height:1.2; margin-bottom:18px; color:var(--slate-dark);}
+  .hero p.lead{font-size:1.05rem; color:var(--ink-soft); max-width:48ch; margin-bottom:28px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-art{width:100%; height:auto;}
+  .hero-art-caption{margin-top:14px; font-size:0.85rem; color:var(--ink-soft); text-align:center;}
+  @media (max-width: 880px){
+    .hero .wrap{grid-template-columns:1fr;}
+    nav.mainnav{display:none;}
+  }
+
+  .process{background:var(--white); border-bottom:1px solid var(--border); padding:34px 0;}
+  .process .wrap{display:flex; gap:0;}
+  .process .step{flex:1; padding:0 26px;}
+  .process .step + .step{border-left:1px solid var(--border);}
+  .process .step .n{font-family:'Fraunces',serif; font-size:0.82rem; color:var(--clay); font-weight:700; margin-bottom:6px; letter-spacing:0.04em;}
+  .process .step .t{font-weight:600; margin-bottom:4px; font-size:0.98rem;}
+  .process .step p{color:var(--ink-soft); font-size:0.87rem;}
+  @media (max-width:760px){
+    .process .wrap{flex-direction:column; gap:20px;}
+    .process .step + .step{border-left:none; border-top:1px solid var(--border); padding-top:20px;}
+  }
+
+  section{padding:70px 0;}
+  .intro{max-width:620px; margin-bottom:40px;}
+  .intro h2{font-size:1.85rem; color:var(--slate-dark); margin-bottom:10px;}
+  .intro p{color:var(--ink-soft); font-size:1rem;}
+
+  .services{background:var(--paper);}
+  .svc-row{display:flex; gap:20px; padding:22px 0; border-top:1px solid var(--border); align-items:baseline;}
+  .svc-row:first-child{border-top:none;}
+  .svc-row h3{font-size:1.05rem; color:var(--slate-dark); font-weight:600; min-width:220px; flex-shrink:0;}
+  .svc-row p{font-size:0.94rem; color:var(--ink-soft);}
+  @media (max-width:700px){ .svc-row{flex-direction:column; gap:6px;} .svc-row h3{min-width:0;} }
+
+  .facts{background:var(--slate-dark); color:#eceeef;}
+  .facts .intro h2{color:#fff;}
+  .facts .intro p{color:#b6bdc1; max-width:70ch;}
+  .fact-row{display:flex; border-top:1px solid #3c4750;}
+  .fact{flex:1; padding:26px 26px 0; }
+  .fact + .fact{border-left:1px solid #3c4750;}
+  .fact b{display:block; font-family:'Fraunces',serif; font-size:2.1rem; color:#fff; margin-bottom:4px;}
+  .fact span{font-size:0.86rem; color:#a6adb2;}
+  @media (max-width:700px){ .fact-row{flex-direction:column;} .fact + .fact{border-left:none; border-top:1px solid #3c4750; padding-top:20px;} }
+
+  .estimator, .financing{background:var(--white);}
+  .financing{border-top:1px solid var(--border);}
+  .calc-wrap{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  .calc-controls .field{margin-bottom:22px;}
+  .calc-controls label{display:block; font-size:0.85rem; font-weight:600; color:var(--slate-dark); margin-bottom:8px;}
+  .calc-controls input[type=range]{width:100%; accent-color:var(--clay);}
+  .calc-controls select{width:100%; padding:11px 12px; border:1px solid var(--border); border-radius:4px; font-family:inherit; font-size:0.95rem; background:#fff;}
+  .calc-controls select:focus{outline:2px solid var(--clay); outline-offset:1px;}
+  .calc-result{border:1px solid var(--border); border-left:4px solid var(--clay); background:var(--paper); border-radius:4px; padding:28px 26px;}
+  .calc-result .label{font-size:0.82rem; color:var(--ink-soft); font-weight:600; margin-bottom:8px;}
+  .calc-result .price{font-family:'Fraunces',serif; font-size:2rem; color:var(--slate-dark); margin-bottom:16px;}
+  .calc-result .sample-note{font-size:0.82rem; color:var(--ink-soft); font-style:italic; margin-bottom:18px;}
+  @media (max-width:880px){ .calc-wrap{grid-template-columns:1fr;} }
+
+  .financials{background:var(--paper-2);}
+  .fin-wrap{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  .invoice-card{background:var(--white); border-radius:6px; box-shadow:0 20px 40px rgba(40,51,58,0.14); padding:26px 24px; border:1px solid var(--border);}
+  .invoice-head{display:flex; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:14px; margin-bottom:14px;}
+  .invoice-head .co{font-family:'Fraunces',serif; font-weight:700; color:var(--slate-dark);}
+  .invoice-head .meta{text-align:right; font-size:0.83rem; color:var(--ink-soft);}
+  .sample-note{font-size:0.82rem; color:var(--ink-soft); font-style:italic;}
+  .invoice-rows div{display:flex; justify-content:space-between; padding:8px 0; font-size:0.9rem; border-bottom:1px dashed var(--border);}
+  .invoice-total{display:flex; justify-content:space-between; padding-top:14px; font-weight:700; font-size:1.1rem; color:var(--clay);}
+  .pay-btn{margin-top:18px; width:100%; background:var(--paper-2); color:var(--ink-soft); border:1px solid var(--border); padding:12px; border-radius:4px; font-weight:600; font-size:0.92rem; cursor:not-allowed;}
+  .fin-points{list-style:none;}
+  .fin-points li{margin-bottom:14px; color:var(--ink-soft); padding-left:26px; position:relative; font-size:0.94rem;}
+  .fin-points li .icon{position:absolute; left:0; top:3px; color:var(--clay);}
+  @media (max-width:880px){ .fin-wrap{grid-template-columns:1fr;} }
+
+  .testimonials{background:var(--white);}
+  .test-wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:44px; align-items:start;}
+  .quote-main{border-left:3px solid var(--clay); padding-left:24px;}
+  .quote-main p{font-family:'Fraunces',serif; font-size:1.35rem; color:var(--slate-dark); line-height:1.45; margin-bottom:12px;}
+  .quote-main .who{font-size:0.88rem; color:var(--ink-soft); font-weight:600;}
+  .quote-main .tag{display:block; font-size:0.78rem; color:#9a9182; font-style:italic; margin-top:4px;}
+  .side-quotes .q{padding:16px 0; border-top:1px solid var(--border);}
+  .side-quotes .q:first-child{border-top:none;}
+  .side-quotes .q p{font-size:0.92rem; color:var(--ink); margin-bottom:6px;}
+  .side-quotes .q .who{font-size:0.82rem; color:var(--ink-soft);}
+  .side-quotes .q .tag{font-size:0.74rem; color:#9a9182; font-style:italic;}
+  @media (max-width:800px){ .test-wrap{grid-template-columns:1fr;} }
+
+  .contact{background:var(--paper);}
+  .contact-wrap{display:grid; grid-template-columns:1fr 1.15fr; gap:52px;}
+  .contact-info h3{color:var(--slate-dark); margin-bottom:14px; font-size:1.3rem;}
+  .contact-info > p{color:var(--ink-soft); margin-bottom:26px; font-size:0.96rem;}
+  .info-row{display:flex; gap:14px; margin-bottom:18px; align-items:flex-start;}
+  .info-row .icon{color:var(--clay); font-size:1.15rem; margin-top:2px;}
+  .info-row div strong{display:block; color:var(--slate-dark); font-size:0.92rem;}
+  .info-row div span{color:var(--ink-soft); font-size:0.9rem;}
+  form.quote{background:var(--white); border:1px solid var(--border); border-radius:6px; padding:30px;}
+  form.quote label{display:block; font-size:0.85rem; font-weight:600; color:var(--slate-dark); margin-bottom:6px;}
+  form.quote .field{margin-bottom:18px;}
+  form.quote input, form.quote select, form.quote textarea{width:100%; padding:11px 12px; border:1px solid var(--border); border-radius:4px; font-family:inherit; font-size:0.95rem; background:#fff;}
+  form.quote input:focus, form.quote select:focus, form.quote textarea:focus{outline:2px solid var(--clay); outline-offset:1px;}
+  form.quote .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  form.quote button{width:100%; background:var(--clay); color:#fff; border:none; padding:13px; border-radius:4px; font-weight:600; font-size:0.94rem; cursor:pointer;}
+  form.quote button:hover{background:var(--clay-dark);}
+  .form-success{display:none; text-align:center; padding:44px 10px;}
+  .form-success.show{display:block;}
+  .form-success .icon{width:2.4rem; height:2.4rem; color:#3f7a52; margin:0 auto 14px; display:block;}
+  @media (max-width:880px){ .contact-wrap{grid-template-columns:1fr;} form.quote .row2{grid-template-columns:1fr;} }
+
+  footer{background:var(--slate-dark); color:#a6acaf; padding:38px 0 22px; font-size:0.88rem;}
+  footer .wrap{display:grid; grid-template-columns:2fr 1fr 1fr; gap:30px;}
+  footer h4{color:#fff; font-family:'Fraunces',serif; font-size:0.98rem; margin-bottom:12px; font-weight:600;}
+  footer a{color:#a6acaf; text-decoration:none;}
+  footer a:hover{color:#fff;}
+  footer .fbottom{border-top:1px solid #3c4750; margin-top:26px; padding-top:16px; text-align:center; font-size:0.78rem; color:#78807f;}
+  @media (max-width:700px){ footer .wrap{grid-template-columns:1fr; text-align:center;} }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 4h3l1 3-2 1.5c1 2.5 3 4.5 5.5 5.5L16 12l3 1v3c0 1-1 2-2 2C10 18 6 14 6 7c0-1 1-2 2-2z"/></symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></symbol>
+  <symbol id="icon-area" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 6l2 5-2 5-2-5 2-5z"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><polyline points="5 13 9 17 19 7"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/></symbol>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>BBB Accredited &middot; A+ Rating</span>
+    <a class="phone" href="tel:+16148046868"><svg class="icon"><use href="#icon-phone"/></svg> (614) 804-6868</a>
+  </div>
+</div>
+
+<header class="main">
+  <div class="wrap">
+    <div class="brand">Your Way Cement <span>Concrete Contractor · Columbus, OH</span></div>
+    <nav class="mainnav">
+      <a href="#services">Services</a>
+      <a href="#estimator">Estimate</a>
+      <a href="#billing">Billing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#contact">Request an estimate</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Driveways, patios, and foundation work in Columbus.</h1>
+      <p class="lead">Your Way Cement LLC has poured concrete around Columbus since 2015 — driveways, patios, sidewalks, and foundation work, plus repair on slabs that are cracking or starting to settle.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#contact">Request a free estimate</a>
+        <a class="btn ghost" href="tel:+16148046868">Call (614) 804-6868</a>
+      </div>
+    </div>
+    <div>
+      <svg class="hero-art" viewBox="0 0 380 260" aria-hidden="true">
+        <rect x="20" y="30" width="340" height="200" fill="none" stroke="#8b9298" stroke-width="1.4"/>
+        <line x1="20" y1="90" x2="360" y2="90" stroke="#8b9298" stroke-width="1"/>
+        <line x1="20" y1="150" x2="360" y2="150" stroke="#8b9298" stroke-width="1"/>
+        <line x1="20" y1="190" x2="360" y2="190" stroke="#8b9298" stroke-width="1"/>
+        <line x1="140" y1="30" x2="140" y2="230" stroke="#8b9298" stroke-width="1"/>
+        <line x1="240" y1="30" x2="240" y2="230" stroke="#8b9298" stroke-width="1"/>
+        <g stroke="var(--clay)" stroke-width="2" fill="none" stroke-linecap="round">
+          <line x1="60" y1="110" x2="120" y2="110"/>
+          <line x1="60" y1="130" x2="120" y2="130"/>
+          <line x1="80" y1="95" x2="80" y2="145"/>
+          <line x1="100" y1="95" x2="100" y2="145"/>
+        </g>
+      </svg>
+      <p class="hero-art-caption">Est. 2015 &middot; Columbus, Ohio</p>
+    </div>
+  </div>
+</section>
+
+<div class="process">
+  <div class="wrap">
+    <div class="step">
+      <div class="n">01</div>
+      <div class="t">Request an estimate</div>
+      <p>Call or send the job details and we'll get back to you with a price.</p>
+    </div>
+    <div class="step">
+      <div class="n">02</div>
+      <div class="t">We schedule the pour</div>
+      <p>You'll know the date ahead of time, weather permitting.</p>
+    </div>
+    <div class="step">
+      <div class="n">03</div>
+      <div class="t">Walkthrough &amp; invoice</div>
+      <p>We review the finished work together, then send an invoice you can pay online.</p>
+    </div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Services</h2>
+      <p>One crew handles the job from prep through the final finish.</p>
+    </div>
+    <div class="svc-list">
+      <div class="svc-row"><h3>Driveways</h3><p>New pours, replacements, and resurfacing for driveways that are cracking, settling, or just worn out.</p></div>
+      <div class="svc-row"><h3>Patios</h3><p>Poured patios sized to fit the yard, with a plain broom finish or stamped and colored options.</p></div>
+      <div class="svc-row"><h3>Sidewalks &amp; walkways</h3><p>New pours and code-compliant replacement for sidewalks and walkways.</p></div>
+      <div class="svc-row"><h3>Foundations &amp; footers</h3><p>Footers and slab foundations for additions, garages, and outbuildings.</p></div>
+      <div class="svc-row"><h3>Stamped &amp; decorative concrete</h3><p>Colored and stamped finishes for patios, walkways, and pool decks.</p></div>
+      <div class="svc-row"><h3>Concrete repair</h3><p>Crack repair and leveling for slabs that are heaving, sinking, or settling unevenly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="facts">
+  <div class="wrap">
+    <div class="intro">
+      <h2>11 Years, BBB Accredited</h2>
+      <p>Your Way Cement has been pouring concrete around Columbus since 2015. The Better Business Bureau has accredited the company with an A+ rating.</p>
+    </div>
+    <div class="fact-row">
+      <div class="fact"><b>2015</b><span>Founded</span></div>
+      <div class="fact"><b>11</b><span>Years in business</span></div>
+      <div class="fact"><b>A+</b><span>BBB rating, accredited</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="estimator" id="estimator">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Rough cost by job size</h2>
+      <p>Move the slider and pick a job type for a typical price range.</p>
+    </div>
+    <div class="calc-wrap">
+      <div class="calc-controls">
+        <div class="field">
+          <label for="estSqft">Area (sq ft): <span id="estSqftVal">400</span></label>
+          <input type="range" id="estSqft" min="150" max="2000" step="50" value="400">
+        </div>
+        <div class="field">
+          <label for="estType">Job type</label>
+          <select id="estType">
+            <option value="7,11" selected>Driveway ($7–$11/sq ft)</option>
+            <option value="9,13">Sidewalk ($9–$13/sq ft)</option>
+            <option value="10,15">Patio, stamped ($10–$15/sq ft)</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="label">Estimated cost</div>
+        <div class="price" id="estPrice">$2,800 – $4,400</div>
+        <p class="sample-note">Ballpark estimate only, based on typical Columbus-area pricing — your final quote depends on an on-site visit.</p>
+        <a class="btn" href="#contact">Get my exact quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="financials" id="billing">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Paying your bill</h2>
+      <p>Get an itemized invoice and pay it online instead of waiting on a paper bill.</p>
+    </div>
+    <div class="fin-wrap">
+      <div>
+        <p class="sample-note">Sample invoice, shown for demonstration purposes.</p>
+        <div class="invoice-card">
+          <div class="invoice-head">
+            <div class="co">Your Way Cement LLC<br><small style="font-weight:400;color:var(--ink-soft)">Invoice #YW-3018</small></div>
+            <div class="meta">Issued: 06/03/2026<br>Due: 06/17/2026</div>
+          </div>
+          <div class="invoice-rows">
+            <div><span>Patio pour (320 sq ft)</span><span>$3,520.00</span></div>
+            <div><span>Excavation &amp; forming</span><span>$480.00</span></div>
+            <div><span>Broom finish &amp; edging</span><span>$210.00</span></div>
+          </div>
+          <div class="invoice-total"><span>Total due</span><span>$4,210.00</span></div>
+          <button class="pay-btn" type="button" disabled>Pay invoice online (demo)</button>
+        </div>
+      </div>
+      <ul class="fin-points">
+        <li><svg class="icon"><use href="#icon-check"/></svg>Written estimate before any work starts.</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>Itemized invoice you can review before paying.</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>Pay online instead of mailing a check.</li>
+        <li><svg class="icon"><use href="#icon-check"/></svg>Digital record of past jobs and payments.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="financing" id="financing">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Payment plans</h2>
+      <p>Ask about monthly payment options on larger jobs before committing to the full cost up front.</p>
+    </div>
+    <div class="calc-wrap">
+      <div class="calc-controls">
+        <div class="field">
+          <label for="finAmount">Total project cost: <span id="finAmountVal">$6,000</span></label>
+          <input type="range" id="finAmount" min="2000" max="20000" step="500" value="6000">
+        </div>
+        <div class="field">
+          <label for="finTerm">Term length</label>
+          <select id="finTerm">
+            <option value="12">12 months</option>
+            <option value="24" selected>24 months</option>
+            <option value="36">36 months</option>
+            <option value="60">60 months</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="label">Estimated monthly payment</div>
+        <div class="price" id="finPayment">$277/mo</div>
+        <p class="sample-note">Sample estimate for illustration only — not an offer of credit. Actual rate and terms depend on an approved financing partner and applicant credit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Reviews</h2>
+    </div>
+    <div class="test-wrap">
+      <div class="quote-main">
+        <p>"Poured a new patio for us in about two days and it turned out exactly like we talked about — no surprises on the price either."</p>
+        <div class="who">Whitehall homeowner</div>
+        <span class="tag">Sample review</span>
+      </div>
+      <div class="side-quotes">
+        <div class="q">
+          <p>"Our driveway had a crack running through it for years. They matched the finish close enough that you can barely find the repair."</p>
+          <div class="who">Linden homeowner</div>
+          <span class="tag">Sample review</span>
+        </div>
+        <div class="q">
+          <p>"Showed up when they said they would and left the yard cleaner than they found it."</p>
+          <div class="who">Northland resident</div>
+          <span class="tag">Sample review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h3>Get your free estimate</h3>
+        <p>Reach out for a driveway, patio, foundation, or repair job anywhere in the Columbus area.</p>
+        <div class="info-row"><svg class="icon"><use href="#icon-phone"/></svg><div><strong>Phone</strong><span><a href="tel:+16148046868">(614) 804-6868</a></span></div></div>
+        <div class="info-row"><svg class="icon"><use href="#icon-area"/></svg><div><strong>Service area</strong><span>Columbus, OH 43219 &amp; surrounding communities</span></div></div>
+        <div class="info-row"><svg class="icon"><use href="#icon-clock"/></svg><div><strong>Hours</strong><span>Mon–Sat, 7:00 AM – 6:00 PM</span></div></div>
+      </div>
+      <div>
+        <form class="quote" id="quoteForm">
+          <div class="field"><label for="name">Full name</label><input id="name" required placeholder="Jane Smith"></div>
+          <div class="row2">
+            <div class="field"><label for="phone">Phone</label><input id="phone" required placeholder="(614) 555-0100"></div>
+            <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="jane@email.com"></div>
+          </div>
+          <div class="field"><label for="jobtype">Job type</label>
+            <select id="jobtype">
+              <option>Driveway</option>
+              <option>Patio</option>
+              <option>Sidewalk</option>
+              <option>Foundation / footer</option>
+              <option>Concrete repair</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="msg">Tell us about the job</label><textarea id="msg" rows="4" placeholder="A little about what's going on..."></textarea></div>
+          <button type="submit">Request free estimate</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><polyline points="7 12.5 10.5 16 17 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Thanks — we'll be in touch.</h3>
+          <p style="color:var(--ink-soft); margin-top:8px;">A member of the Your Way Cement team will reach out shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Your Way Cement LLC</h4>
+      <p>Concrete contractor serving Columbus, Ohio since 2015.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><a href="tel:+16148046868">(614) 804-6868</a></p>
+      <p>Columbus, OH 43219</p>
+    </div>
+    <div>
+      <h4>Quick links</h4>
+      <p><a href="#services">Services</a></p>
+      <p><a href="#billing">Billing</a></p>
+      <p><a href="#contact">Free estimate</a></p>
+    </div>
+  </div>
+  <div class="fbottom">Concept site prepared as a design proposal — not the business's official website. &copy; Your Way Cement LLC.</div>
+</footer>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  (function(){
+    var sqftEl = document.getElementById('estSqft');
+    var sqftVal = document.getElementById('estSqftVal');
+    var typeEl = document.getElementById('estType');
+    var priceEl = document.getElementById('estPrice');
+    function fmt(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+    function update(){
+      var sqft = parseInt(sqftEl.value, 10);
+      sqftVal.textContent = sqft.toLocaleString('en-US');
+      var rates = typeEl.value.split(',').map(Number);
+      priceEl.textContent = fmt(sqft * rates[0]) + ' – ' + fmt(sqft * rates[1]);
+    }
+    sqftEl.addEventListener('input', update);
+    typeEl.addEventListener('change', update);
+    update();
+  })();
+
+  (function(){
+    var amountEl = document.getElementById('finAmount');
+    var amountVal = document.getElementById('finAmountVal');
+    var termEl = document.getElementById('finTerm');
+    var paymentEl = document.getElementById('finPayment');
+    function update(){
+      var principal = parseInt(amountEl.value, 10);
+      amountVal.textContent = '$' + principal.toLocaleString('en-US');
+      var n = parseInt(termEl.value, 10);
+      var r = 0.0999 / 12;
+      var payment = principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+      paymentEl.textContent = '$' + Math.round(payment).toLocaleString('en-US') + '/mo';
+    }
+    amountEl.addEventListener('input', update);
+    termEl.addEventListener('change', update);
+    update();
+  })();
+</script>
+
+</body>
+</html>
